@@ -1,0 +1,64 @@
+{
+  "books": [
+    {
+      "title": "The Bone Clocks",
+      "author": "David Mitchell",
+      "genre": "fantasy"
+    },
+    {
+      "title": "Nightfall",
+      "author": "Isaac Asimov & Robert Silverberg",
+      "genre": "science fiction"
+    },
+    {
+      "title": "The War of the Worlds",
+      "author": "H.G. Wells",
+      "genre": "science fiction"
+    },
+    {
+      "title": "The Case-Book of Sherlock Holmes",
+      "author": "Arthur Conan Doyle",
+      "genre": "mystery"
+    },
+    {
+      "title": "The Valley of Fear",
+      "author": "Arthur Conan Doyle",
+      "genre": "mystery"
+    },
+    {
+      "title": "His Last Bow",
+      "author": "Arthur Conan Doyle",
+      "genre": "mystery"
+    },
+    {
+      "title": "The Return of Sherlock Holmes",
+      "author": "Arthur Conan Doyle",
+      "genre": "mystery"
+    },
+    {
+      "title": "The Hound of the Baskervilles",
+      "author": "Arthur Conan Doyle",
+      "genre": "mystery"
+    },
+    {
+      "title": "The Memoirs of Sherlock Holmes",
+      "author": "Arthur Conan Doyle",
+      "genre": "mystery"
+    },
+    {
+      "title": "The Adventures of Sherlock Holmes",
+      "author": "Arthur Conan Doyle",
+      "genre": "mystery"
+    },
+    {
+      "title": "The Sign of the Four",
+      "author": "Arthur Conan Doyle",
+      "genre": "mystery"
+    },
+    {
+      "title": "A Study in Scarlet",
+      "author": "Arthur Conan Doyle",
+      "genre": "mystery"
+    }
+  ]
+}

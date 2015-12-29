@@ -5,14 +5,13 @@ module.exports = {
     extensions: ["", ".js", ".jsx"]
   },
   externals: {
-    "chrome": "chrome",
     "react": "React",
     "react-dom": "ReactDOM",
     "d3": "d3"
   },
   output: {
-    path: __dirname + "/forager/",
-    filename: "build/index.js",
+    path: __dirname + "/public/js",
+    filename: "./bundle.js",
   },
   module: {
     loaders: [
