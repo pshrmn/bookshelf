@@ -5,9 +5,11 @@ export default React.createClass({
     let { title, author, genre } = this.props;
     return (
       <div className="book">
-        <div className="title">{title}</div>
+        <div className="cover">
+          <div className="title">{title}</div>
+        </div>
         <div className="author">{author}</div>
       </div>
     );
   }
-})
+});

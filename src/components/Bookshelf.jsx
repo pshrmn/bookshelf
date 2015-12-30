@@ -2,6 +2,8 @@ import React from "react";
 
 import Book from "./Book";
 import BookForm from "./BookForm";
+import Stats from "./Stats";
+
 import bookLoader from "../bookLoader";
 
 export default React.createClass({
@@ -41,13 +43,15 @@ export default React.createClass({
   },
   render: function() {
     let books = this.state.books.slice(0, this.state.show).map((b, i) => {
-      return <Book key={i} {...b} />;
+      return <Book key={i} index={i%10} {...b} />;
     })
     let more = this.state.more ? (
-      <a href="#" onClick={this.showMore}>Show More</a>
+      <button onClick={this.showMore}>Show More</button>
       ) : null;
     let addABook = (
-      <div className="book add" onClick={this.showAddBook} >Add A Book</div>
+      <div className="book">
+        <div className="cover add" onClick={this.showAddBook} >Add A Book</div>
+      </div>
     );
     let form = this.state.adding ? (
       <BookForm save={this.saveBook} cancel={this.cancelBook} />
@@ -60,6 +64,7 @@ export default React.createClass({
         </div>
         {more}
         {form}
+        <Stats books={this.state.books} />
       </div>
     );
   },

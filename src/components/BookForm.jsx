@@ -18,7 +18,8 @@ export default React.createClass({
     if ( this.validate() ) {
       this.props.save({
         title: this.state.title,
-        author: this.state.author
+        author: this.state.author,
+        genre: genres[this.state.genre]
       });
       
     }

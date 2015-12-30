@@ -1,13 +1,12 @@
 export default [
   "adventure",
-  "biography",
   "children's",
   "fantasy",
   "historical",
   "mystery",
+  "non-fiction",
   "poetry",
-  "science fiction",
+  "sci-fi",
   "thriller",
-  "war",
-  "western"
+  "war"
 ];
