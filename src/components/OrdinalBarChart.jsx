@@ -10,7 +10,7 @@ export default React.createClass({
       width: 200,
       height: 100,
       margin: {
-        top: 15,
+        top: 10,
         right: 15,
         bottom: 25,
         left: 25
@@ -18,7 +18,7 @@ export default React.createClass({
     };
   },
   render: function() {
-    let { width, height, margin, data, getX, getY } = this.props;
+    let { width, height, margin, data, getX, getY, getFill } = this.props;
     width = Math.max(width, data.length*60);
     // need the maximum y value
     let maxY = data.reduce((max, curr) => {
@@ -44,7 +44,7 @@ export default React.createClass({
              y={y}
              width={barWidth}
              height={height-y}
-             fill="#8BC34A" />
+             genre={d.genre} />
       );
     });
 
@@ -67,9 +67,14 @@ export default React.createClass({
 
 let Bar = React.createClass({
   render: function() {
-    let { x, y, width, height, fill } = this.props;
+    let { x, y, width, height, genre } = this.props;
+    let barClasses = ["bar", genre.replace("'","")];
     return (
-      <rect x={x} y={y} width={width} height={height} fill={fill} />
+      <rect className={barClasses.join(" ")}
+            x={x}
+            y={y}
+            width={width}
+            height={height} />
     );
   }
 });

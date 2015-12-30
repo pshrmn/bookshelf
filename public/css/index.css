@@ -1,26 +1,36 @@
+body {
+  margin: 0; }
+
+#content {
+  width: 100%;
+  font-family: "Josefin Sans", sans-serif; }
+
+.main {
+  width: 80%;
+  margin: 0 auto; }
 
 .books {
-    display: flex;
-    flex-wrap: wrap;
-}
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap; }
 
 .book {
-    width: 100px;
-    margin: 5px;
-}
+  width: 100px;
+  margin: 5px; }
 
 .cover {
-    width: 100px;
-    height: 125px;
-    box-sizing: border-box;
-    padding: 15px;
-    background: #8BC34A;
-    text-align: center;
-    border-radius: 0px 5px 5px 0px;
-    position: relative;
-}
-
-.cover::before {
+  width: 100px;
+  height: 125px;
+  box-sizing: border-box;
+  padding: 15px;
+  background: #8BC34A;
+  text-align: center;
+  border-radius: 0px 5px 5px 0px;
+  position: relative; }
+  .cover::before {
     content: "";
     position: absolute;
     top: 0;
@@ -28,36 +38,150 @@
     width: 5px;
     height: 100%;
     background: inherit;
-    opacity: 0.5 ;
-}
-
-.cover.add {
-    background: #efefef;
-    cursor: pointer;
-}
+    opacity: 0.5; }
+  .cover.add {
+    background: #CCCCCC;
+    cursor: pointer; }
+  .cover .title {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-height: 100%; }
 
 label {
-    display: block;
-}
+  display: block; }
 
 .author {
-    text-align: center;
-}
+  text-align: center; }
 
-.x.axis .tick text {
-    text-anchor: middle;
-}
+.axis.x .tick text {
+  text-anchor: middle; }
 
-.y.axis .tick text {
-    text-anchor: end;
-}
+.axis.y .tick text {
+  text-anchor: end; }
 
 .axis line {
-    fill: none;
-    stroke: #000;
-    shape-rendering: crispEdges;
-}
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges; }
 
 rect {
-    shape-rendering: crispEdges;
-}
+  shape-rendering: crispEdges; }
+  rect.adventure {
+    fill: #009688; }
+  rect.childrens {
+    fill: #CE7291; }
+  rect.fantasy {
+    fill: #86CFD8; }
+  rect.historical {
+    fill: #607D8B; }
+  rect.mystery {
+    fill: #94B76B; }
+  rect.non-fiction {
+    fill: #E6C150; }
+  rect.poetry {
+    fill: #A02C40; }
+  rect.sci-fi {
+    fill: #6B5A88; }
+  rect.thriller {
+    fill: #E8B76F; }
+  rect.war {
+    fill: #795548; }
+
+/*
+ * genre specific css
+.adventure {}
+.childrens {}
+.fantasy {}
+.historical {}
+.mystery {}
+.non-fiction {}
+.poetry {}
+.sci-fi {}
+.thriller {}
+.war {}
+ */
+.cover.adventure {
+  background: #009688; }
+
+.cover.childrens {
+  background: #CE7291; }
+
+.cover.fantasy {
+  background: #86CFD8; }
+
+.cover.historical {
+  background: #607D8B; }
+
+.cover.mystery {
+  background: #94B76B; }
+
+.cover.non-fiction {
+  background: #E6C150; }
+
+.cover.poetry {
+  background: #A02C40;
+  color: #EFEFEF; }
+
+.cover.sci-fi {
+  background: #6B5A88;
+  color: #EFEFEF; }
+
+.cover.thriller {
+  background: #E8B76F; }
+
+.cover.war {
+  background: #795548;
+  color: #EFEFEF; }
+
+.topbar {
+  width: 100%;
+  background: #ECE4E0; }
+  .topbar .title {
+    margin: 0;
+    font-family: "Grand Hotel", sans-serif;
+    font-size: 3em;
+    text-align: center; }
+  .topbar .subtitle {
+    text-align: center; }
+  .topbar ul {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0; }
+  .topbar li {
+    height: 5px;
+    -webkit-flex-grow: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1; }
+    .topbar li.adventure {
+      background: #009688; }
+    .topbar li.childrens {
+      background: #CE7291; }
+    .topbar li.fantasy {
+      background: #86CFD8; }
+    .topbar li.historical {
+      background: #607D8B; }
+    .topbar li.mystery {
+      background: #94B76B; }
+    .topbar li.non-fiction {
+      background: #E6C150; }
+    .topbar li.poetry {
+      background: #A02C40; }
+    .topbar li.sci-fi {
+      background: #6B5A88;
+      color: #EFEFEF; }
+    .topbar li.thriller {
+      background: #E8B76F; }
+    .topbar li.war {
+      background: #795548;
+      color: #EFEFEF; }
+
+.stats {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex; }
+  .stats h2 {
+    margin: 0;
+    text-align: center; }

@@ -2,9 +2,11 @@ import React from "react";
 
 import Book from "./Book";
 import BookForm from "./BookForm";
+import TopBar from "./TopBar";
 import Stats from "./Stats";
 
 import bookLoader from "../bookLoader";
+import genres from "../constants/genres";
 
 export default React.createClass({
   getInitialState: function() {
@@ -58,13 +60,16 @@ export default React.createClass({
       ) : null;
     return (
       <div className="bookshelf">
-        <div className="books">
-          {books}
-          {addABook}
+        <TopBar genres={genres} />
+        <div className="main">
+          <div className="books">
+            {books}
+            {addABook}
+          </div>
+          {more}
+          {form}
+          <Stats books={this.state.books} />
         </div>
-        {more}
-        {form}
-        <Stats books={this.state.books} />
       </div>
     );
   },

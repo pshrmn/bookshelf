@@ -38,6 +38,7 @@ let GenreBars = React.createClass({
 
     return (
       <div className="bars">
+        <h2>Books per Genre</h2>
         <BarChart data={genreCounts}
                   getX={d => d.genre}
                   getY={d => d.count} />

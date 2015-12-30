@@ -94,17 +94,25 @@
 
 	var _Book2 = _interopRequireDefault(_Book);
 
-	var _BookForm = __webpack_require__(5);
+	var _BookForm = __webpack_require__(6);
 
 	var _BookForm2 = _interopRequireDefault(_BookForm);
 
-	var _Stats = __webpack_require__(7);
+	var _TopBar = __webpack_require__(7);
+
+	var _TopBar2 = _interopRequireDefault(_TopBar);
+
+	var _Stats = __webpack_require__(8);
 
 	var _Stats2 = _interopRequireDefault(_Stats);
 
-	var _bookLoader = __webpack_require__(16);
+	var _bookLoader = __webpack_require__(17);
 
 	var _bookLoader2 = _interopRequireDefault(_bookLoader);
+
+	var _genres = __webpack_require__(5);
+
+	var _genres2 = _interopRequireDefault(_genres);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -167,15 +175,20 @@
 	    return _react2.default.createElement(
 	      "div",
 	      { className: "bookshelf" },
+	      _react2.default.createElement(_TopBar2.default, { genres: _genres2.default }),
 	      _react2.default.createElement(
 	        "div",
-	        { className: "books" },
-	        books,
-	        addABook
-	      ),
-	      more,
-	      form,
-	      _react2.default.createElement(_Stats2.default, { books: this.state.books })
+	        { className: "main" },
+	        _react2.default.createElement(
+	          "div",
+	          { className: "books" },
+	          books,
+	          addABook
+	        ),
+	        more,
+	        form,
+	        _react2.default.createElement(_Stats2.default, { books: this.state.books })
+	      )
 	    );
 	  },
 	  componentDidMount: function componentDidMount() {
@@ -205,6 +218,10 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _genres = __webpack_require__(5);
+
+	var _genres2 = _interopRequireDefault(_genres);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	exports.default = _react2.default.createClass({
@@ -216,12 +233,13 @@
 	    var author = _props.author;
 	    var genre = _props.genre;
 
-	    return _react2.default.createElement(
+	    var coverClasses = ["cover", genre.replace("'", "")];
+	    if (title.length) return _react2.default.createElement(
 	      "div",
-	      { className: "book" },
+	      { className: "book", title: title },
 	      _react2.default.createElement(
 	        "div",
-	        { className: "cover" },
+	        { className: coverClasses.join(" ") },
 	        _react2.default.createElement(
 	          "div",
 	          { className: "title" },
@@ -239,6 +257,17 @@
 
 /***/ },
 /* 5 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = ["adventure", "children's", "fantasy", "historical", "mystery", "non-fiction", "poetry", "sci-fi", "thriller", "war"];
+
+/***/ },
+/* 6 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -251,7 +280,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _genres = __webpack_require__(6);
+	var _genres = __webpack_require__(5);
 
 	var _genres2 = _interopRequireDefault(_genres);
 
@@ -353,17 +382,6 @@
 	});
 
 /***/ },
-/* 6 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.default = ["adventure", "children's", "fantasy", "historical", "mystery", "non-fiction", "poetry", "sci-fi", "thriller", "war"];
-
-/***/ },
 /* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -377,7 +395,58 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _OrdinalBarChart = __webpack_require__(8);
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = _react2.default.createClass({
+	  displayName: "TopBar",
+
+	  render: function render() {
+	    var genreBars = this.props.genres.map(function (g, i) {
+	      return _react2.default.createElement("li", { key: i,
+	        className: g.replace("'", "") });
+	    });
+	    return _react2.default.createElement(
+	      "div",
+	      { className: "topbar" },
+	      _react2.default.createElement(
+	        "ul",
+	        null,
+	        genreBars
+	      ),
+	      _react2.default.createElement(
+	        "div",
+	        { className: "title" },
+	        "Bookshelf"
+	      ),
+	      _react2.default.createElement(
+	        "div",
+	        { className: "subtitle" },
+	        "Track books that you have read."
+	      ),
+	      _react2.default.createElement(
+	        "ul",
+	        null,
+	        genreBars
+	      )
+	    );
+	  }
+	});
+
+/***/ },
+/* 8 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _OrdinalBarChart = __webpack_require__(9);
 
 	var _OrdinalBarChart2 = _interopRequireDefault(_OrdinalBarChart);
 
@@ -425,6 +494,11 @@
 	    return _react2.default.createElement(
 	      "div",
 	      { className: "bars" },
+	      _react2.default.createElement(
+	        "h2",
+	        null,
+	        "Books per Genre"
+	      ),
 	      _react2.default.createElement(_OrdinalBarChart2.default, { data: genreCounts,
 	        getX: function getX(d) {
 	          return d.genre;
@@ -437,7 +511,7 @@
 	});
 
 /***/ },
-/* 8 */
+/* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -450,7 +524,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _d3Scale = __webpack_require__(9);
+	var _d3Scale = __webpack_require__(10);
 
 	var _d3Scale2 = _interopRequireDefault(_d3Scale);
 
@@ -467,7 +541,7 @@
 	      width: 200,
 	      height: 100,
 	      margin: {
-	        top: 15,
+	        top: 10,
 	        right: 15,
 	        bottom: 25,
 	        left: 25
@@ -482,6 +556,7 @@
 	    var data = _props.data;
 	    var getX = _props.getX;
 	    var getY = _props.getY;
+	    var getFill = _props.getFill;
 
 	    width = Math.max(width, data.length * 60);
 	    // need the maximum y value
@@ -504,7 +579,7 @@
 	        y: y,
 	        width: barWidth,
 	        height: height - y,
-	        fill: "#8BC34A" });
+	        genre: d.genre });
 	    });
 
 	    return _react2.default.createElement(
@@ -537,9 +612,14 @@
 	    var y = _props2.y;
 	    var width = _props2.width;
 	    var height = _props2.height;
-	    var fill = _props2.fill;
+	    var genre = _props2.genre;
 
-	    return _react2.default.createElement("rect", { x: x, y: y, width: width, height: height, fill: fill });
+	    var barClasses = ["bar", genre.replace("'", "")];
+	    return _react2.default.createElement("rect", { className: barClasses.join(" "),
+	      x: x,
+	      y: y,
+	      width: width,
+	      height: height });
 	  }
 	});
 
@@ -618,11 +698,11 @@
 	});
 
 /***/ },
-/* 9 */
+/* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
 	(function (global, factory) {
-	   true ? factory(exports, __webpack_require__(10), __webpack_require__(11), __webpack_require__(13), __webpack_require__(14), __webpack_require__(15), __webpack_require__(12)) :
+	   true ? factory(exports, __webpack_require__(11), __webpack_require__(12), __webpack_require__(14), __webpack_require__(15), __webpack_require__(16), __webpack_require__(13)) :
 	  typeof define === 'function' && define.amd ? define('d3-scale', ['exports', 'd3-array', 'd3-interpolate', 'd3-format', 'd3-time', 'd3-time-format', 'd3-color'], factory) :
 	  factory((global.d3_scale = {}),global.d3_array,global.d3_interpolate,global.d3_format,global.d3_time,global.d3_time_format,global.d3_color);
 	}(this, function (exports,d3Array,d3Interpolate,d3Format,d3Time,d3TimeFormat,d3Color) { 'use strict';
@@ -1555,7 +1635,7 @@
 	}));
 
 /***/ },
-/* 10 */
+/* 11 */
 /***/ function(module, exports, __webpack_require__) {
 
 	(function (global, factory) {
@@ -2251,11 +2331,11 @@
 	}));
 
 /***/ },
-/* 11 */
+/* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
 	(function (global, factory) {
-	   true ? factory(exports, __webpack_require__(12)) :
+	   true ? factory(exports, __webpack_require__(13)) :
 	  typeof define === 'function' && define.amd ? define('d3-interpolate', ['exports', 'd3-color'], factory) :
 	  factory((global.d3_interpolate = {}),global.d3_color);
 	}(this, function (exports,d3Color) { 'use strict';
@@ -2749,7 +2829,7 @@
 	}));
 
 /***/ },
-/* 12 */
+/* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
 	(function (global, factory) {
@@ -3270,7 +3350,7 @@
 	}));
 
 /***/ },
-/* 13 */
+/* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
 	(function (global, factory) {
@@ -3770,7 +3850,7 @@
 	}));
 
 /***/ },
-/* 14 */
+/* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
 	(function (global, factory) {
@@ -4129,11 +4209,11 @@
 	}));
 
 /***/ },
-/* 15 */
+/* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
 	(function (global, factory) {
-	   true ? factory(exports, __webpack_require__(14)) :
+	   true ? factory(exports, __webpack_require__(15)) :
 	  typeof define === 'function' && define.amd ? define('d3-time-format', ['exports', 'd3-time'], factory) :
 	  factory((global.d3_time_format = {}),global.d3_time);
 	}(this, function (exports,d3Time) { 'use strict';
@@ -4954,7 +5034,7 @@
 	}));
 
 /***/ },
-/* 16 */
+/* 17 */
 /***/ function(module, exports) {
 
 	"use strict";

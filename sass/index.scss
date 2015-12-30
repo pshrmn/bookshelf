@@ -1,0 +1,270 @@
+$adventure: #009688;
+$childrens: #CE7291;
+$fantasy: #86CFD8;
+$historical: #607D8B;
+$mystery: #94B76B;
+$non-fiction: #E6C150;
+$poetry: #A02C40;
+$sci-fi: #6B5A88;
+$thriller: #E8B76F;
+$war: #795548;
+
+$light-gray: #EFEFEF;
+$gray: #CCCCCC;
+$light-brown: #ECE4E0;
+
+body {
+    margin: 0;
+}
+
+#content {
+    width: 100%;
+    font-family: "Josefin Sans", sans-serif;
+}
+
+.main {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.books {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.book {
+    width: 100px;
+    margin: 5px;
+}
+
+.cover {
+    width: 100px;
+    height: 125px;
+    box-sizing: border-box;
+    padding: 15px;
+    background: #8BC34A;
+    text-align: center;
+    border-radius: 0px 5px 5px 0px;
+    position: relative;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -5px;
+        width: 5px;
+        height: 100%;
+        background: inherit;
+        opacity: 0.5 ;
+    }
+
+    &.add {
+        background: $gray;
+        cursor: pointer;
+    }
+
+    .title {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        max-height: 100%;
+    }
+}
+
+
+label {
+    display: block;
+}
+
+.author {
+    text-align: center;
+}
+
+.axis {
+
+    &.x {
+        .tick {
+            text {
+                text-anchor: middle;
+            }
+        }
+    }
+
+    &.y {
+        .tick {
+            text {
+                text-anchor:end;
+            }
+        }
+    }
+
+    line {
+        fill: none;
+        stroke: #000;
+        shape-rendering: crispEdges;
+    }
+}
+
+
+rect {
+    shape-rendering: crispEdges;
+
+    &.adventure {
+        fill: $adventure;
+    }
+
+    &.childrens {
+        fill: $childrens;
+    }
+
+    &.fantasy {
+        fill: $fantasy;
+    }
+
+    &.historical {
+        fill: $historical;
+    }
+
+    &.mystery {
+        fill: $mystery;
+    }
+
+    &.non-fiction {
+        fill: $non-fiction;
+    }
+
+    &.poetry {
+        fill: $poetry;
+    }
+
+    &.sci-fi {
+        fill: $sci-fi;
+    }
+
+    &.thriller {
+        fill: $thriller;
+    }
+
+    &.war {
+        fill: $war;
+    }
+}
+
+/*
+ * genre specific css
+.adventure {}
+.childrens {}
+.fantasy {}
+.historical {}
+.mystery {}
+.non-fiction {}
+.poetry {}
+.sci-fi {}
+.thriller {}
+.war {}
+ */
+
+.cover {
+    &.adventure {
+        background: $adventure;
+    }
+    &.childrens {
+        background: $childrens;
+    }
+    &.fantasy {
+        background: $fantasy;
+    }
+    &.historical {
+        background: $historical;
+    }
+    &.mystery {
+        background: $mystery;
+    }
+    &.non-fiction {
+        background: $non-fiction;
+    }
+    &.poetry {
+        background: $poetry;
+        color: $light-gray;
+    }
+    &.sci-fi {
+        background: $sci-fi;
+        color: $light-gray;
+    }
+    &.thriller {
+        background: $thriller;
+    }
+    &.war {
+        background: $war;
+        color: $light-gray;
+    }
+}
+
+.topbar {
+    width: 100%;
+    background: $light-brown;
+
+    .title {
+        margin: 0;
+        font-family: "Grand Hotel", sans-serif;
+        font-size: 3em;
+        text-align: center;
+    }
+
+    .subtitle {
+        text-align: center;
+    }
+
+    ul {
+        display: flex;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    li {
+        height: 5px;
+        flex-grow: 1;
+
+        &.adventure {
+            background: $adventure;
+        }
+        &.childrens {
+            background: $childrens;
+        }
+        &.fantasy {
+            background: $fantasy;
+        }
+        &.historical {
+            background: $historical;
+        }
+        &.mystery {
+            background: $mystery;
+        }
+        &.non-fiction {
+            background: $non-fiction;
+        }
+        &.poetry {
+            background: $poetry;
+        }
+        &.sci-fi {
+            background: $sci-fi;
+            color: $light-gray;
+        }
+        &.thriller {
+            background: $thriller;
+        }
+        &.war {
+            background: $war;
+            color: $light-gray;
+        }
+    }
+}
+
+.stats {
+    display: flex;
+
+    h2 {
+        margin: 0;
+        text-align: center;
+    }
+}
