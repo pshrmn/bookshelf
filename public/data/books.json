@@ -59,6 +59,121 @@
       "title": "A Study in Scarlet",
       "author": "Arthur Conan Doyle",
       "genre": "mystery"
+    },
+    {
+      "title": "The Lost World",
+      "author": "Arthur Conan Doyle",
+      "genre": "adventure"
+    },
+    {
+      "title": "Galactic Pot-Healer",
+      "author": "Philip K. Dick",
+      "genre": "sci-fi"
+    },
+    {
+      "title": "Ubik",
+      "author": "Philip K. Dick",
+      "genre": "sci-fi"
+    },
+    {
+      "title": "Pebble in the Sky",
+      "author": "Isaac Asimov",
+      "genre": "sci-fi"
+    },
+    {
+      "title": "The Stars, Like Dust",
+      "author": "Isaac Asimov",
+      "genre": "sci-fi"
+    },
+    {
+      "title": "The Currents of Space",
+      "author": "Isaac Asimov",
+      "genre": "sci-fi"
+    },
+    {
+      "title": "Robots and Empire",
+      "author": "Isaac Asimov",
+      "genre": "sci-fi"
+    },
+    {
+      "title": "The Robots of Dawn",
+      "author": "Isaac Asimov",
+      "genre": "sci-fi"
+    },
+    {
+      "title": "The Naked Sun",
+      "author": "Isaac Asimov",
+      "genre": "sci-fi"
+    },
+    {
+      "title": "The Caves of Steel",
+      "author": "Isaac Asimov",
+      "genre": "sci-fi"
+    },
+    {
+      "title": "The Complete Robot",
+      "author": "Isaac Asimov",
+      "genre": "sci-fi"
+    },
+    {
+      "title": "Foundation and Earth",
+      "author": "Isaac Asimov",
+      "genre": "sci-fi"
+    },
+    {
+      "title": "Foundation's Edge",
+      "author": "Isaac Asimov",
+      "genre": "sci-fi"
+    },
+    {
+      "title": "Second Foundation",
+      "author": "Isaac Asimov",
+      "genre": "sci-fi"
+    },
+    {
+      "title": "Foundation and Empire",
+      "author": "Isaac Asimov",
+      "genre": "sci-fi"
+    },
+    {
+      "title": "Foundation",
+      "author": "Isaac Asimov",
+      "genre": "sci-fi"
+    },
+    {
+      "title": "Forward the Foundation",
+      "author": "Isaac Asimov",
+      "genre": "sci-fi"
+    },
+    {
+      "title": "Prelude to Foundation",
+      "author": "Isaac Asimov",
+      "genre": "sci-fi"
+    },
+    {
+      "title": "A Dance with Dragons",
+      "author": "George R.R. Martin",
+      "genre": "fantasy"
+    },
+    {
+      "title": "A Feast of Crows",
+      "author": "George R.R. Martin",
+      "genre": "fantasy"
+    },
+    {
+      "title": "A Storm of Swords",
+      "author": "George R.R. Martin",
+      "genre": "fantasy"
+    },
+    {
+      "title": "A Clash of Kings",
+      "author": "George R.R. Martin",
+      "genre": "fantasy"
+    },
+    {
+      "title": "A Game of Thrones",
+      "author": "George R.R. Martin",
+      "genre": "fantasy"
     }
   ]
 }

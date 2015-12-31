@@ -10,7 +10,7 @@ export default React.createClass({
       width: 200,
       height: 100,
       margin: {
-        top: 10,
+        top: 15,
         right: 15,
         bottom: 25,
         left: 25
@@ -36,12 +36,14 @@ export default React.createClass({
 
     let bars = data.map((d, i) => {
       let x = xScale(getX(d));
-      let y = yScale(getY(d));
+      let count = getY(d);
+      let y = yScale(count);
       let barWidth = xScale.bandwidth();
       return (
         <Bar key={i}
              x={x}
              y={y}
+             count={count}
              width={barWidth}
              height={height-y}
              genre={d.genre} />
@@ -67,14 +69,17 @@ export default React.createClass({
 
 let Bar = React.createClass({
   render: function() {
-    let { x, y, width, height, genre } = this.props;
-    let barClasses = ["bar", genre.replace("'","")];
+    let { x, y, width, height, genre, count } = this.props;
     return (
-      <rect className={barClasses.join(" ")}
-            x={x}
-            y={y}
-            width={width}
-            height={height} />
+      <g className="bar"
+         transform={`translate(${x}, 0)`}>
+        <rect className={genre.replace("'","")}
+              x="0"
+              y={y}
+              width={width}
+              height={height} />
+        <text x={width/2} y={y-2}>{count}</text>
+      </g>
     );
   }
 });

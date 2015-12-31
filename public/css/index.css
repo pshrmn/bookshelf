@@ -5,6 +5,9 @@ body {
   width: 100%;
   font-family: "Josefin Sans", sans-serif; }
 
+p, h1, h2, h3, h4, h5, h6 {
+  margin: 0; }
+
 .main {
   width: 80%;
   margin: 0 auto; }
@@ -40,15 +43,15 @@ body {
     background: inherit;
     opacity: 0.5; }
   .cover.add {
-    background: #CCCCCC;
+    background: #FFF;
+    border: 2px dashed #CCCCCC;
     cursor: pointer; }
+  .cover.add::before {
+    opacity: 0; }
   .cover .title {
     text-overflow: ellipsis;
     overflow: hidden;
     max-height: 100%; }
-
-label {
-  display: block; }
 
 .author {
   text-align: center; }
@@ -63,6 +66,9 @@ label {
   fill: none;
   stroke: #000;
   shape-rendering: crispEdges; }
+
+.bar text {
+  text-anchor: middle; }
 
 rect {
   shape-rendering: crispEdges; }
@@ -183,5 +189,24 @@ rect {
   display: -ms-flexbox;
   display: flex; }
   .stats h2 {
-    margin: 0;
     text-align: center; }
+
+form {
+  padding: 15px;
+  box-sizing: border-box;
+  border: 2px solid #EFEFEF; }
+  form p {
+    padding: 3px 0; }
+  form .genre-options {
+    max-height: 100px;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-flow: column wrap;
+        -ms-flex-flow: column wrap;
+            flex-flow: column wrap;
+    -webkit-align-content: flex-start;
+        -ms-flex-line-pack: start;
+            align-content: flex-start; }
+  form button {
+    margin-right: 5px; }

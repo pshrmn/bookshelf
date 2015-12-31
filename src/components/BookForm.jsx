@@ -57,18 +57,27 @@ export default React.createClass({
     })
     return (
       <form onSubmit={this.save}>
-        <label>
-          Title: <input type="text"
-                       value={this.state.title}
-                       onChange={this.changeTitle} />
-        </label>
-        <label>
-          Author(s): <input type="text"
-                            value={this.state.author}
-                            onChange={this.changeAuthor} />
-        </label>
+        <p>
+          Title: 
+        </p>
+        <p>
+          <input type="text"
+                         value={this.state.title}
+                         onChange={this.changeTitle} />
+        </p>
+        <p>
+          Author(s):
+        </p>
+        <p>
+          <input type="text"
+                 value={this.state.author}
+                 onChange={this.changeAuthor} />
+        </p>
         <div>
-          Genre: {genreOptions}
+          Genre:
+          <div className="genre-options">
+            {genreOptions}
+          </div>
         </div>
         <button>Save</button>
         <button onClick={this.cancel}>Cancel</button>

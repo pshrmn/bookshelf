@@ -44,7 +44,8 @@ export default React.createClass({
     });
   },
   render: function() {
-    let books = this.state.books.slice(0, this.state.show).map((b, i) => {
+    let { books } = this.state;
+    let bookTiles = books.slice(0, this.state.show).map((b, i) => {
       return <Book key={i} index={i%10} {...b} />;
     })
     let more = this.state.more ? (
@@ -62,13 +63,19 @@ export default React.createClass({
       <div className="bookshelf">
         <TopBar genres={genres} />
         <div className="main">
-          <div className="books">
-            {books}
-            {addABook}
+          <Stats books={books} />
+          <div className="showcase">
+            <p>
+              Showing {bookTiles.length} out of {books.length} books {more}
+            </p>
+            <div className="books">
+              {bookTiles}
+              {addABook}
+            </div>
+            
+            {form}
           </div>
-          {more}
-          {form}
-          <Stats books={this.state.books} />
+          
         </div>
       </div>
     );

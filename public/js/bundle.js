@@ -154,7 +154,9 @@
 	    });
 	  },
 	  render: function render() {
-	    var books = this.state.books.slice(0, this.state.show).map(function (b, i) {
+	    var books = this.state.books;
+
+	    var bookTiles = books.slice(0, this.state.show).map(function (b, i) {
 	      return _react2.default.createElement(_Book2.default, _extends({ key: i, index: i % 10 }, b));
 	    });
 	    var more = this.state.more ? _react2.default.createElement(
@@ -179,15 +181,28 @@
 	      _react2.default.createElement(
 	        "div",
 	        { className: "main" },
+	        _react2.default.createElement(_Stats2.default, { books: books }),
 	        _react2.default.createElement(
 	          "div",
-	          { className: "books" },
-	          books,
-	          addABook
-	        ),
-	        more,
-	        form,
-	        _react2.default.createElement(_Stats2.default, { books: this.state.books })
+	          { className: "showcase" },
+	          _react2.default.createElement(
+	            "p",
+	            null,
+	            "Showing ",
+	            bookTiles.length,
+	            " out of ",
+	            books.length,
+	            " books ",
+	            more
+	          ),
+	          _react2.default.createElement(
+	            "div",
+	            { className: "books" },
+	            bookTiles,
+	            addABook
+	          ),
+	          form
+	        )
 	      )
 	    );
 	  },
@@ -346,17 +361,25 @@
 	      "form",
 	      { onSubmit: this.save },
 	      _react2.default.createElement(
-	        "label",
+	        "p",
 	        null,
-	        "Title: ",
+	        "Title:"
+	      ),
+	      _react2.default.createElement(
+	        "p",
+	        null,
 	        _react2.default.createElement("input", { type: "text",
 	          value: this.state.title,
 	          onChange: this.changeTitle })
 	      ),
 	      _react2.default.createElement(
-	        "label",
+	        "p",
 	        null,
-	        "Author(s): ",
+	        "Author(s):"
+	      ),
+	      _react2.default.createElement(
+	        "p",
+	        null,
 	        _react2.default.createElement("input", { type: "text",
 	          value: this.state.author,
 	          onChange: this.changeAuthor })
@@ -364,8 +387,12 @@
 	      _react2.default.createElement(
 	        "div",
 	        null,
-	        "Genre: ",
-	        genreOptions
+	        "Genre:",
+	        _react2.default.createElement(
+	          "div",
+	          { className: "genre-options" },
+	          genreOptions
+	        )
 	      ),
 	      _react2.default.createElement(
 	        "button",
@@ -461,7 +488,8 @@
 	    return _react2.default.createElement(
 	      "div",
 	      { className: "stats" },
-	      _react2.default.createElement(GenreBars, { books: books })
+	      _react2.default.createElement(GenreBars, { books: books }),
+	      _react2.default.createElement(PopularAuthors, { books: books })
 	    );
 	  }
 	});
@@ -510,6 +538,58 @@
 	  }
 	});
 
+	var PopularAuthors = _react2.default.createClass({
+	  displayName: "PopularAuthors",
+
+	  counts: function counts() {
+	    var authorCounts = this.props.books.reduce(function (dict, curr) {
+	      var author = curr.author;
+	      if (dict[author] !== undefined) {
+	        dict[author] += 1;
+	      } else {
+	        dict[author] = 1;
+	      }
+	      return dict;
+	    }, {});
+
+	    var authorMap = Object.keys(authorCounts).map(function (author) {
+	      return {
+	        author: author,
+	        count: authorCounts[author]
+	      };
+	    });
+	    authorMap.sort(function (a, b) {
+	      return a.count < b.count;
+	    });
+	    return authorMap.slice(0, 5);
+	  },
+	  render: function render() {
+	    var authors = this.counts().map(function (a, i) {
+	      return _react2.default.createElement(
+	        "li",
+	        { key: i },
+	        a.author,
+	        " - ",
+	        a.count
+	      );
+	    });
+	    return _react2.default.createElement(
+	      "div",
+	      { className: "authors" },
+	      _react2.default.createElement(
+	        "h2",
+	        null,
+	        "Most Read Authors"
+	      ),
+	      _react2.default.createElement(
+	        "ol",
+	        null,
+	        authors
+	      )
+	    );
+	  }
+	});
+
 /***/ },
 /* 9 */
 /***/ function(module, exports, __webpack_require__) {
@@ -541,7 +621,7 @@
 	      width: 200,
 	      height: 100,
 	      margin: {
-	        top: 10,
+	        top: 15,
 	        right: 15,
 	        bottom: 25,
 	        left: 25
@@ -572,11 +652,13 @@
 
 	    var bars = data.map(function (d, i) {
 	      var x = xScale(getX(d));
-	      var y = yScale(getY(d));
+	      var count = getY(d);
+	      var y = yScale(count);
 	      var barWidth = xScale.bandwidth();
 	      return _react2.default.createElement(Bar, { key: i,
 	        x: x,
 	        y: y,
+	        count: count,
 	        width: barWidth,
 	        height: height - y,
 	        genre: d.genre });
@@ -613,13 +695,23 @@
 	    var width = _props2.width;
 	    var height = _props2.height;
 	    var genre = _props2.genre;
+	    var count = _props2.count;
 
-	    var barClasses = ["bar", genre.replace("'", "")];
-	    return _react2.default.createElement("rect", { className: barClasses.join(" "),
-	      x: x,
-	      y: y,
-	      width: width,
-	      height: height });
+	    return _react2.default.createElement(
+	      "g",
+	      { className: "bar",
+	        transform: "translate(" + x + ", 0)" },
+	      _react2.default.createElement("rect", { className: genre.replace("'", ""),
+	        x: "0",
+	        y: y,
+	        width: width,
+	        height: height }),
+	      _react2.default.createElement(
+	        "text",
+	        { x: width / 2, y: y - 2 },
+	        count
+	      )
+	    );
 	  }
 	});
 

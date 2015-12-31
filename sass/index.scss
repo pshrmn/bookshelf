@@ -9,6 +9,7 @@ $sci-fi: #6B5A88;
 $thriller: #E8B76F;
 $war: #795548;
 
+$white: #FFF;
 $light-gray: #EFEFEF;
 $gray: #CCCCCC;
 $light-brown: #ECE4E0;
@@ -20,6 +21,10 @@ body {
 #content {
     width: 100%;
     font-family: "Josefin Sans", sans-serif;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+    margin: 0;
 }
 
 .main {
@@ -55,12 +60,17 @@ body {
         width: 5px;
         height: 100%;
         background: inherit;
-        opacity: 0.5 ;
+        opacity: 0.5;
     }
 
     &.add {
-        background: $gray;
+        background: $white;
+        border: 2px dashed $gray;
         cursor: pointer;
+    }
+
+    &.add::before {
+        opacity: 0;
     }
 
     .title {
@@ -68,11 +78,6 @@ body {
         overflow: hidden;
         max-height: 100%;
     }
-}
-
-
-label {
-    display: block;
 }
 
 .author {
@@ -104,6 +109,12 @@ label {
     }
 }
 
+
+.bar {
+    text {
+        text-anchor: middle;
+    }
+}
 
 rect {
     shape-rendering: crispEdges;
@@ -264,7 +275,27 @@ rect {
     display: flex;
 
     h2 {
-        margin: 0;
         text-align: center;
+    }
+}
+
+form {
+    padding: 15px;
+    box-sizing: border-box;
+    border: 2px solid $light-gray;
+
+    p {
+        padding: 3px 0;
+    }
+
+    .genre-options {
+        max-height: 100px;
+        display: flex;
+        flex-flow: column wrap;
+        align-content: flex-start;
+    }
+
+    button {
+        margin-right: 5px;
     }
 }
