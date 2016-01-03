@@ -1,28 +1,26 @@
 import React from "react";
 
-import Book from "./Book";
 import BookForm from "./BookForm";
 import TopBar from "./TopBar";
+import Showcase from "./Showcase";
 import Stats from "./Stats";
 
 import bookLoader from "../bookLoader";
-import genres from "../constants/genres";
 
 export default React.createClass({
   getInitialState: function() {
     return {
       books: [],
       show: 5,
-      more: false,
-      adding: false
+      adding: false,
+      filter: -1
     }
   },
   showMore: function(event) {
     event.preventDefault();
     let newShow = this.state.show + 5;
     this.setState({
-      show: newShow,
-      more: newShow < this.state.books.length
+      show: newShow
     });
   },
   showAddBook: function(event) {
@@ -43,39 +41,63 @@ export default React.createClass({
       adding: false
     });
   },
+  setFilter: function(event) {
+    this.setState({
+      filter: parseInt(event.target.value, 10)
+    });
+  },
   render: function() {
-    let { books } = this.state;
-    let bookTiles = books.slice(0, this.state.show).map((b, i) => {
-      return <Book key={i} index={i%10} {...b} />;
-    })
-    let more = this.state.more ? (
-      <button onClick={this.showMore}>Show More</button>
-      ) : null;
-    let addABook = (
-      <div className="book">
-        <div className="cover add" onClick={this.showAddBook} >Add A Book</div>
-      </div>
+    let { books, show, adding, filter } = this.state;
+    let { genres } = this.props;
+
+    let allGenres = (
+      <li className={["key","all", filter===-1 ? "active" : ""].join(" ")}>
+        <label>
+          all
+          <input type="radio" name="genre" value="-1" onChange={this.setFilter}/>
+        </label>
+      </li>
     );
-    let form = this.state.adding ? (
-      <BookForm save={this.saveBook} cancel={this.cancelBook} />
-      ) : null;
+    let genreOptions = genres.map((g, i) => {
+      let classes=["key", g.replace("'",""), filter===i ? "active" : ""]
+      return (
+        <li key={i} className={classes.join(" ")}>
+          <label>
+            {g}
+            <input type="radio" name="genre" value={i} onChange={this.setFilter}/>
+          </label>
+        </li>
+      );
+    });
+
+    books = books.filter(b => {
+      if ( filter === -1 ) {
+        return true;
+      } else {
+        return b.genre === genres[filter];
+      }
+    });
+
     return (
       <div className="bookshelf">
         <TopBar genres={genres} />
         <div className="main">
-          <Stats books={books} />
-          <div className="showcase">
-            <p>
-              Showing {bookTiles.length} out of {books.length} books {more}
-            </p>
-            <div className="books">
-              {bookTiles}
-              {addABook}
-            </div>
-            
-            {form}
+          <div className="filterer">
+            <h4>Filter By Genre:</h4>
+            <ul className="keyholder">
+              {allGenres}
+              {genreOptions}
+            </ul>
           </div>
-          
+          <Stats books={books} />
+          <Showcase books={books}
+                    genres={genres}
+                    show={show}
+                    addBook={this.showAddBook}
+                    showMore={this.showMore} />
+          {adding ? (
+            <BookForm save={this.saveBook} cancel={this.cancelBook} />
+          ) : null}
         </div>
       </div>
     );
@@ -85,8 +107,7 @@ export default React.createClass({
       .then(resp => {
         this.setState({
           books: resp.books,
-          show: 5,
-          more: resp.books.length > 5
+          show: 5
         })
       });
   }

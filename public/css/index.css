@@ -187,9 +187,15 @@ rect {
 .stats {
   display: -webkit-flex;
   display: -ms-flexbox;
-  display: flex; }
+  display: flex;
+  -webkit-flex-flow: row wrap;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  margin: 25px 0; }
   .stats h2 {
     text-align: center; }
+  .stats > div {
+    margin: 15px; }
 
 form {
   padding: 15px;
@@ -210,3 +216,59 @@ form {
             align-content: flex-start; }
   form button {
     margin-right: 5px; }
+
+.showcase .info {
+  margin: 10px 0; }
+
+.filterer {
+  margin: 25px 0; }
+
+ul.keyholder {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap; }
+
+.key {
+  -webkit-flex-grow: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  border-style: solid;
+  border-width: 0 0 3px 0;
+  cursor: pointer;
+  text-align: center;
+  padding: 2px 5px; }
+  .key input[type=radio] {
+    display: none; }
+  .key label {
+    cursor: pointer;
+    display: block; }
+  .key.active {
+    background: #EFEFEF; }
+  .key.all {
+    border-color: #000; }
+  .key.adventure {
+    border-color: #009688; }
+  .key.childrens {
+    border-color: #CE7291; }
+  .key.fantasy {
+    border-color: #86CFD8; }
+  .key.historical {
+    border-color: #607D8B; }
+  .key.mystery {
+    border-color: #94B76B; }
+  .key.non-fiction {
+    border-color: #E6C150; }
+  .key.poetry {
+    border-color: #A02C40; }
+  .key.sci-fi {
+    border-color: #6B5A88; }
+  .key.thriller {
+    border-color: #E8B76F; }
+  .key.war {
+    border-color: #795548; }

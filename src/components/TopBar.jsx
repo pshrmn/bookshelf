@@ -1,6 +1,9 @@
 import React from "react";
 
 export default React.createClass({
+  shouldComponentUpdate: function(nextProps, nextState) {
+    return false;
+  },
   render: function() {
     let genreBars = this.props.genres.map((g, i) => {
       return (

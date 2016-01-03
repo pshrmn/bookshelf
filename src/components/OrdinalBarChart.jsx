@@ -7,7 +7,6 @@ import d3_scale from "d3-scale";
 export default React.createClass({
   getDefaultProps: function() {
     return {
-      width: 200,
       height: 100,
       margin: {
         top: 15,
@@ -18,8 +17,13 @@ export default React.createClass({
     };
   },
   render: function() {
-    let { width, height, margin, data, getX, getY, getFill } = this.props;
-    width = Math.max(width, data.length*60);
+    let { height, margin, data, getX, getY, getFill } = this.props;
+    let width = data.length*60;
+
+    if ( data.length === 0 ) {
+      return null;
+    }
+
     // need the maximum y value
     let maxY = data.reduce((max, curr) => {
       let y = getY(curr);

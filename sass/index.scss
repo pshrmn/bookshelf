@@ -10,6 +10,7 @@ $thriller: #E8B76F;
 $war: #795548;
 
 $white: #FFF;
+$black: #000;
 $light-gray: #EFEFEF;
 $gray: #CCCCCC;
 $light-brown: #ECE4E0;
@@ -273,9 +274,15 @@ rect {
 
 .stats {
     display: flex;
+    flex-flow: row wrap;
+    margin: 25px 0;
 
     h2 {
         text-align: center;
+    }
+
+    > div {
+        margin: 15px;
     }
 }
 
@@ -297,5 +304,81 @@ form {
 
     button {
         margin-right: 5px;
+    }
+}
+
+.showcase {
+
+    .info {
+        margin: 10px 0;
+    }
+}
+
+.filterer {
+    margin: 25px 0;  
+}
+
+ul.keyholder {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.key {
+    flex-grow: 1;
+    border-style: solid;
+    border-width: 0 0 3px 0;
+    cursor: pointer;
+    text-align: center;
+    padding: 2px 5px;
+
+    input[type=radio] {
+        display: none;
+    }
+
+    label {
+        cursor: pointer;
+        display: block;
+    }
+
+    &.active {
+        background: $light-gray;
+    }
+
+    &.all {
+        border-color: $black;
+    }
+
+    &.adventure {
+        border-color: $adventure;
+    }
+    &.childrens {
+        border-color: $childrens;
+    }
+    &.fantasy {
+        border-color: $fantasy;
+    }
+    &.historical {
+        border-color: $historical;
+    }
+    &.mystery {
+        border-color: $mystery;
+    }
+    &.non-fiction {
+        border-color: $non-fiction;
+    }
+    &.poetry {
+        border-color: $poetry;
+    }
+    &.sci-fi {
+        border-color: $sci-fi;
+    }
+    &.thriller {
+        border-color: $thriller;
+    }
+    &.war {
+        border-color: $war;
     }
 }

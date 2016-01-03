@@ -1,6 +1,11 @@
 {
   "books": [
     {
+      "title": "The Girl with the Dragon Tattoo",
+      "author": "Stieg Larsson",
+      "genre": "thriller"
+    },
+    {
       "title": "The Bone Clocks",
       "author": "David Mitchell",
       "genre": "fantasy"
