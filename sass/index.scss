@@ -343,6 +343,10 @@ ul.keyholder {
         display: block;
     }
 
+    &:hover {
+        background: $light-gray;
+    }
+
     &.active {
         background: $light-gray;
     }
@@ -381,4 +385,14 @@ ul.keyholder {
     &.war {
         border-color: $war;
     }
+}
+
+footer {
+    text-align: center;
+    padding: 5px 0;
+    width: 100vw;
+}
+
+footer a {
+    color: $black;
 }

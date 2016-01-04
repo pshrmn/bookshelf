@@ -108,7 +108,11 @@
 
 	var _Stats2 = _interopRequireDefault(_Stats);
 
-	var _bookLoader = __webpack_require__(18);
+	var _GenreFilter = __webpack_require__(18);
+
+	var _GenreFilter2 = _interopRequireDefault(_GenreFilter);
+
+	var _bookLoader = __webpack_require__(19);
 
 	var _bookLoader2 = _interopRequireDefault(_bookLoader);
 
@@ -120,7 +124,7 @@
 	  getInitialState: function getInitialState() {
 	    return {
 	      books: [],
-	      show: 5,
+	      show: 10,
 	      adding: false,
 	      filter: -1
 	    };
@@ -156,38 +160,12 @@
 	    });
 	  },
 	  render: function render() {
-	    var _this = this;
-
 	    var _state = this.state;
 	    var books = _state.books;
 	    var show = _state.show;
 	    var adding = _state.adding;
 	    var filter = _state.filter;
 	    var genres = this.props.genres;
-
-	    var allGenres = _react2.default.createElement(
-	      "li",
-	      { className: ["key", "all", filter === -1 ? "active" : ""].join(" ") },
-	      _react2.default.createElement(
-	        "label",
-	        null,
-	        "all",
-	        _react2.default.createElement("input", { type: "radio", name: "genre", value: "-1", onChange: this.setFilter })
-	      )
-	    );
-	    var genreOptions = genres.map(function (g, i) {
-	      var classes = ["key", g.replace("'", ""), filter === i ? "active" : ""];
-	      return _react2.default.createElement(
-	        "li",
-	        { key: i, className: classes.join(" ") },
-	        _react2.default.createElement(
-	          "label",
-	          null,
-	          g,
-	          _react2.default.createElement("input", { type: "radio", name: "genre", value: i, onChange: _this.setFilter })
-	        )
-	      );
-	    });
 
 	    books = books.filter(function (b) {
 	      if (filter === -1) {
@@ -204,21 +182,9 @@
 	      _react2.default.createElement(
 	        "div",
 	        { className: "main" },
-	        _react2.default.createElement(
-	          "div",
-	          { className: "filterer" },
-	          _react2.default.createElement(
-	            "h4",
-	            null,
-	            "Filter By Genre:"
-	          ),
-	          _react2.default.createElement(
-	            "ul",
-	            { className: "keyholder" },
-	            allGenres,
-	            genreOptions
-	          )
-	        ),
+	        _react2.default.createElement(_GenreFilter2.default, { genres: genres,
+	          filter: filter,
+	          setFilter: this.setFilter }),
 	        _react2.default.createElement(_Stats2.default, { books: books }),
 	        _react2.default.createElement(_Showcase2.default, { books: books,
 	          genres: genres,
@@ -226,16 +192,26 @@
 	          addBook: this.showAddBook,
 	          showMore: this.showMore }),
 	        adding ? _react2.default.createElement(_BookForm2.default, { save: this.saveBook, cancel: this.cancelBook }) : null
+	      ),
+	      _react2.default.createElement(
+	        "footer",
+	        null,
+	        "made by ",
+	        _react2.default.createElement(
+	          "a",
+	          { href: "http://www.pshrmn.com" },
+	          "pshrmn.com"
+	        )
 	      )
 	    );
 	  },
 	  componentDidMount: function componentDidMount() {
-	    var _this2 = this;
+	    var _this = this;
 
 	    (0, _bookLoader2.default)("data/books.json").then(function (resp) {
-	      _this2.setState({
+	      _this.setState({
 	        books: resp.books,
-	        show: 5
+	        show: 10
 	      });
 	    });
 	  }
@@ -5226,6 +5202,73 @@
 
 /***/ },
 /* 18 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = _react2.default.createClass({
+	  displayName: "GenreFilter",
+
+	  render: function render() {
+	    var _this = this;
+
+	    var _props = this.props;
+	    var genres = _props.genres;
+	    var filter = _props.filter;
+
+	    var allGenres = _react2.default.createElement(
+	      "li",
+	      { className: ["key", "all", filter === -1 ? "active" : ""].join(" ") },
+	      _react2.default.createElement(
+	        "label",
+	        null,
+	        "all",
+	        _react2.default.createElement("input", { type: "radio", name: "genre", value: "-1", onChange: this.props.setFilter })
+	      )
+	    );
+	    var genreOptions = genres.map(function (g, i) {
+	      var classes = ["key", g.replace("'", ""), filter === i ? "active" : ""];
+	      return _react2.default.createElement(
+	        "li",
+	        { key: i, className: classes.join(" ") },
+	        _react2.default.createElement(
+	          "label",
+	          null,
+	          g,
+	          _react2.default.createElement("input", { type: "radio", name: "genre", value: i, onChange: _this.props.setFilter })
+	        )
+	      );
+	    });
+	    return _react2.default.createElement(
+	      "div",
+	      { className: "filterer" },
+	      _react2.default.createElement(
+	        "h4",
+	        null,
+	        "Filter By Genre:"
+	      ),
+	      _react2.default.createElement(
+	        "ul",
+	        { className: "keyholder" },
+	        allGenres,
+	        genreOptions
+	      )
+	    );
+	  }
+	});
+
+/***/ },
+/* 19 */
 /***/ function(module, exports) {
 
 	"use strict";
