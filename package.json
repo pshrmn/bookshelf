@@ -1,6 +1,6 @@
 {
   "name": "bookshelf",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "track books that you've read (or will read)",
   "main": "server/index.js",
   "scripts": {
@@ -8,7 +8,8 @@
     "build": "webpack & npm run css",
     "css": "npm run sass & npm run autoprefix",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "sass": "node-sass sass/** -o public/css/**"
+    "sass": "node-sass sass/** -o public/css/**",
+    "webpack": "webpack & webpack --config=webpack.config.min.js"
   },
   "repository": {
     "type": "git",

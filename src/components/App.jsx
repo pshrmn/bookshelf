@@ -26,7 +26,12 @@ export default React.createClass({
     return (
       <div>
         <TopBar genres={genres} />
-        {this.props.children}
+        <div className="main">
+          {this.props.children}
+        </div>
+        <footer>
+          made by <a href="http://www.pshrmn.com">pshrmn.com</a>
+        </footer>
       </div>
     );
   },

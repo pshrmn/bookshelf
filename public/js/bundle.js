@@ -5130,7 +5130,21 @@
 	      "div",
 	      null,
 	      _react2.default.createElement(_TopBar2.default, { genres: _genres2.default }),
-	      this.props.children
+	      _react2.default.createElement(
+	        "div",
+	        { className: "main" },
+	        this.props.children
+	      ),
+	      _react2.default.createElement(
+	        "footer",
+	        null,
+	        "made by ",
+	        _react2.default.createElement(
+	          "a",
+	          { href: "http://www.pshrmn.com" },
+	          "pshrmn.com"
+	        )
+	      )
 	    );
 	  },
 	  componentDidMount: function componentDidMount() {
@@ -5556,8 +5570,14 @@
 	    });
 	  },
 	  render: function render() {
+	    if (this.props.books.length === 0) {
+	      return null;
+	    }
 	    var genreCounts = this.counts();
-
+	    // don't bother with a bar chart when there is only one class
+	    if (genreCounts.length <= 1) {
+	      return null;
+	    }
 	    return _react2.default.createElement(
 	      "div",
 	      { className: "bars" },
@@ -5603,6 +5623,9 @@
 	    return authorMap.slice(0, 5);
 	  },
 	  render: function render() {
+	    if (this.props.books.length === 0) {
+	      return null;
+	    }
 	    var authors = this.counts().map(function (a, i) {
 	      return _react2.default.createElement(
 	        "li",

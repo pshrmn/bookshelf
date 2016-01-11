@@ -35,8 +35,14 @@ let GenreBars = React.createClass({
     });
   },
   render: function() {
+    if ( this.props.books.length === 0 ) {
+      return null;
+    }
     let genreCounts = this.counts();
-
+    // don't bother with a bar chart when there is only one class
+    if ( genreCounts.length <= 1 ) {
+      return null;
+    }
     return (
       <div className="bars">
         <h2>Books per Genre</h2>
@@ -70,6 +76,9 @@ let PopularAuthors = React.createClass({
     return authorMap.slice(0,5);
   },
   render: function() {
+    if ( this.props.books.length === 0 ) {
+      return null;
+    }
     let authors = this.counts().map((a,i) => {
       return (
         <li key={i}>
