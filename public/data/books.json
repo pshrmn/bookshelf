@@ -1,6 +1,11 @@
 {
   "books": [
     {
+      "title": "The Girl Who Played with Fire",
+      "author": "Stieg Larsson",
+      "genre": "thriller"
+    },
+    {
       "title": "The Girl with the Dragon Tattoo",
       "author": "Stieg Larsson",
       "genre": "thriller"

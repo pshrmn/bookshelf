@@ -17,7 +17,7 @@ export default React.createClass({
     };
   },
   render: function() {
-    let { height, margin, data, getX, getY, getFill } = this.props;
+    let { height, margin, data, getX, getY } = this.props;
     let width = data.length*60;
 
     if ( data.length === 0 ) {

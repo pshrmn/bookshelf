@@ -438,7 +438,6 @@
 	    var _props = this.props;
 	    var books = _props.books;
 	    var show = _props.show;
-	    var genres = _props.genres;
 
 	    var bookTiles = books.slice(0, show).map(function (b, i) {
 	      return _react2.default.createElement(_Book2.default, _extends({ key: i, index: i % 10 }, b));
@@ -706,7 +705,6 @@
 	    var data = _props.data;
 	    var getX = _props.getX;
 	    var getY = _props.getY;
-	    var getFill = _props.getFill;
 
 	    var width = data.length * 60;
 

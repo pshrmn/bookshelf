@@ -4,7 +4,7 @@ import Book from "./Book";
 
 export default React.createClass({
   render: function() {
-    let { books, show, genres} = this.props;
+    let { books, show} = this.props;
 
     let bookTiles = books.slice(0, show).map((b, i) => {
       return <Book key={i} index={i%10} {...b} />;
