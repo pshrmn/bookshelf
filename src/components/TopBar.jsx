@@ -1,5 +1,7 @@
 import React from "react";
 
+import { Link } from "react-router";
+
 export default React.createClass({
   shouldComponentUpdate: function(nextProps, nextState) {
     return false;
@@ -17,7 +19,7 @@ export default React.createClass({
           {genreBars}
         </ul>
         <div className="title">
-          Bookshelf
+          <Link to={{pathname: "/"}}>Bookshelf</Link>
         </div>
         <div className="subtitle">
           Track books that you have read.

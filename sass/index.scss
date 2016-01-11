@@ -19,13 +19,18 @@ body {
     margin: 0;
 }
 
-#content {
+main {
     width: 100%;
     font-family: "Josefin Sans", sans-serif;
 }
 
 p, h1, h2, h3, h4, h5, h6 {
     margin: 0;
+}
+
+a, a:visited {
+    color: $black;
+    text-decoration: none;
 }
 
 .main {
@@ -338,8 +343,7 @@ ul.keyholder {
         display: none;
     }
 
-    label {
-        cursor: pointer;
+    a {
         display: block;
     }
 

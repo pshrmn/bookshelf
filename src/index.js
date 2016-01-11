@@ -1,10 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { Router, hashHistory } from "react-router";
 
-import Bookshelf from "./components/Bookshelf";
-import genres from "./constants/genres";
+import routes from "./routes";
 
 ReactDOM.render(
-  <Bookshelf genres={genres}/>,
-  document.getElementById("content")
+  <Router history={hashHistory}
+          routes={routes} />,
+  document.querySelector("main")
 );

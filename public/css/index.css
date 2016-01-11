@@ -1,12 +1,16 @@
 body {
   margin: 0; }
 
-#content {
+main {
   width: 100%;
   font-family: "Josefin Sans", sans-serif; }
 
 p, h1, h2, h3, h4, h5, h6 {
   margin: 0; }
+
+a, a:visited {
+  color: #000;
+  text-decoration: none; }
 
 .main {
   width: 80%;
@@ -245,8 +249,7 @@ ul.keyholder {
   padding: 2px 5px; }
   .key input[type=radio] {
     display: none; }
-  .key label {
-    cursor: pointer;
+  .key a {
     display: block; }
   .key:hover {
     background: #EFEFEF; }

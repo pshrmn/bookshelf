@@ -1,16 +1,28 @@
 import React from "react";
 
 import Book from "./Book";
+import { Link } from "react-router";
 
 export default React.createClass({
+  getInitialState: function() {
+    return {
+      show: 10
+    };
+  },
+  showMore: function() {
+    this.setState({
+      show: this.state.show+10
+    });
+  },
   render: function() {
-    let { books, show} = this.props;
+    let { books } = this.props;
+    let { show } = this.state;
 
     let bookTiles = books.slice(0, show).map((b, i) => {
       return <Book key={i} index={i%10} {...b} />;
     });
     let more = books.length > show ? (
-      <button onClick={this.props.showMore}>Show More</button>
+      <button onClick={this.showMore}>Show More</button>
     ) : null;
 
     return (
@@ -21,7 +33,9 @@ export default React.createClass({
         <div className="books">
           {bookTiles}
           <div className="book">
-            <div className="cover add" onClick={this.props.addBook} >Add A Book</div>
+            <div className="cover add">
+              <Link to={{pathname: "/add"}}>Add A Book</Link>
+            </div>
           </div>
         </div>
       </div>

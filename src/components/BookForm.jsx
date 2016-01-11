@@ -16,17 +16,20 @@ export default React.createClass({
   save: function(event) {
     event.preventDefault();
     if ( this.validate() ) {
+      /*
       this.props.save({
         title: this.state.title,
         author: this.state.author,
         genre: genres[this.state.genre]
       });
-      
+      */
     }
   },
   cancel: function(event) {
     event.preventDefault();
+    /*
     this.props.cancel();
+    */
   },
   changeTitle: function(event) {
     this.setState({

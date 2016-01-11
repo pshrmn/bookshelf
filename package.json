@@ -1,6 +1,6 @@
 {
   "name": "bookshelf",
-  "version": "0.4.2",
+  "version": "0.5.0",
   "description": "track books that you've read (or will read)",
   "main": "server/index.js",
   "scripts": {
@@ -22,8 +22,10 @@
   "homepage": "https://github.com/psherman/bookshelf#readme",
   "dependencies": {
     "d3-scale": "^0.4.0",
+    "history": "^1.17.0",
     "react": "^0.14.3",
-    "react-dom": "^0.14.3"
+    "react-dom": "^0.14.3",
+    "react-router": "^2.0.0-rc4"
   },
   "devDependencies": {
     "autoprefixer": "^6.2.3",

@@ -1,6 +1,5 @@
 import React from "react";
 
-import BookForm from "./BookForm";
 import TopBar from "./TopBar";
 import Showcase from "./Showcase";
 import Stats from "./Stats";
@@ -73,9 +72,6 @@ export default React.createClass({
                     show={show}
                     addBook={this.showAddBook}
                     showMore={this.showMore} />
-          {adding ? (
-            <BookForm save={this.saveBook} cancel={this.cancelBook} />
-          ) : null}
         </div>
         <footer>
           made by <a href="http://www.pshrmn.com">pshrmn.com</a>
