@@ -299,10 +299,14 @@ rect {
 form {
     padding: 15px;
     box-sizing: border-box;
-    border: 2px solid $light-gray;
 
     p {
         padding: 3px 0;
+    }
+
+    input[type=text] {
+        width: 50%;
+        min-width: 300px;
     }
 
     .genre-options {

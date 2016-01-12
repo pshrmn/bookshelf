@@ -204,10 +204,12 @@ rect {
 
 form {
   padding: 15px;
-  box-sizing: border-box;
-  border: 2px solid #EFEFEF; }
+  box-sizing: border-box; }
   form p {
     padding: 3px 0; }
+  form input[type=text] {
+    width: 50%;
+    min-width: 300px; }
   form .genre-options {
     max-height: 100px;
     display: -webkit-flex;

@@ -1,28 +1,27 @@
 import React from "react";
+import { connect } from "react-redux";
 
 import TopBar from "./TopBar";
 
-import bookLoader from "../bookLoader";
-import genres from "../constants/genres";
-
-export default React.createClass({
+const App = React.createClass({
   childContextTypes: {
     books: React.PropTypes.array,
     genres: React.PropTypes.array
   },
-  getChildContext: function() {
-    return {
-      books: this.state.books,
-      genres: this.state.genres
-    };
-  },
-  getInitialState: function() {
+  getDefaultProps: function() {
     return {
       books: [],
       genres: []
     };
   },
+  getChildContext: function() {
+    return {
+      books: this.props.books,
+      genres: this.props.genres
+    };
+  },
   render: function() {
+    const { genres } = this.props;
     return (
       <div>
         <TopBar genres={genres} />
@@ -34,14 +33,9 @@ export default React.createClass({
         </footer>
       </div>
     );
-  },
-  componentDidMount: function() {
-    bookLoader("data/books.json")
-      .then(resp => {
-        this.setState({
-          books: resp.books,
-          genres: genres
-        })
-      });
   }
 });
+
+export default connect(
+  state => ({books: state.books, genres: state.genres})
+)(App);
