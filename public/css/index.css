@@ -1,16 +1,15 @@
 body {
   margin: 0; }
 
+a, a:visited {
+  color: #000; }
+
 main {
   width: 100%;
   font-family: "Josefin Sans", sans-serif; }
 
 p, h1, h2, h3, h4, h5, h6 {
   margin: 0; }
-
-a, a:visited {
-  color: #000;
-  text-decoration: none; }
 
 .main {
   width: 80%;
@@ -146,6 +145,8 @@ rect {
 .topbar {
   width: 100%;
   background: #ECE4E0; }
+  .topbar a {
+    text-decoration: none; }
   .topbar .title {
     margin: 0;
     font-family: "Grand Hotel", sans-serif;
@@ -250,7 +251,8 @@ ul.keyholder {
   .key input[type=radio] {
     display: none; }
   .key a {
-    display: block; }
+    display: block;
+    text-decoration: none; }
   .key:hover {
     background: #EFEFEF; }
   .key.active {

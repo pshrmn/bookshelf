@@ -1,6 +1,6 @@
 import React from "react";
 
-import genres from "../constants/genres";
+import { Link } from "react-router";
 
 export default React.createClass({
   render: function() {
@@ -12,7 +12,9 @@ export default React.createClass({
         <div className={coverClasses.join(" ")}>
           <div className="title">{title}</div>
         </div>
-        <div className="author">{author}</div>
+        <div className="author">
+          <Link to={{pathname: `author/${author}`}}>{author}</Link>
+        </div>
       </div>
     );
   }

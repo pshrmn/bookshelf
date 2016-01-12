@@ -1,11 +1,11 @@
 {
   "name": "bookshelf",
-  "version": "0.5.1",
+  "version": "0.6.0",
   "description": "track books that you've read (or will read)",
   "main": "server/index.js",
   "scripts": {
     "autoprefix": "postcss --use autoprefixer --autoprefixer.browsers \"last 2 versions\" public/css/index.css --dir public/css/",
-    "build": "webpack & npm run css",
+    "build": "npm run webpack & npm run css",
     "css": "npm run sass & npm run autoprefix",
     "test": "echo \"Error: no test specified\" && exit 1",
     "sass": "node-sass sass/** -o public/css/**",

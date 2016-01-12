@@ -19,7 +19,7 @@ export default React.createClass({
           {genreBars}
         </ul>
         <div className="title">
-          <Link to={{pathname: "/"}}>Bookshelf</Link>
+          <Link to={{pathname: "/"}} title="home">Bookshelf</Link>
         </div>
         <div className="subtitle">
           Track books that you have read.

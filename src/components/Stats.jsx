@@ -1,5 +1,6 @@
 import React from "react";
 
+import { Link } from "react-router";
 import BarChart from "./OrdinalBarChart";
 
 export default React.createClass({
@@ -82,7 +83,7 @@ let PopularAuthors = React.createClass({
     let authors = this.counts().map((a,i) => {
       return (
         <li key={i}>
-          {a.author} - {a.count}
+          <Link to={{pathname: `author/${a.author}`}}>{a.author}</Link> - {a.count}
         </li>
       );
     });

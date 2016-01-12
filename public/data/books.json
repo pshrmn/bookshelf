@@ -1,6 +1,11 @@
 {
   "books": [
     {
+      "title": "The Three-Body Problem",
+      "author": "Liu Cixin",
+      "genre": "sci-fi"
+    },
+    {
       "title": "The Girl Who Played with Fire",
       "author": "Stieg Larsson",
       "genre": "thriller"
