@@ -1,36 +1,36 @@
 import React from "react";
 
-import { Link } from "react-router";
+import { connect } from "react-redux";
+import { push } from "redux-simple-router";
+import genres from "../constants/genres";
 
-export default React.createClass({
-  contextTypes: {
-    genres: React.PropTypes.array
+const GenreFilter = React.createClass({
+  changeHandler: function(event) {
+    event.preventDefault();
+    const genre = event.target.value;
+    const url = genre === "all" ? "/" : `genre/${event.target.value}`;
+    this.props.push(url);
   },
   render: function() {
-    let { genres } = this.context;
-    genres = genres || [];
-    let { filter } = this.props;
-    let allGenres = (
-      <li className={["key","all", filter==="all" ? "active" : ""].join(" ")}>
-          <Link to={{pathname: "/"}}>all</Link>
-      </li>
-    );
-    let genreOptions = genres.map((g, i) => {
-      let classes=["key", g.replace("'",""), filter===g ? "active" : ""]
+    const { filter } = this.props;
+    const genreOptions = ["all"].concat(genres).map((g, i) => {
       return (
-        <li key={i} className={classes.join(" ")}>
-            <Link to={{pathname: `/genre/${g}`}}>{g}</Link>
-        </li>
+        <option key={i}
+                value={g} >
+          {g}
+        </option>
       );
     });
     return (
-      <div className="filterer">
-        <h4>Filter By Genre:</h4>
-        <ul className="keyholder">
-          {allGenres}
+        <select value={filter}
+                onChange={this.changeHandler}>
           {genreOptions}
-        </ul>
-      </div>
+        </select>
     );
   }
-})
+});
+
+export default connect(
+  null,
+  { push }
+)(GenreFilter);

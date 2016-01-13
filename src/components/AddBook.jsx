@@ -3,11 +3,9 @@ import { connect } from "react-redux";
 import { push } from "redux-simple-router";
 
 import { addBook } from "../actions";
+import genres from "../constants/genres";
 
 const AddBook = React.createClass({
-  contextTypes: {
-    genres: React.PropTypes.array
-  },
   getInitialState: function() {
     return {
       title: "",
@@ -25,7 +23,7 @@ const AddBook = React.createClass({
       this.props.addBook({
         title: this.state.title,
         author: this.state.author,
-        genre: this.context.genres[this.state.genre]
+        genre: genres[this.state.genre]
       });
       this.props.push("/");
     }
@@ -50,7 +48,7 @@ const AddBook = React.createClass({
     });
   },
   render: function() {
-    let genreOptions = this.context.genres.map((g, i) => {
+    let genreOptions = genres.map((g, i) => {
       return (
         <label key={i}>
           <input type="radio"

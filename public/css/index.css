@@ -27,6 +27,9 @@ p, h1, h2, h3, h4, h5, h6 {
   width: 100px;
   margin: 5px; }
 
+.genre-page h1 {
+  text-transform: capitalize; }
+
 .cover {
   width: 100px;
   height: 125px;
@@ -47,8 +50,7 @@ p, h1, h2, h3, h4, h5, h6 {
     opacity: 0.5; }
   .cover.add {
     background: #FFF;
-    border: 2px dashed #CCCCCC;
-    cursor: pointer; }
+    border: 2px dashed #CCCCCC; }
   .cover.add::before {
     opacity: 0; }
   .cover .title {
@@ -142,50 +144,52 @@ rect {
   background: #795548;
   color: #EFEFEF; }
 
-.topbar {
+header {
   width: 100%;
-  background: #ECE4E0; }
-  .topbar a {
+  background: #ECE4E0;
+  margin-bottom: 15px;
+  text-align: center; }
+  header a {
     text-decoration: none; }
-  .topbar .title {
+  header .title {
     margin: 0;
     font-family: "Grand Hotel", sans-serif;
-    font-size: 3em;
-    text-align: center; }
-  .topbar .subtitle {
-    text-align: center; }
-  .topbar ul {
+    font-size: 3em; }
+  header nav a {
+    text-decoration: underline;
+    padding: 0 5px; }
+  header ul {
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
     list-style: none;
     margin: 0;
     padding: 0; }
-  .topbar li {
+  header li {
     height: 5px;
     -webkit-flex-grow: 1;
         -ms-flex-positive: 1;
             flex-grow: 1; }
-    .topbar li.adventure {
+    header li.adventure {
       background: #009688; }
-    .topbar li.childrens {
+    header li.childrens {
       background: #CE7291; }
-    .topbar li.fantasy {
+    header li.fantasy {
       background: #86CFD8; }
-    .topbar li.historical {
+    header li.historical {
       background: #607D8B; }
-    .topbar li.mystery {
+    header li.mystery {
       background: #94B76B; }
-    .topbar li.non-fiction {
+    header li.non-fiction {
       background: #E6C150; }
-    .topbar li.poetry {
+    header li.poetry {
       background: #A02C40; }
-    .topbar li.sci-fi {
+    header li.sci-fi {
       background: #6B5A88;
       color: #EFEFEF; }
-    .topbar li.thriller {
+    header li.thriller {
       background: #E8B76F; }
-    .topbar li.war {
+    header li.war {
       background: #795548;
       color: #EFEFEF; }
 
@@ -196,7 +200,7 @@ rect {
   -webkit-flex-flow: row wrap;
       -ms-flex-flow: row wrap;
           flex-flow: row wrap;
-  margin: 25px 0; }
+  margin: 10px 0; }
   .stats h2 {
     text-align: center; }
   .stats > div {
@@ -226,9 +230,6 @@ form {
 
 .showcase .info {
   margin: 10px 0; }
-
-.filterer {
-  margin: 25px 0; }
 
 ul.keyholder {
   list-style: none;

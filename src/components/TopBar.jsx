@@ -1,20 +1,21 @@
 import React from "react";
-
 import { Link } from "react-router";
+
+import genres from "../constants/genres";
 
 export default React.createClass({
   shouldComponentUpdate: function(nextProps, nextState) {
     return false;
   },
   render: function() {
-    let genreBars = this.props.genres.map((g, i) => {
+    let genreBars = genres.map((g, i) => {
       return (
         <li key={i}
             className={g.replace("'","")}></li>
       );
     });
     return (
-      <div className="topbar">
+      <header>
         <ul>
           {genreBars}
         </ul>
@@ -24,10 +25,15 @@ export default React.createClass({
         <div className="subtitle">
           Track books that you have read.
         </div>
+        <nav>
+          <Link to={{pathname: "/"}}>Home</Link>
+          <Link to={{pathname: "/genres"}}>Genres</Link>
+          <Link to={{pathname: "/authors"}}>Authors</Link>
+        </nav>
         <ul>
           {genreBars}
         </ul>
-      </div>
+      </header>
     );
   }
 });

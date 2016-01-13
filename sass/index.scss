@@ -49,6 +49,12 @@ p, h1, h2, h3, h4, h5, h6 {
     margin: 5px;
 }
 
+.genre-page {
+    h1 {
+        text-transform: capitalize;
+    }
+}
+
 .cover {
     width: 100px;
     height: 125px;
@@ -73,7 +79,6 @@ p, h1, h2, h3, h4, h5, h6 {
     &.add {
         background: $white;
         border: 2px dashed $gray;
-        cursor: pointer;
     }
 
     &.add::before {
@@ -217,9 +222,11 @@ rect {
     }
 }
 
-.topbar {
+header {
     width: 100%;
     background: $light-brown;
+    margin-bottom: 15px;
+    text-align: center;
 
     a {
         text-decoration: none;
@@ -229,11 +236,13 @@ rect {
         margin: 0;
         font-family: "Grand Hotel", sans-serif;
         font-size: 3em;
-        text-align: center;
     }
 
-    .subtitle {
-        text-align: center;
+    nav {
+        a {
+            text-decoration: underline;
+            padding: 0 5px;
+        }
     }
 
     ul {
@@ -285,7 +294,7 @@ rect {
 .stats {
     display: flex;
     flex-flow: row wrap;
-    margin: 25px 0;
+    margin: 10px 0;
 
     h2 {
         text-align: center;
@@ -326,10 +335,6 @@ form {
     .info {
         margin: 10px 0;
     }
-}
-
-.filterer {
-    margin: 25px 0;  
 }
 
 ul.keyholder {

@@ -5,26 +5,22 @@ import TopBar from "./TopBar";
 
 const App = React.createClass({
   childContextTypes: {
-    books: React.PropTypes.array,
-    genres: React.PropTypes.array
+    books: React.PropTypes.array
   },
   getDefaultProps: function() {
     return {
-      books: [],
-      genres: []
+      books: []
     };
   },
   getChildContext: function() {
     return {
-      books: this.props.books,
-      genres: this.props.genres
+      books: this.props.books
     };
   },
   render: function() {
-    const { genres } = this.props;
     return (
       <div>
-        <TopBar genres={genres} />
+        <TopBar />
         <div className="main">
           {this.props.children}
         </div>
@@ -37,5 +33,5 @@ const App = React.createClass({
 });
 
 export default connect(
-  state => ({books: state.books, genres: state.genres})
+  state => ({books: state.books})
 )(App);
