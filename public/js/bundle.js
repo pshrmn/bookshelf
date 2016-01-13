@@ -66,11 +66,11 @@
 
 	var _routes2 = _interopRequireDefault(_routes);
 
-	var _reducers = __webpack_require__(101);
+	var _reducers = __webpack_require__(104);
 
 	var _reducers2 = _interopRequireDefault(_reducers);
 
-	var _bookLoader = __webpack_require__(103);
+	var _bookLoader = __webpack_require__(106);
 
 	var _bookLoader2 = _interopRequireDefault(_bookLoader);
 
@@ -6326,21 +6326,29 @@
 
 	var _AddBook2 = _interopRequireDefault(_AddBook);
 
-	var _Genres = __webpack_require__(97);
+	var _Genres = __webpack_require__(98);
 
 	var _Genres2 = _interopRequireDefault(_Genres);
 
-	var _Genre = __webpack_require__(98);
+	var _Genre = __webpack_require__(99);
 
 	var _Genre2 = _interopRequireDefault(_Genre);
 
-	var _Authors = __webpack_require__(99);
+	var _AddBookByGenre = __webpack_require__(100);
+
+	var _AddBookByGenre2 = _interopRequireDefault(_AddBookByGenre);
+
+	var _Authors = __webpack_require__(101);
 
 	var _Authors2 = _interopRequireDefault(_Authors);
 
-	var _Author = __webpack_require__(100);
+	var _Author = __webpack_require__(102);
 
 	var _Author2 = _interopRequireDefault(_Author);
+
+	var _AddBookByAuthor = __webpack_require__(103);
+
+	var _AddBookByAuthor2 = _interopRequireDefault(_AddBookByAuthor);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -6356,13 +6364,21 @@
 	    component: _Genres2.default
 	  }, {
 	    path: "genre/:genre",
-	    component: _Genre2.default
+	    component: _Genre2.default,
+	    childRoutes: [{
+	      path: "add",
+	      component: _AddBookByGenre2.default
+	    }]
 	  }, {
 	    path: "authors",
 	    component: _Authors2.default
 	  }, {
 	    path: "author/:author",
-	    component: _Author2.default
+	    component: _Author2.default,
+	    childRoutes: [{
+	      path: "add",
+	      component: _AddBookByAuthor2.default
+	    }]
 	  }]
 	}];
 
@@ -6380,30 +6396,15 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactRedux = __webpack_require__(69);
-
 	var _TopBar = __webpack_require__(80);
 
 	var _TopBar2 = _interopRequireDefault(_TopBar);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var App = _react2.default.createClass({
+	exports.default = _react2.default.createClass({
 	  displayName: "App",
 
-	  childContextTypes: {
-	    books: _react2.default.PropTypes.array
-	  },
-	  getDefaultProps: function getDefaultProps() {
-	    return {
-	      books: []
-	    };
-	  },
-	  getChildContext: function getChildContext() {
-	    return {
-	      books: this.props.books
-	    };
-	  },
 	  render: function render() {
 	    return _react2.default.createElement(
 	      "div",
@@ -6427,10 +6428,6 @@
 	    );
 	  }
 	});
-
-	exports.default = (0, _reactRedux.connect)(function (state) {
-	  return { books: state.books };
-	})(App);
 
 /***/ },
 /* 80 */
@@ -6540,6 +6537,8 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _reactRedux = __webpack_require__(69);
+
 	var _Stats = __webpack_require__(83);
 
 	var _Stats2 = _interopRequireDefault(_Stats);
@@ -6550,23 +6549,25 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	exports.default = _react2.default.createClass({
+	var Index = _react2.default.createClass({
 	  displayName: "Index",
 
-	  contextTypes: {
-	    books: _react2.default.PropTypes.array
-	  },
 	  render: function render() {
-	    var books = this.context.books;
+	    var books = this.props.books;
 
 	    return _react2.default.createElement(
 	      "div",
 	      null,
 	      _react2.default.createElement(_Stats2.default, { books: books }),
-	      _react2.default.createElement(_Showcase2.default, { books: books })
+	      _react2.default.createElement(_Showcase2.default, { books: books,
+	        addPath: "/add" })
 	    );
 	  }
 	});
+
+	exports.default = (0, _reactRedux.connect)(function (state) {
+	  return { books: state.books };
+	})(Index);
 
 /***/ },
 /* 83 */
@@ -11289,7 +11290,9 @@
 	    });
 	  },
 	  render: function render() {
-	    var books = this.props.books;
+	    var _props = this.props;
+	    var books = _props.books;
+	    var addPath = _props.addPath;
 	    var show = this.state.show;
 
 	    var bookTiles = books.slice(0, show).map(function (b, i) {
@@ -11326,7 +11329,7 @@
 	            { className: "cover add" },
 	            _react2.default.createElement(
 	              _reactRouter.Link,
-	              { to: { pathname: "/add" } },
+	              { to: { pathname: addPath } },
 	              "Add A Book"
 	            )
 	          )
@@ -11403,11 +11406,39 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _BookForm = __webpack_require__(95);
+
+	var _BookForm2 = _interopRequireDefault(_BookForm);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = _react2.default.createClass({
+	  displayName: "AddBook",
+
+	  render: function render() {
+	    return _react2.default.createElement(_BookForm2.default, null);
+	  }
+	});
+
+/***/ },
+/* 95 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
 	var _reactRedux = __webpack_require__(69);
 
 	var _reduxSimpleRouter = __webpack_require__(77);
 
-	var _actions = __webpack_require__(95);
+	var _actions = __webpack_require__(96);
 
 	var _genres = __webpack_require__(81);
 
@@ -11415,14 +11446,14 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var AddBook = _react2.default.createClass({
-	  displayName: "AddBook",
+	var BookForm = _react2.default.createClass({
+	  displayName: "BookForm",
 
 	  getInitialState: function getInitialState() {
 	    return {
 	      title: "",
 	      author: "",
-	      genre: -1
+	      genre: undefined
 	    };
 	  },
 	  validate: function validate() {
@@ -11435,14 +11466,14 @@
 	      this.props.addBook({
 	        title: this.state.title,
 	        author: this.state.author,
-	        genre: _genres2.default[this.state.genre]
+	        genre: this.state.genre
 	      });
-	      this.props.push("/");
+	      this.props.push(this.props.next || "/");
 	    }
 	  },
 	  cancel: function cancel(event) {
 	    event.preventDefault();
-	    this.props.push("/");
+	    this.props.push(this.props.next || "/");
 	  },
 	  changeTitle: function changeTitle(event) {
 	    this.setState({
@@ -11459,20 +11490,52 @@
 	      genre: event.target.value
 	    });
 	  },
+	  componentWillMount: function componentWillMount() {
+	    var _props = this.props;
+	    var author = _props.author;
+	    var genre = _props.genre;
+
+	    var newState = {};
+	    var values = false;
+	    if (author !== undefined) {
+	      newState.author = author;
+	      values = true;
+	    }
+	    if (genre !== undefined) {
+	      newState.genre = genre;
+	      values = true;
+	    }
+	    if (values) {
+	      this.setState(newState);
+	    }
+	  },
 	  render: function render() {
 	    var _this = this;
 
-	    var genreOptions = _genres2.default.map(function (g, i) {
-	      return _react2.default.createElement(
-	        "label",
-	        { key: i },
-	        _react2.default.createElement("input", { type: "radio",
-	          value: i,
-	          name: "genre",
-	          onChange: _this.changeGenre }),
-	        g
-	      );
-	    });
+	    var authorInput = this.props.author ? this.props.author : _react2.default.createElement("input", { type: "text",
+	      value: this.state.author,
+	      onChange: this.changeAuthor });
+
+	    var genreInput = this.props.genre ? _react2.default.createElement(
+	      "p",
+	      null,
+	      this.props.genre
+	    ) : _react2.default.createElement(
+	      "div",
+	      { className: "genre-options" },
+	      _genres2.default.map(function (g, i) {
+	        return _react2.default.createElement(
+	          "label",
+	          { key: i },
+	          _react2.default.createElement("input", { type: "radio",
+	            value: g,
+	            name: "genre",
+	            onChange: _this.changeGenre }),
+	          g
+	        );
+	      })
+	    );
+
 	    return _react2.default.createElement(
 	      "form",
 	      { onSubmit: this.save },
@@ -11489,26 +11552,24 @@
 	          onChange: this.changeTitle })
 	      ),
 	      _react2.default.createElement(
-	        "p",
+	        "div",
 	        null,
-	        "Author(s):"
-	      ),
-	      _react2.default.createElement(
-	        "p",
-	        null,
-	        _react2.default.createElement("input", { type: "text",
-	          value: this.state.author,
-	          onChange: this.changeAuthor })
+	        _react2.default.createElement(
+	          "p",
+	          null,
+	          "Author(s):"
+	        ),
+	        _react2.default.createElement(
+	          "p",
+	          null,
+	          authorInput
+	        )
 	      ),
 	      _react2.default.createElement(
 	        "div",
 	        null,
 	        "Genre:",
-	        _react2.default.createElement(
-	          "div",
-	          { className: "genre-options" },
-	          genreOptions
-	        )
+	        genreInput
 	      ),
 	      _react2.default.createElement(
 	        "button",
@@ -11524,10 +11585,10 @@
 	  }
 	});
 
-	exports.default = (0, _reactRedux.connect)(null, { addBook: _actions.addBook, push: _reduxSimpleRouter.push })(AddBook);
+	exports.default = (0, _reactRedux.connect)(null, { addBook: _actions.addBook, push: _reduxSimpleRouter.push })(BookForm);
 
 /***/ },
-/* 95 */
+/* 96 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -11537,7 +11598,7 @@
 	});
 	exports.addBook = addBook;
 
-	var _ActionTypes = __webpack_require__(96);
+	var _ActionTypes = __webpack_require__(97);
 
 	var types = _interopRequireWildcard(_ActionTypes);
 
@@ -11551,7 +11612,7 @@
 	}
 
 /***/ },
-/* 96 */
+/* 97 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -11562,7 +11623,7 @@
 	var ADD_BOOK = exports.ADD_BOOK = "ADD_BOOK";
 
 /***/ },
-/* 97 */
+/* 98 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -11627,7 +11688,7 @@
 	});
 
 /***/ },
-/* 98 */
+/* 99 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -11639,6 +11700,8 @@
 	var _react = __webpack_require__(1);
 
 	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRedux = __webpack_require__(69);
 
 	var _reactRouter = __webpack_require__(13);
 
@@ -11652,18 +11715,21 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	exports.default = _react2.default.createClass({
+	var Genre = _react2.default.createClass({
 	  displayName: "Genre",
 
-	  contextTypes: {
-	    books: _react2.default.PropTypes.array
-	  },
 	  render: function render() {
 	    var genre = this.props.params.genre;
 
-	    var filteredBooks = this.context.books.filter(function (book) {
+	    var filteredBooks = this.props.books.filter(function (book) {
 	      return book.genre === genre;
 	    });
+	    // inserts such as the add book form
+	    var children = this.props.children ? _react2.default.createElement(
+	      "div",
+	      { className: "children" },
+	      this.props.children
+	    ) : null;
 	    return _react2.default.createElement(
 	      "div",
 	      { className: "genre-page" },
@@ -11688,14 +11754,51 @@
 	        genre,
 	        " Books"
 	      ),
+	      children,
 	      _react2.default.createElement(_Stats2.default, { books: filteredBooks }),
-	      _react2.default.createElement(_Showcase2.default, { books: filteredBooks })
+	      _react2.default.createElement(_Showcase2.default, { books: filteredBooks,
+	        addPath: "/genre/" + genre + "/add" })
 	    );
 	  }
 	});
 
+	exports.default = (0, _reactRedux.connect)(function (state) {
+	  return { books: state.books };
+	})(Genre);
+
 /***/ },
-/* 99 */
+/* 100 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _BookForm = __webpack_require__(95);
+
+	var _BookForm2 = _interopRequireDefault(_BookForm);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = _react2.default.createClass({
+	  displayName: "AddBookByGenre",
+
+	  render: function render() {
+	    var genre = this.props.params.genre;
+
+	    return _react2.default.createElement(_BookForm2.default, { genre: genre,
+	      next: "/genre/" + genre });
+	  }
+	});
+
+/***/ },
+/* 101 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -11785,7 +11888,7 @@
 	})(Authors);
 
 /***/ },
-/* 100 */
+/* 102 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -11798,6 +11901,8 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _reactRedux = __webpack_require__(69);
+
 	var _reactRouter = __webpack_require__(13);
 
 	var _Showcase = __webpack_require__(92);
@@ -11806,18 +11911,21 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	exports.default = _react2.default.createClass({
+	var Author = _react2.default.createClass({
 	  displayName: "Author",
 
-	  contextTypes: {
-	    books: _react2.default.PropTypes.array
-	  },
 	  render: function render() {
 	    var author = this.props.params.author;
 
-	    var filteredBooks = this.context.books.filter(function (book) {
+	    var filteredBooks = this.props.books.filter(function (book) {
 	      return book.author === author;
 	    });
+	    // inserts such as the add book form
+	    var children = this.props.children ? _react2.default.createElement(
+	      "div",
+	      { className: "children" },
+	      this.props.children
+	    ) : null;
 	    return _react2.default.createElement(
 	      "div",
 	      null,
@@ -11841,22 +11949,19 @@
 	        null,
 	        author
 	      ),
-	      _react2.default.createElement(
-	        "div",
-	        null,
-	        _react2.default.createElement(
-	          _reactRouter.Link,
-	          { to: { pathname: "/" } },
-	          "Home"
-	        )
-	      ),
-	      _react2.default.createElement(_Showcase2.default, { books: filteredBooks })
+	      children,
+	      _react2.default.createElement(_Showcase2.default, { books: filteredBooks,
+	        addPath: "/author/" + author + "/add" })
 	    );
 	  }
 	});
 
+	exports.default = (0, _reactRedux.connect)(function (state) {
+	  return { books: state.books };
+	})(Author);
+
 /***/ },
-/* 101 */
+/* 103 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -11865,7 +11970,38 @@
 	  value: true
 	});
 
-	var _books = __webpack_require__(102);
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _BookForm = __webpack_require__(95);
+
+	var _BookForm2 = _interopRequireDefault(_BookForm);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = _react2.default.createClass({
+	  displayName: "AddBookByAuthor",
+
+	  render: function render() {
+	    var author = this.props.params.author;
+
+	    return _react2.default.createElement(_BookForm2.default, { author: author,
+	      next: "/author/" + author });
+	  }
+	});
+
+/***/ },
+/* 104 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _books = __webpack_require__(105);
 
 	var _books2 = _interopRequireDefault(_books);
 
@@ -11876,7 +12012,7 @@
 	};
 
 /***/ },
-/* 102 */
+/* 105 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -11897,7 +12033,7 @@
 	  }
 	};
 
-	var _ActionTypes = __webpack_require__(96);
+	var _ActionTypes = __webpack_require__(97);
 
 	var types = _interopRequireWildcard(_ActionTypes);
 
@@ -11906,7 +12042,7 @@
 	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
 /***/ },
-/* 103 */
+/* 106 */
 /***/ function(module, exports) {
 
 	"use strict";

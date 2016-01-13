@@ -1,15 +1,19 @@
 import React from "react";
+import { connect } from "react-redux";
 import { Link } from "react-router";
 
 import Showcase from "./Showcase";
 
-export default React.createClass({
-  contextTypes: {
-    books: React.PropTypes.array
-  },
+const Author = React.createClass({
   render: function() {
     const { author } = this.props.params;
-    const filteredBooks = this.context.books.filter(book => book.author === author);
+    const filteredBooks = this.props.books.filter(book => book.author === author);
+    // inserts such as the add book form
+    const children = this.props.children ? (
+      <div className="children">
+        {this.props.children}
+      </div>
+    ) : null;
     return (
       <div>
         <div className="breadcrumbs">
@@ -18,11 +22,14 @@ export default React.createClass({
           <Link to={{pathname: "/authors"}}>Authors</Link>
         </div>
         <h1>{author}</h1>
-        <div>
-          <Link to={{pathname: "/"}}>Home</Link>
-        </div>
-        <Showcase books={filteredBooks} />
+        { children }
+        <Showcase books={filteredBooks}
+                  addPath={`/author/${author}/add`} />
       </div>
     );
   }
-})
+});
+
+export default connect(
+  state => ({books: state.books})
+)(Author);

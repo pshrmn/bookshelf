@@ -1,22 +1,8 @@
 import React from "react";
-import { connect } from "react-redux";
 
 import TopBar from "./TopBar";
 
-const App = React.createClass({
-  childContextTypes: {
-    books: React.PropTypes.array
-  },
-  getDefaultProps: function() {
-    return {
-      books: []
-    };
-  },
-  getChildContext: function() {
-    return {
-      books: this.props.books
-    };
-  },
+export default React.createClass({
   render: function() {
     return (
       <div>
@@ -31,7 +17,3 @@ const App = React.createClass({
     );
   }
 });
-
-export default connect(
-  state => ({books: state.books})
-)(App);

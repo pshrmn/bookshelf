@@ -15,7 +15,7 @@ export default React.createClass({
     });
   },
   render: function() {
-    let { books } = this.props;
+    let { books, addPath } = this.props;
     let { show } = this.state;
 
     let bookTiles = books.slice(0, show).map((b, i) => {
@@ -34,7 +34,7 @@ export default React.createClass({
           {bookTiles}
           <div className="book">
             <div className="cover add">
-              <Link to={{pathname: "/add"}}>Add A Book</Link>
+              <Link to={{pathname: addPath}}>Add A Book</Link>
             </div>
           </div>
         </div>

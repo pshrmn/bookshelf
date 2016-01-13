@@ -1,16 +1,20 @@
 import React from "react";
+import { connect } from "react-redux";
 import { Link } from "react-router";
 
 import Stats from "./Stats";
 import Showcase from "./Showcase";
 
-export default React.createClass({
-  contextTypes: {
-    books: React.PropTypes.array
-  },
+const Genre = React.createClass({
   render: function() {
     const { genre } = this.props.params;
-    const filteredBooks = this.context.books.filter(book => book.genre === genre);
+    const filteredBooks = this.props.books.filter(book => book.genre === genre);
+    // inserts such as the add book form
+    const children = this.props.children ? (
+      <div className="children">
+        {this.props.children}
+      </div>
+    ) : null;
     return (
       <div className="genre-page">
         <div className="breadcrumbs">
@@ -21,9 +25,15 @@ export default React.createClass({
         <h1>
           {genre} Books
         </h1>
+        {children}
         <Stats books={filteredBooks} />
-        <Showcase books={filteredBooks} />
+        <Showcase books={filteredBooks}
+                  addPath={`/genre/${genre}/add`} />
       </div>
     );
   }
-})
+});
+
+export default connect(
+  state => ({books: state.books})
+)(Genre);
