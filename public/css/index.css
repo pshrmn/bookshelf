@@ -290,3 +290,6 @@ footer {
 
 footer a {
   color: #000; }
+
+.breadcrumbs a {
+  margin: 0 5px; }

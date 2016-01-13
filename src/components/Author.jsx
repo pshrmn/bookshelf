@@ -3,8 +3,24 @@ import { connect } from "react-redux";
 import { Link } from "react-router";
 
 import Showcase from "./Showcase";
+import Breadcrumbs from "./Breadcrumbs";
 
 const Author = React.createClass({
+  breadcrumbs: function() {
+    const paths = [
+      {
+        to: {pathname: "/"},
+        title: "Home"
+      },
+      {
+        to: {pathname: "/authors"},
+        title: "Authors"
+      }
+    ];
+    return (
+      <Breadcrumbs paths={paths} />
+    );
+  },
   render: function() {
     const { author } = this.props.params;
     const filteredBooks = this.props.books.filter(book => book.author === author);
@@ -16,11 +32,7 @@ const Author = React.createClass({
     ) : null;
     return (
       <div>
-        <div className="breadcrumbs">
-          <Link to={{pathname: "/"}}>Home</Link>
-          {" > "}
-          <Link to={{pathname: "/authors"}}>Authors</Link>
-        </div>
+        {this.breadcrumbs()}
         <h1>{author}</h1>
         { children }
         <Showcase books={filteredBooks}

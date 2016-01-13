@@ -4,8 +4,24 @@ import { Link } from "react-router";
 
 import Stats from "./Stats";
 import Showcase from "./Showcase";
+import Breadcrumbs from "./Breadcrumbs";
 
 const Genre = React.createClass({
+  breadcrumbs: function() {
+    const paths = [
+      {
+        to: {pathname: "/"},
+        title: "Home"
+      },
+      {
+        to: {pathname: "/genres"},
+        title: "Genres"
+      }
+    ];
+    return (
+      <Breadcrumbs paths={paths} />
+    );
+  },
   render: function() {
     const { genre } = this.props.params;
     const filteredBooks = this.props.books.filter(book => book.genre === genre);
@@ -17,11 +33,7 @@ const Genre = React.createClass({
     ) : null;
     return (
       <div className="genre-page">
-        <div className="breadcrumbs">
-          <Link to={{pathname: "/"}}>Home</Link>
-          {" > "}
-          <Link to={{pathname: "/genres"}}>Genres</Link>
-        </div>
+        {this.breadcrumbs()}
         <h1>
           {genre} Books
         </h1>

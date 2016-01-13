@@ -2,6 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router";
 
+import Breadcrumbs from "./Breadcrumbs";
+
 const Authors = React.createClass({
   authorList: function() {
     const authorsObject = this.props.books.reduce((authors, books) => {
@@ -27,13 +29,22 @@ const Authors = React.createClass({
       </li>
     );
   },
+  breadcrumbs: function() {
+    const paths = [
+      {
+        to: {pathname: "/"},
+        title: "Home"
+      }
+    ];
+    return (
+      <Breadcrumbs paths={paths} />
+    );
+  },
   render: function() {
     const authors = this.authorList().map((a,i) => this.authorLi(a,i));
     return (
       <div>
-        <div className="breadcrumbs">
-          <Link to={{pathname: "/"}}>Home</Link>
-        </div>
+        {this.breadcrumbs()}
         <h1>Authors</h1>
         <ul>
           {authors}

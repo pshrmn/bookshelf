@@ -66,11 +66,11 @@
 
 	var _routes2 = _interopRequireDefault(_routes);
 
-	var _reducers = __webpack_require__(104);
+	var _reducers = __webpack_require__(105);
 
 	var _reducers2 = _interopRequireDefault(_reducers);
 
-	var _bookLoader = __webpack_require__(106);
+	var _bookLoader = __webpack_require__(107);
 
 	var _bookLoader2 = _interopRequireDefault(_bookLoader);
 
@@ -6330,23 +6330,23 @@
 
 	var _Genres2 = _interopRequireDefault(_Genres);
 
-	var _Genre = __webpack_require__(99);
+	var _Genre = __webpack_require__(100);
 
 	var _Genre2 = _interopRequireDefault(_Genre);
 
-	var _AddBookByGenre = __webpack_require__(100);
+	var _AddBookByGenre = __webpack_require__(101);
 
 	var _AddBookByGenre2 = _interopRequireDefault(_AddBookByGenre);
 
-	var _Authors = __webpack_require__(101);
+	var _Authors = __webpack_require__(102);
 
 	var _Authors2 = _interopRequireDefault(_Authors);
 
-	var _Author = __webpack_require__(102);
+	var _Author = __webpack_require__(103);
 
 	var _Author2 = _interopRequireDefault(_Author);
 
-	var _AddBookByAuthor = __webpack_require__(103);
+	var _AddBookByAuthor = __webpack_require__(104);
 
 	var _AddBookByAuthor2 = _interopRequireDefault(_AddBookByAuthor);
 
@@ -11640,6 +11640,10 @@
 
 	var _reactRouter = __webpack_require__(13);
 
+	var _Breadcrumbs = __webpack_require__(99);
+
+	var _Breadcrumbs2 = _interopRequireDefault(_Breadcrumbs);
+
 	var _genres = __webpack_require__(81);
 
 	var _genres2 = _interopRequireDefault(_genres);
@@ -11649,6 +11653,13 @@
 	exports.default = _react2.default.createClass({
 	  displayName: "Genres",
 
+	  breadcrumbs: function breadcrumbs() {
+	    var paths = [{
+	      to: { pathname: "/" },
+	      title: "Home"
+	    }];
+	    return _react2.default.createElement(_Breadcrumbs2.default, { paths: paths });
+	  },
 	  render: function render() {
 	    var genreLis = _genres2.default.map(function (g, i) {
 	      return _react2.default.createElement(
@@ -11664,15 +11675,7 @@
 	    return _react2.default.createElement(
 	      "div",
 	      null,
-	      _react2.default.createElement(
-	        "div",
-	        { className: "breadcrumbs" },
-	        _react2.default.createElement(
-	          _reactRouter.Link,
-	          { to: { pathname: "/" } },
-	          "Home"
-	        )
-	      ),
+	      this.breadcrumbs(),
 	      _react2.default.createElement(
 	        "h1",
 	        null,
@@ -11701,6 +11704,43 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _reactRouter = __webpack_require__(13);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = _react2.default.createClass({
+	  displayName: "Breadcrumbs",
+
+	  render: function render() {
+	    var pathLinks = this.props.paths.map(function (p, i) {
+	      return _react2.default.createElement(
+	        _reactRouter.Link,
+	        { key: i, to: p.to },
+	        p.title
+	      );
+	    });
+	    return _react2.default.createElement(
+	      "div",
+	      { className: "breadcrumbs" },
+	      pathLinks
+	    );
+	  }
+	});
+
+/***/ },
+/* 100 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
 	var _reactRedux = __webpack_require__(69);
 
 	var _reactRouter = __webpack_require__(13);
@@ -11713,11 +11753,25 @@
 
 	var _Showcase2 = _interopRequireDefault(_Showcase);
 
+	var _Breadcrumbs = __webpack_require__(99);
+
+	var _Breadcrumbs2 = _interopRequireDefault(_Breadcrumbs);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var Genre = _react2.default.createClass({
 	  displayName: "Genre",
 
+	  breadcrumbs: function breadcrumbs() {
+	    var paths = [{
+	      to: { pathname: "/" },
+	      title: "Home"
+	    }, {
+	      to: { pathname: "/genres" },
+	      title: "Genres"
+	    }];
+	    return _react2.default.createElement(_Breadcrumbs2.default, { paths: paths });
+	  },
 	  render: function render() {
 	    var genre = this.props.params.genre;
 
@@ -11733,21 +11787,7 @@
 	    return _react2.default.createElement(
 	      "div",
 	      { className: "genre-page" },
-	      _react2.default.createElement(
-	        "div",
-	        { className: "breadcrumbs" },
-	        _react2.default.createElement(
-	          _reactRouter.Link,
-	          { to: { pathname: "/" } },
-	          "Home"
-	        ),
-	        " > ",
-	        _react2.default.createElement(
-	          _reactRouter.Link,
-	          { to: { pathname: "/genres" } },
-	          "Genres"
-	        )
-	      ),
+	      this.breadcrumbs(),
 	      _react2.default.createElement(
 	        "h1",
 	        null,
@@ -11767,7 +11807,7 @@
 	})(Genre);
 
 /***/ },
-/* 100 */
+/* 101 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -11798,7 +11838,7 @@
 	});
 
 /***/ },
-/* 101 */
+/* 102 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -11814,6 +11854,10 @@
 	var _reactRedux = __webpack_require__(69);
 
 	var _reactRouter = __webpack_require__(13);
+
+	var _Breadcrumbs = __webpack_require__(99);
+
+	var _Breadcrumbs2 = _interopRequireDefault(_Breadcrumbs);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -11851,6 +11895,13 @@
 	      " - " + author.books + " " + books
 	    );
 	  },
+	  breadcrumbs: function breadcrumbs() {
+	    var paths = [{
+	      to: { pathname: "/" },
+	      title: "Home"
+	    }];
+	    return _react2.default.createElement(_Breadcrumbs2.default, { paths: paths });
+	  },
 	  render: function render() {
 	    var _this = this;
 
@@ -11860,15 +11911,7 @@
 	    return _react2.default.createElement(
 	      "div",
 	      null,
-	      _react2.default.createElement(
-	        "div",
-	        { className: "breadcrumbs" },
-	        _react2.default.createElement(
-	          _reactRouter.Link,
-	          { to: { pathname: "/" } },
-	          "Home"
-	        )
-	      ),
+	      this.breadcrumbs(),
 	      _react2.default.createElement(
 	        "h1",
 	        null,
@@ -11888,7 +11931,7 @@
 	})(Authors);
 
 /***/ },
-/* 102 */
+/* 103 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -11909,11 +11952,25 @@
 
 	var _Showcase2 = _interopRequireDefault(_Showcase);
 
+	var _Breadcrumbs = __webpack_require__(99);
+
+	var _Breadcrumbs2 = _interopRequireDefault(_Breadcrumbs);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var Author = _react2.default.createClass({
 	  displayName: "Author",
 
+	  breadcrumbs: function breadcrumbs() {
+	    var paths = [{
+	      to: { pathname: "/" },
+	      title: "Home"
+	    }, {
+	      to: { pathname: "/authors" },
+	      title: "Authors"
+	    }];
+	    return _react2.default.createElement(_Breadcrumbs2.default, { paths: paths });
+	  },
 	  render: function render() {
 	    var author = this.props.params.author;
 
@@ -11929,21 +11986,7 @@
 	    return _react2.default.createElement(
 	      "div",
 	      null,
-	      _react2.default.createElement(
-	        "div",
-	        { className: "breadcrumbs" },
-	        _react2.default.createElement(
-	          _reactRouter.Link,
-	          { to: { pathname: "/" } },
-	          "Home"
-	        ),
-	        " > ",
-	        _react2.default.createElement(
-	          _reactRouter.Link,
-	          { to: { pathname: "/authors" } },
-	          "Authors"
-	        )
-	      ),
+	      this.breadcrumbs(),
 	      _react2.default.createElement(
 	        "h1",
 	        null,
@@ -11961,7 +12004,7 @@
 	})(Author);
 
 /***/ },
-/* 103 */
+/* 104 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -11992,7 +12035,7 @@
 	});
 
 /***/ },
-/* 104 */
+/* 105 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -12001,7 +12044,7 @@
 	  value: true
 	});
 
-	var _books = __webpack_require__(105);
+	var _books = __webpack_require__(106);
 
 	var _books2 = _interopRequireDefault(_books);
 
@@ -12012,7 +12055,7 @@
 	};
 
 /***/ },
-/* 105 */
+/* 106 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -12042,7 +12085,7 @@
 	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
 /***/ },
-/* 106 */
+/* 107 */
 /***/ function(module, exports) {
 
 	"use strict";
