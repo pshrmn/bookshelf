@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { push } from "redux-simple-router";
+import { push } from "react-router-redux";
 
 import { addBook } from "../actions";
 import genres from "../constants/genres";

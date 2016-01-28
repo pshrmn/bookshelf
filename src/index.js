@@ -1,9 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { createStore, combineReducers, applyMiddleware } from "redux"
+import { createStore, combineReducers, applyMiddleware } from "redux";
 import { Router, hashHistory } from "react-router";
 import { Provider } from "react-redux";
-import { syncHistory, routeReducer } from 'redux-simple-router'
+import { syncHistory, routeReducer } from "react-router-redux";
 
 import routes from "./routes";
 import reducers from "./reducers";
@@ -13,9 +13,11 @@ const init = initialState => {
   const reducer = combineReducers(Object.assign({}, reducers, {
     routing: routeReducer
   }));
+
   const store = applyMiddleware(
     syncHistory(hashHistory)
-  )(createStore)(reducer, initialState)
+  )(createStore)(reducer, initialState);
+
   ReactDOM.render(
     <Provider store={store}>
       <div>

@@ -5,20 +5,8 @@ import { Link } from "react-router";
 import Breadcrumbs from "./Breadcrumbs";
 
 const Authors = React.createClass({
-  authorList: function() {
-    const authorsObject = this.props.books.reduce((authors, books) => {
-      const { author } = books;
-      if ( authors[author] ) {
-        authors[author] += 1;
-      } else {
-        authors[author] = 1;
-      }
-      return authors;
-    }, {});
-    return Object.keys(authorsObject).map(key => ({
-      author: key,
-      books: authorsObject[key]
-    }));
+  propTypes: {
+    authors: React.PropTypes.array.isRequired
   },
   authorLi: function(author, index) {
     const books = author.books !== 1 ? "books": "book";
@@ -41,7 +29,7 @@ const Authors = React.createClass({
     );
   },
   render: function() {
-    const authors = this.authorList().map((a,i) => this.authorLi(a,i));
+    const authors = this.props.authors.map((a,i) => this.authorLi(a,i));
     return (
       <div>
         {this.breadcrumbs()}
@@ -55,5 +43,24 @@ const Authors = React.createClass({
 });
 
 export default connect(
-  state => ({books: state.books})
+  state => {
+    // get an object containing all authors and their book count
+    const authorsObject = state.books.reduce((authors, books) => {
+      const { author } = books;
+      if ( authors[author] ) {
+        authors[author] += 1;
+      } else {
+        authors[author] = 1;
+      }
+      return authors;
+    }, {});
+    // convert the object to an array
+    const authors = Object.keys(authorsObject).map(key => ({
+      author: key,
+      books: authorsObject[key]
+    }));
+    return {
+      authors: authors
+    };
+  }
 )(Authors);

@@ -23,8 +23,7 @@ const Genre = React.createClass({
     );
   },
   render: function() {
-    const { genre } = this.props.params;
-    const filteredBooks = this.props.books.filter(book => book.genre === genre);
+    const { genre, books } = this.props;
     // inserts such as the add book form
     const children = this.props.children ? (
       <div className="children">
@@ -38,8 +37,8 @@ const Genre = React.createClass({
           {genre} Books
         </h1>
         {children}
-        <Stats books={filteredBooks} />
-        <Showcase books={filteredBooks}
+        <Stats books={books} />
+        <Showcase books={books}
                   addPath={`/genre/${genre}/add`} />
       </div>
     );
@@ -47,5 +46,11 @@ const Genre = React.createClass({
 });
 
 export default connect(
-  state => ({books: state.books})
+  (state, ownProps) => {
+    const { genre } = ownProps.params;
+    return {
+      genre: genre,
+      books: state.books.filter(book => book.genre === genre)
+    }
+  }
 )(Genre);

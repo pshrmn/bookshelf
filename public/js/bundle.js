@@ -60,7 +60,7 @@
 
 	var _reactRedux = __webpack_require__(69);
 
-	var _reduxSimpleRouter = __webpack_require__(77);
+	var _reactRouterRedux = __webpack_require__(77);
 
 	var _routes = __webpack_require__(78);
 
@@ -78,9 +78,11 @@
 
 	var init = function init(initialState) {
 	  var reducer = (0, _redux.combineReducers)(Object.assign({}, _reducers2.default, {
-	    routing: _reduxSimpleRouter.routeReducer
+	    routing: _reactRouterRedux.routeReducer
 	  }));
-	  var store = (0, _redux.applyMiddleware)((0, _reduxSimpleRouter.syncHistory)(_reactRouter.hashHistory))(_redux.createStore)(reducer, initialState);
+
+	  var store = (0, _redux.applyMiddleware)((0, _reactRouterRedux.syncHistory)(_reactRouter.hashHistory))(_redux.createStore)(reducer, initialState);
+
 	  _reactDom2.default.render(_react2.default.createElement(
 	    _reactRedux.Provider,
 	    { store: store },
@@ -6160,6 +6162,8 @@
 
 	'use strict';
 
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
@@ -6170,28 +6174,31 @@
 	var TRANSITION = exports.TRANSITION = '@@router/TRANSITION';
 	var UPDATE_LOCATION = exports.UPDATE_LOCATION = '@@router/UPDATE_LOCATION';
 
-	var SELECT_STATE = function SELECT_STATE(state) {
-	  return state.routing;
+	var SELECT_LOCATION = function SELECT_LOCATION(state) {
+	  return state.routing.location;
 	};
 
 	function transition(method) {
 	  return function (arg) {
 	    return {
 	      type: TRANSITION,
-	      method: method, arg: arg
+	      payload: { method: method, arg: arg }
 	    };
 	  };
 	}
 
 	var push = exports.push = transition('push');
 	var replace = exports.replace = transition('replace');
+	var go = exports.go = transition('go');
+	var goBack = exports.goBack = transition('goBack');
+	var goForward = exports.goForward = transition('goForward');
 
-	// TODO: Add go, goBack, goForward.
+	var routeActions = exports.routeActions = { push: push, replace: replace, go: go, goBack: goBack, goForward: goForward };
 
 	function updateLocation(location) {
 	  return {
 	    type: UPDATE_LOCATION,
-	    location: location
+	    payload: location
 	  };
 	}
 
@@ -6205,13 +6212,13 @@
 	  var state = arguments.length <= 0 || arguments[0] === undefined ? initialState : arguments[0];
 	  var _ref = arguments[1];
 	  var type = _ref.type;
-	  var location = _ref.location;
+	  var location = _ref.payload;
 
 	  if (type !== UPDATE_LOCATION) {
 	    return state;
 	  }
 
-	  return { location: location };
+	  return _extends({}, state, { location: location });
 	}
 
 	// Syncing
@@ -6239,42 +6246,32 @@
 	    return function (next) {
 	      return function (action) {
 	        if (action.type !== TRANSITION || !connected) {
-	          next(action);
-	          return;
+	          return next(action);
 	        }
 
-	        // FIXME: Is it correct to swallow the TRANSITION action here and replace
-	        // it with UPDATE_LOCATION instead? We could also use the same type in
-	        // both places instead and just set the location on the action.
-
-	        var method = action.method;
-	        var arg = action.arg;
+	        var _action$payload = action.payload;
+	        var method = _action$payload.method;
+	        var arg = _action$payload.arg;
 
 	        history[method](arg);
 	      };
 	    };
 	  }
 
-	  middleware.syncHistoryToStore = function (store) {
-	    var selectRouterState = arguments.length <= 1 || arguments[1] === undefined ? SELECT_STATE : arguments[1];
+	  middleware.listenForReplays = function (store) {
+	    var selectLocationState = arguments.length <= 1 || arguments[1] === undefined ? SELECT_LOCATION : arguments[1];
 
-	    var getRouterState = function getRouterState() {
-	      return selectRouterState(store.getState());
+	    var getLocationState = function getLocationState() {
+	      return selectLocationState(store.getState());
 	    };
-
-	    var _getRouterState = getRouterState();
-
-	    var initialLocation = _getRouterState.location;
+	    var initialLocation = getLocationState();
 
 	    unsubscribeStore = store.subscribe(function () {
-	      var _getRouterState2 = getRouterState();
-
-	      var location = _getRouterState2.location;
+	      var location = getLocationState();
 
 	      // If we're resetting to the beginning, use the saved initial value. We
 	      // need to dispatch a new action at this point to populate the store
 	      // appropriately.
-
 	      if (!location) {
 	        history.transitionTo(initialLocation);
 	        return;
@@ -11436,7 +11433,7 @@
 
 	var _reactRedux = __webpack_require__(69);
 
-	var _reduxSimpleRouter = __webpack_require__(77);
+	var _reactRouterRedux = __webpack_require__(77);
 
 	var _actions = __webpack_require__(96);
 
@@ -11585,7 +11582,7 @@
 	  }
 	});
 
-	exports.default = (0, _reactRedux.connect)(null, { addBook: _actions.addBook, push: _reduxSimpleRouter.push })(BookForm);
+	exports.default = (0, _reactRedux.connect)(null, { addBook: _actions.addBook, push: _reactRouterRedux.push })(BookForm);
 
 /***/ },
 /* 96 */
@@ -11773,12 +11770,11 @@
 	    return _react2.default.createElement(_Breadcrumbs2.default, { paths: paths });
 	  },
 	  render: function render() {
-	    var genre = this.props.params.genre;
-
-	    var filteredBooks = this.props.books.filter(function (book) {
-	      return book.genre === genre;
-	    });
+	    var _props = this.props;
+	    var genre = _props.genre;
+	    var books = _props.books;
 	    // inserts such as the add book form
+
 	    var children = this.props.children ? _react2.default.createElement(
 	      "div",
 	      { className: "children" },
@@ -11795,15 +11791,22 @@
 	        " Books"
 	      ),
 	      children,
-	      _react2.default.createElement(_Stats2.default, { books: filteredBooks }),
-	      _react2.default.createElement(_Showcase2.default, { books: filteredBooks,
+	      _react2.default.createElement(_Stats2.default, { books: books }),
+	      _react2.default.createElement(_Showcase2.default, { books: books,
 	        addPath: "/genre/" + genre + "/add" })
 	    );
 	  }
 	});
 
-	exports.default = (0, _reactRedux.connect)(function (state) {
-	  return { books: state.books };
+	exports.default = (0, _reactRedux.connect)(function (state, ownProps) {
+	  var genre = ownProps.params.genre;
+
+	  return {
+	    genre: genre,
+	    books: state.books.filter(function (book) {
+	      return book.genre === genre;
+	    })
+	  };
 	})(Genre);
 
 /***/ },
@@ -11864,23 +11867,8 @@
 	var Authors = _react2.default.createClass({
 	  displayName: "Authors",
 
-	  authorList: function authorList() {
-	    var authorsObject = this.props.books.reduce(function (authors, books) {
-	      var author = books.author;
-
-	      if (authors[author]) {
-	        authors[author] += 1;
-	      } else {
-	        authors[author] = 1;
-	      }
-	      return authors;
-	    }, {});
-	    return Object.keys(authorsObject).map(function (key) {
-	      return {
-	        author: key,
-	        books: authorsObject[key]
-	      };
-	    });
+	  propTypes: {
+	    authors: _react2.default.PropTypes.array.isRequired
 	  },
 	  authorLi: function authorLi(author, index) {
 	    var books = author.books !== 1 ? "books" : "book";
@@ -11905,7 +11893,7 @@
 	  render: function render() {
 	    var _this = this;
 
-	    var authors = this.authorList().map(function (a, i) {
+	    var authors = this.props.authors.map(function (a, i) {
 	      return _this.authorLi(a, i);
 	    });
 	    return _react2.default.createElement(
@@ -11927,7 +11915,27 @@
 	});
 
 	exports.default = (0, _reactRedux.connect)(function (state) {
-	  return { books: state.books };
+	  // get an object containing all authors and their book count
+	  var authorsObject = state.books.reduce(function (authors, books) {
+	    var author = books.author;
+
+	    if (authors[author]) {
+	      authors[author] += 1;
+	    } else {
+	      authors[author] = 1;
+	    }
+	    return authors;
+	  }, {});
+	  // convert the object to an array
+	  var authors = Object.keys(authorsObject).map(function (key) {
+	    return {
+	      author: key,
+	      books: authorsObject[key]
+	    };
+	  });
+	  return {
+	    authors: authors
+	  };
 	})(Authors);
 
 /***/ },
@@ -11945,8 +11953,6 @@
 	var _react2 = _interopRequireDefault(_react);
 
 	var _reactRedux = __webpack_require__(69);
-
-	var _reactRouter = __webpack_require__(13);
 
 	var _Showcase = __webpack_require__(92);
 
@@ -11972,12 +11978,11 @@
 	    return _react2.default.createElement(_Breadcrumbs2.default, { paths: paths });
 	  },
 	  render: function render() {
-	    var author = this.props.params.author;
-
-	    var filteredBooks = this.props.books.filter(function (book) {
-	      return book.author === author;
-	    });
+	    var _props = this.props;
+	    var author = _props.author;
+	    var books = _props.books;
 	    // inserts such as the add book form
+
 	    var children = this.props.children ? _react2.default.createElement(
 	      "div",
 	      { className: "children" },
@@ -11993,14 +11998,22 @@
 	        author
 	      ),
 	      children,
-	      _react2.default.createElement(_Showcase2.default, { books: filteredBooks,
+	      _react2.default.createElement(_Showcase2.default, { books: books,
 	        addPath: "/author/" + author + "/add" })
 	    );
 	  }
 	});
 
-	exports.default = (0, _reactRedux.connect)(function (state) {
-	  return { books: state.books };
+	exports.default = (0, _reactRedux.connect)(function (state, ownProps) {
+	  // access the author param using ownProps
+	  var author = ownProps.params.author;
+
+	  return {
+	    author: author,
+	    books: state.books.filter(function (book) {
+	      return book.author === author;
+	    })
+	  };
 	})(Author);
 
 /***/ },

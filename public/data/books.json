@@ -1,6 +1,16 @@
 {
   "books": [
     {
+      "title": "The Gods Themselves",
+      "author": "Isaac Asimov",
+      "genre": "sci-fi"
+    },
+    {
+      "title": "The Dark Forest",
+      "author": "Liu Cixin",
+      "genre": "sci-fi"
+    },
+    {
       "title": "The Three-Body Problem",
       "author": "Liu Cixin",
       "genre": "sci-fi"
