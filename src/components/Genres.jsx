@@ -21,7 +21,7 @@ export default React.createClass({
     const genreLis = genres.map((g,i) => {
       return (
         <li key={i}>
-          <Link to={{pathname: `genre/${g}`}}>{g}</Link>
+          <Link to={{pathname: `/genre/${g}`}}>{g}</Link>
         </li>
       );
     });

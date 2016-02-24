@@ -19,13 +19,13 @@ const BookForm = React.createClass({
   save: function(event) {
     event.preventDefault();
     if ( this.validate() ) {
-      // add the book, then transition to the root page
+      // add the book and provide the next page that the router should
+      // transition to
       this.props.addBook({
         title: this.state.title,
         author: this.state.author,
         genre: this.state.genre
-      });
-      this.props.push(this.props.next || "/");
+      }, this.props.next || "/");
     }
   },
   cancel: function(event) {

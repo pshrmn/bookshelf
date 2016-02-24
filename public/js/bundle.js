@@ -74,6 +74,10 @@
 
 	var _bookLoader2 = _interopRequireDefault(_bookLoader);
 
+	var _postMiddleware = __webpack_require__(108);
+
+	var _postMiddleware2 = _interopRequireDefault(_postMiddleware);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var init = function init(initialState) {
@@ -81,7 +85,7 @@
 	    routing: _reactRouterRedux.routeReducer
 	  }));
 
-	  var store = (0, _redux.applyMiddleware)((0, _reactRouterRedux.syncHistory)(_reactRouter.hashHistory))(_redux.createStore)(reducer, initialState);
+	  var store = (0, _redux.createStore)(reducer, initialState, (0, _redux.applyMiddleware)((0, _reactRouterRedux.syncHistory)(_reactRouter.hashHistory), _postMiddleware2.default));
 
 	  _reactDom2.default.render(_react2.default.createElement(
 	    _reactRedux.Provider,
@@ -117,40 +121,150 @@
 /* 3 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 
 	exports.__esModule = true;
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _createStore = __webpack_require__(4);
+	var _createStore = __webpack_require__(5);
 
 	var _createStore2 = _interopRequireDefault(_createStore);
 
-	var _utilsCombineReducers = __webpack_require__(6);
+	var _combineReducers = __webpack_require__(7);
 
-	var _utilsCombineReducers2 = _interopRequireDefault(_utilsCombineReducers);
+	var _combineReducers2 = _interopRequireDefault(_combineReducers);
 
-	var _utilsBindActionCreators = __webpack_require__(10);
+	var _bindActionCreators = __webpack_require__(10);
 
-	var _utilsBindActionCreators2 = _interopRequireDefault(_utilsBindActionCreators);
+	var _bindActionCreators2 = _interopRequireDefault(_bindActionCreators);
 
-	var _utilsApplyMiddleware = __webpack_require__(11);
+	var _applyMiddleware = __webpack_require__(11);
 
-	var _utilsApplyMiddleware2 = _interopRequireDefault(_utilsApplyMiddleware);
+	var _applyMiddleware2 = _interopRequireDefault(_applyMiddleware);
 
-	var _utilsCompose = __webpack_require__(12);
+	var _compose = __webpack_require__(12);
 
-	var _utilsCompose2 = _interopRequireDefault(_utilsCompose);
+	var _compose2 = _interopRequireDefault(_compose);
+
+	/*
+	* This is a dummy function to check if the function name has been altered by minification.
+	* If the function has been minified and NODE_ENV !== 'production', warn the user.
+	*/
+	function isCrushed() {}
+
+	if (isCrushed.name !== 'isCrushed' && process.env.NODE_ENV !== 'production') {
+	  /*eslint-disable no-console */
+	  console.error('You are currently using minified code outside of NODE_ENV === \'production\'. ' + 'This means that you are running a slower development build of Redux. ' + 'You can use loose-envify (https://github.com/zertosh/loose-envify) for browserify ' + 'or DefinePlugin for webpack (http://stackoverflow.com/questions/30030031) ' + 'to ensure you have the correct code for your production build.');
+	  /*eslint-enable */
+	}
 
 	exports.createStore = _createStore2['default'];
-	exports.combineReducers = _utilsCombineReducers2['default'];
-	exports.bindActionCreators = _utilsBindActionCreators2['default'];
-	exports.applyMiddleware = _utilsApplyMiddleware2['default'];
-	exports.compose = _utilsCompose2['default'];
+	exports.combineReducers = _combineReducers2['default'];
+	exports.bindActionCreators = _bindActionCreators2['default'];
+	exports.applyMiddleware = _applyMiddleware2['default'];
+	exports.compose = _compose2['default'];
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
 /* 4 */
+/***/ function(module, exports) {
+
+	// shim for using process in browser
+
+	var process = module.exports = {};
+	var queue = [];
+	var draining = false;
+	var currentQueue;
+	var queueIndex = -1;
+
+	function cleanUpNextTick() {
+	    draining = false;
+	    if (currentQueue.length) {
+	        queue = currentQueue.concat(queue);
+	    } else {
+	        queueIndex = -1;
+	    }
+	    if (queue.length) {
+	        drainQueue();
+	    }
+	}
+
+	function drainQueue() {
+	    if (draining) {
+	        return;
+	    }
+	    var timeout = setTimeout(cleanUpNextTick);
+	    draining = true;
+
+	    var len = queue.length;
+	    while(len) {
+	        currentQueue = queue;
+	        queue = [];
+	        while (++queueIndex < len) {
+	            if (currentQueue) {
+	                currentQueue[queueIndex].run();
+	            }
+	        }
+	        queueIndex = -1;
+	        len = queue.length;
+	    }
+	    currentQueue = null;
+	    draining = false;
+	    clearTimeout(timeout);
+	}
+
+	process.nextTick = function (fun) {
+	    var args = new Array(arguments.length - 1);
+	    if (arguments.length > 1) {
+	        for (var i = 1; i < arguments.length; i++) {
+	            args[i - 1] = arguments[i];
+	        }
+	    }
+	    queue.push(new Item(fun, args));
+	    if (queue.length === 1 && !draining) {
+	        setTimeout(drainQueue, 0);
+	    }
+	};
+
+	// v8 likes predictible objects
+	function Item(fun, array) {
+	    this.fun = fun;
+	    this.array = array;
+	}
+	Item.prototype.run = function () {
+	    this.fun.apply(null, this.array);
+	};
+	process.title = 'browser';
+	process.browser = true;
+	process.env = {};
+	process.argv = [];
+	process.version = ''; // empty string to avoid regexp issues
+	process.versions = {};
+
+	function noop() {}
+
+	process.on = noop;
+	process.addListener = noop;
+	process.once = noop;
+	process.off = noop;
+	process.removeListener = noop;
+	process.removeAllListeners = noop;
+	process.emit = noop;
+
+	process.binding = function (name) {
+	    throw new Error('process.binding is not supported');
+	};
+
+	process.cwd = function () { return '/' };
+	process.chdir = function (dir) {
+	    throw new Error('process.chdir is not supported');
+	};
+	process.umask = function() { return 0; };
+
+
+/***/ },
+/* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -160,7 +274,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _utilsIsPlainObject = __webpack_require__(5);
+	var _utilsIsPlainObject = __webpack_require__(6);
 
 	var _utilsIsPlainObject2 = _interopRequireDefault(_utilsIsPlainObject);
 
@@ -192,11 +306,29 @@
 	 * If you use `combineReducers` to produce the root reducer function, this must be
 	 * an object with the same shape as `combineReducers` keys.
 	 *
+	 * @param {Function} enhancer The store enhancer. You may optionally specify it
+	 * to enhance the store with third-party capabilities such as middleware,
+	 * time travel, persistence, etc. The only store enhancer that ships with Redux
+	 * is `applyMiddleware()`.
+	 *
 	 * @returns {Store} A Redux store that lets you read the state, dispatch actions
 	 * and subscribe to changes.
 	 */
 
-	function createStore(reducer, initialState) {
+	function createStore(reducer, initialState, enhancer) {
+	  if (typeof initialState === 'function' && typeof enhancer === 'undefined') {
+	    enhancer = initialState;
+	    initialState = undefined;
+	  }
+
+	  if (typeof enhancer !== 'undefined') {
+	    if (typeof enhancer !== 'function') {
+	      throw new Error('Expected the enhancer to be a function.');
+	    }
+
+	    return enhancer(createStore)(reducer, initialState);
+	  }
+
 	  if (typeof reducer !== 'function') {
 	    throw new Error('Expected the reducer to be a function.');
 	  }
@@ -219,6 +351,9 @@
 	   * Adds a change listener. It will be called any time an action is dispatched,
 	   * and some part of the state tree may potentially have changed. You may then
 	   * call `getState()` to read the current state tree inside the callback.
+	   * Note, the listener should not expect to see all states changes, as the
+	   * state might have been updated multiple times before the listener is
+	   * notified.
 	   *
 	   * @param {Function} listener A callback to be invoked on every dispatch.
 	   * @returns {Function} A function to remove this change listener.
@@ -318,7 +453,7 @@
 	}
 
 /***/ },
-/* 5 */
+/* 6 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -354,7 +489,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 6 */
+/* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -364,19 +499,19 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _createStore = __webpack_require__(4);
+	var _createStore = __webpack_require__(5);
 
-	var _isPlainObject = __webpack_require__(5);
+	var _utilsIsPlainObject = __webpack_require__(6);
 
-	var _isPlainObject2 = _interopRequireDefault(_isPlainObject);
+	var _utilsIsPlainObject2 = _interopRequireDefault(_utilsIsPlainObject);
 
-	var _mapValues = __webpack_require__(8);
+	var _utilsMapValues = __webpack_require__(8);
 
-	var _mapValues2 = _interopRequireDefault(_mapValues);
+	var _utilsMapValues2 = _interopRequireDefault(_utilsMapValues);
 
-	var _pick = __webpack_require__(9);
+	var _utilsPick = __webpack_require__(9);
 
-	var _pick2 = _interopRequireDefault(_pick);
+	var _utilsPick2 = _interopRequireDefault(_utilsPick);
 
 	/* eslint-disable no-console */
 
@@ -387,20 +522,20 @@
 	  return 'Reducer "' + key + '" returned undefined handling ' + actionName + '. ' + 'To ignore an action, you must explicitly return the previous state.';
 	}
 
-	function getUnexpectedStateKeyWarningMessage(inputState, outputState, action) {
-	  var reducerKeys = Object.keys(outputState);
+	function getUnexpectedStateShapeWarningMessage(inputState, reducers, action) {
+	  var reducerKeys = Object.keys(reducers);
 	  var argumentName = action && action.type === _createStore.ActionTypes.INIT ? 'initialState argument passed to createStore' : 'previous state received by the reducer';
 
 	  if (reducerKeys.length === 0) {
 	    return 'Store does not have a valid reducer. Make sure the argument passed ' + 'to combineReducers is an object whose values are reducers.';
 	  }
 
-	  if (!_isPlainObject2['default'](inputState)) {
+	  if (!_utilsIsPlainObject2['default'](inputState)) {
 	    return 'The ' + argumentName + ' has unexpected type of "' + ({}).toString.call(inputState).match(/\s([a-z|A-Z]+)/)[1] + '". Expected argument to be an object with the following ' + ('keys: "' + reducerKeys.join('", "') + '"');
 	  }
 
 	  var unexpectedKeys = Object.keys(inputState).filter(function (key) {
-	    return reducerKeys.indexOf(key) < 0;
+	    return !reducers.hasOwnProperty(key);
 	  });
 
 	  if (unexpectedKeys.length > 0) {
@@ -442,7 +577,7 @@
 	 */
 
 	function combineReducers(reducers) {
-	  var finalReducers = _pick2['default'](reducers, function (val) {
+	  var finalReducers = _utilsPick2['default'](reducers, function (val) {
 	    return typeof val === 'function';
 	  });
 	  var sanityError;
@@ -453,19 +588,22 @@
 	    sanityError = e;
 	  }
 
-	  var defaultState = _mapValues2['default'](finalReducers, function () {
-	    return undefined;
-	  });
-
 	  return function combination(state, action) {
-	    if (state === undefined) state = defaultState;
+	    if (state === undefined) state = {};
 
 	    if (sanityError) {
 	      throw sanityError;
 	    }
 
+	    if (process.env.NODE_ENV !== 'production') {
+	      var warningMessage = getUnexpectedStateShapeWarningMessage(state, finalReducers, action);
+	      if (warningMessage) {
+	        console.error(warningMessage);
+	      }
+	    }
+
 	    var hasChanged = false;
-	    var finalState = _mapValues2['default'](finalReducers, function (reducer, key) {
+	    var finalState = _utilsMapValues2['default'](finalReducers, function (reducer, key) {
 	      var previousStateForKey = state[key];
 	      var nextStateForKey = reducer(previousStateForKey, action);
 	      if (typeof nextStateForKey === 'undefined') {
@@ -476,116 +614,12 @@
 	      return nextStateForKey;
 	    });
 
-	    if (process.env.NODE_ENV !== 'production') {
-	      var warningMessage = getUnexpectedStateKeyWarningMessage(state, finalState, action);
-	      if (warningMessage) {
-	        console.error(warningMessage);
-	      }
-	    }
-
 	    return hasChanged ? finalState : state;
 	  };
 	}
 
 	module.exports = exports['default'];
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
-
-/***/ },
-/* 7 */
-/***/ function(module, exports) {
-
-	// shim for using process in browser
-
-	var process = module.exports = {};
-	var queue = [];
-	var draining = false;
-	var currentQueue;
-	var queueIndex = -1;
-
-	function cleanUpNextTick() {
-	    draining = false;
-	    if (currentQueue.length) {
-	        queue = currentQueue.concat(queue);
-	    } else {
-	        queueIndex = -1;
-	    }
-	    if (queue.length) {
-	        drainQueue();
-	    }
-	}
-
-	function drainQueue() {
-	    if (draining) {
-	        return;
-	    }
-	    var timeout = setTimeout(cleanUpNextTick);
-	    draining = true;
-
-	    var len = queue.length;
-	    while(len) {
-	        currentQueue = queue;
-	        queue = [];
-	        while (++queueIndex < len) {
-	            if (currentQueue) {
-	                currentQueue[queueIndex].run();
-	            }
-	        }
-	        queueIndex = -1;
-	        len = queue.length;
-	    }
-	    currentQueue = null;
-	    draining = false;
-	    clearTimeout(timeout);
-	}
-
-	process.nextTick = function (fun) {
-	    var args = new Array(arguments.length - 1);
-	    if (arguments.length > 1) {
-	        for (var i = 1; i < arguments.length; i++) {
-	            args[i - 1] = arguments[i];
-	        }
-	    }
-	    queue.push(new Item(fun, args));
-	    if (queue.length === 1 && !draining) {
-	        setTimeout(drainQueue, 0);
-	    }
-	};
-
-	// v8 likes predictible objects
-	function Item(fun, array) {
-	    this.fun = fun;
-	    this.array = array;
-	}
-	Item.prototype.run = function () {
-	    this.fun.apply(null, this.array);
-	};
-	process.title = 'browser';
-	process.browser = true;
-	process.env = {};
-	process.argv = [];
-	process.version = ''; // empty string to avoid regexp issues
-	process.versions = {};
-
-	function noop() {}
-
-	process.on = noop;
-	process.addListener = noop;
-	process.once = noop;
-	process.off = noop;
-	process.removeListener = noop;
-	process.removeAllListeners = noop;
-	process.emit = noop;
-
-	process.binding = function (name) {
-	    throw new Error('process.binding is not supported');
-	};
-
-	process.cwd = function () { return '/' };
-	process.chdir = function (dir) {
-	    throw new Error('process.chdir is not supported');
-	};
-	process.umask = function() { return 0; };
-
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
 /* 8 */
@@ -650,9 +684,9 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _mapValues = __webpack_require__(8);
+	var _utilsMapValues = __webpack_require__(8);
 
-	var _mapValues2 = _interopRequireDefault(_mapValues);
+	var _utilsMapValues2 = _interopRequireDefault(_utilsMapValues);
 
 	function bindActionCreator(actionCreator, dispatch) {
 	  return function () {
@@ -691,7 +725,7 @@
 	    throw new Error('bindActionCreators expected an object or a function, instead received ' + (actionCreators === null ? 'null' : typeof actionCreators) + '. ' + 'Did you write "import ActionCreators from" instead of "import * as ActionCreators from"?');
 	  }
 
-	  return _mapValues2['default'](actionCreators, function (actionCreator) {
+	  return _utilsMapValues2['default'](actionCreators, function (actionCreator) {
 	    return bindActionCreator(actionCreator, dispatch);
 	  });
 	}
@@ -738,9 +772,9 @@
 	    middlewares[_key] = arguments[_key];
 	  }
 
-	  return function (next) {
-	    return function (reducer, initialState) {
-	      var store = next(reducer, initialState);
+	  return function (createStore) {
+	    return function (reducer, initialState, enhancer) {
+	      var store = createStore(reducer, initialState, enhancer);
 	      var _dispatch = store.dispatch;
 	      var chain = [];
 
@@ -785,10 +819,17 @@
 	    funcs[_key] = arguments[_key];
 	  }
 
-	  return function (arg) {
-	    return funcs.reduceRight(function (composed, f) {
+	  return function () {
+	    if (funcs.length === 0) {
+	      return arguments[0];
+	    }
+
+	    var last = funcs[funcs.length - 1];
+	    var rest = funcs.slice(0, -1);
+
+	    return rest.reduceRight(function (composed, f) {
 	      return f(composed);
-	    }, arg);
+	    }, last.apply(undefined, arguments));
 	  };
 	}
 
@@ -1114,7 +1155,7 @@
 
 	exports['default'] = Router;
 	module.exports = exports['default'];
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
 /* 15 */
@@ -1368,7 +1409,7 @@
 
 	exports['default'] = createHashHistory;
 	module.exports = exports['default'];
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
 /* 16 */
@@ -1435,7 +1476,7 @@
 
 	module.exports = warning;
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
 /* 17 */
@@ -1493,7 +1534,7 @@
 
 	module.exports = invariant;
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
 /* 18 */
@@ -1698,7 +1739,7 @@
 
 	  return null;
 	}
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
 /* 22 */
@@ -1744,7 +1785,7 @@
 
 	exports['default'] = createDOMHistory;
 	module.exports = exports['default'];
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
 /* 23 */
@@ -2321,7 +2362,7 @@
 
 	exports['default'] = parsePath;
 	module.exports = exports['default'];
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
 /* 30 */
@@ -2369,7 +2410,7 @@
 
 	exports['default'] = runTransitionHook;
 	module.exports = exports['default'];
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
 /* 32 */
@@ -2567,7 +2608,7 @@
 
 	exports['default'] = useQueries;
 	module.exports = exports['default'];
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
 /* 34 */
@@ -2959,7 +3000,7 @@
 
 	//export default useRoutes
 	module.exports = exports['default'];
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
 /* 37 */
@@ -2982,7 +3023,7 @@
 	}
 
 	module.exports = exports['default'];
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
 /* 38 */
@@ -3276,7 +3317,7 @@
 
 	  return pathname.replace(/\/+/g, '/');
 	}
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
 /* 40 */
@@ -3780,7 +3821,7 @@
 
 	exports['default'] = matchRoutes;
 	module.exports = exports['default'];
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
 /* 45 */
@@ -3900,7 +3941,7 @@
 
 	  return routes;
 	}
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
 /* 46 */
@@ -4118,7 +4159,7 @@
 
 	exports['default'] = RouterContext;
 	module.exports = exports['default'];
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
 /* 48 */
@@ -4180,7 +4221,7 @@
 	}
 
 	module.exports = exports['default'];
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
 /* 49 */
@@ -4248,7 +4289,7 @@
 
 	  return history;
 	}
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
 /* 51 */
@@ -4420,7 +4461,7 @@
 
 	exports['default'] = Link;
 	module.exports = exports['default'];
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
 /* 52 */
@@ -4525,7 +4566,7 @@
 
 	exports['default'] = IndexRedirect;
 	module.exports = exports['default'];
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
 /* 54 */
@@ -4630,7 +4671,7 @@
 
 	exports['default'] = Redirect;
 	module.exports = exports['default'];
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
 /* 55 */
@@ -4697,7 +4738,7 @@
 
 	exports['default'] = IndexRoute;
 	module.exports = exports['default'];
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
 /* 56 */
@@ -4759,7 +4800,7 @@
 
 	exports['default'] = Route;
 	module.exports = exports['default'];
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
 /* 57 */
@@ -4795,7 +4836,7 @@
 
 	exports['default'] = History;
 	module.exports = exports['default'];
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
 /* 58 */
@@ -4870,7 +4911,7 @@
 
 	exports['default'] = Lifecycle;
 	module.exports = exports['default'];
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
 /* 59 */
@@ -4922,7 +4963,7 @@
 
 	exports['default'] = RouteContext;
 	module.exports = exports['default'];
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
 /* 60 */
@@ -4979,7 +5020,7 @@
 
 	exports['default'] = useRoutes;
 	module.exports = exports['default'];
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
 /* 61 */
@@ -5044,7 +5085,7 @@
 
 	exports['default'] = match;
 	module.exports = exports['default'];
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
 /* 62 */
@@ -5239,7 +5280,7 @@
 
 	exports['default'] = createMemoryHistory;
 	module.exports = exports['default'];
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
 /* 64 */
@@ -5626,7 +5667,7 @@
 
 	exports['default'] = createBrowserHistory;
 	module.exports = exports['default'];
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
 /* 68 */
@@ -6031,7 +6072,7 @@
 	}
 
 	module.exports = connect;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
 /* 73 */
@@ -6688,7 +6729,7 @@
 	        { key: i },
 	        _react2.default.createElement(
 	          _reactRouter.Link,
-	          { to: { pathname: "author/" + a.author } },
+	          { to: { pathname: "/author/" + a.author } },
 	          a.author
 	        ),
 	        " - ",
@@ -11381,7 +11422,7 @@
 	        { className: "author" },
 	        _react2.default.createElement(
 	          _reactRouter.Link,
-	          { to: { pathname: "author/" + author } },
+	          { to: { pathname: "/author/" + author } },
 	          author
 	        )
 	      )
@@ -11459,13 +11500,13 @@
 	  save: function save(event) {
 	    event.preventDefault();
 	    if (this.validate()) {
-	      // add the book, then transition to the root page
+	      // add the book and provide the next page that the router should
+	      // transition to
 	      this.props.addBook({
 	        title: this.state.title,
 	        author: this.state.author,
 	        genre: this.state.genre
-	      });
-	      this.props.push(this.props.next || "/");
+	      }, this.props.next || "/");
 	    }
 	  },
 	  cancel: function cancel(event) {
@@ -11601,10 +11642,11 @@
 
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
-	function addBook(book) {
+	function addBook(book, next) {
 	  return {
 	    type: types.ADD_BOOK,
-	    book: book
+	    book: book,
+	    next: next
 	  };
 	}
 
@@ -11664,7 +11706,7 @@
 	        { key: i },
 	        _react2.default.createElement(
 	          _reactRouter.Link,
-	          { to: { pathname: "genre/" + g } },
+	          { to: { pathname: "/genre/" + g } },
 	          g
 	        )
 	      );
@@ -11877,7 +11919,7 @@
 	      { key: index },
 	      _react2.default.createElement(
 	        _reactRouter.Link,
-	        { to: { pathname: "author/" + author.author } },
+	        { to: { pathname: "/author/" + author.author } },
 	        author.author
 	      ),
 	      " - " + author.books + " " + books
@@ -12081,6 +12123,7 @@
 	  var state = arguments.length <= 0 || arguments[0] === undefined ? [] : arguments[0];
 	  var action = arguments[1];
 
+	  console.log(action);
 	  switch (action.type) {
 	    case types.ADD_BOOK:
 	      return [action.book].concat(_toConsumableArray(state.slice()));
@@ -12126,6 +12169,40 @@
 	    req.send();
 	  });
 	}
+
+/***/ },
+/* 108 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _ActionTypes = __webpack_require__(97);
+
+	var types = _interopRequireWildcard(_ActionTypes);
+
+	var _reactRouterRedux = __webpack_require__(77);
+
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+	/*
+	 * after adding a book, redirect
+	 */
+
+	exports.default = function (store) {
+	  return function (nextDispatch) {
+	    return function (action) {
+	      if (action.type !== types.ADD_BOOK) {
+	        return nextDispatch(action);
+	      }
+	      nextDispatch(action);
+	      return store.dispatch((0, _reactRouterRedux.push)(action.next || "/"));
+	    };
+	  };
+	};
 
 /***/ }
 /******/ ]);

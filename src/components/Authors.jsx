@@ -12,7 +12,7 @@ const Authors = React.createClass({
     const books = author.books !== 1 ? "books": "book";
     return (
       <li key={index}>
-        <Link to={{pathname: `author/${author.author}`}}>{author.author}</Link>
+        <Link to={{pathname: `/author/${author.author}`}}>{author.author}</Link>
         {` - ${author.books} ${books}`}
       </li>
     );

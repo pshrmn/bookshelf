@@ -8,15 +8,18 @@ import { syncHistory, routeReducer } from "react-router-redux";
 import routes from "./routes";
 import reducers from "./reducers";
 import bookLoader from "./bookLoader";
+import post from "./middleware/postMiddleware";
 
 const init = initialState => {
   const reducer = combineReducers(Object.assign({}, reducers, {
     routing: routeReducer
   }));
 
-  const store = applyMiddleware(
-    syncHistory(hashHistory)
-  )(createStore)(reducer, initialState);
+  const store = createStore(
+    reducer,
+    initialState,
+    applyMiddleware(syncHistory(hashHistory), post)
+  );
 
   ReactDOM.render(
     <Provider store={store}>

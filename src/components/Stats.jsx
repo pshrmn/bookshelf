@@ -83,7 +83,7 @@ let PopularAuthors = React.createClass({
     let authors = this.counts().map((a,i) => {
       return (
         <li key={i}>
-          <Link to={{pathname: `author/${a.author}`}}>{a.author}</Link> - {a.count}
+          <Link to={{pathname: `/author/${a.author}`}}>{a.author}</Link> - {a.count}
         </li>
       );
     });

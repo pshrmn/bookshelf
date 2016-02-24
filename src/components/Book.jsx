@@ -13,7 +13,7 @@ export default React.createClass({
           <div className="title">{title}</div>
         </div>
         <div className="author">
-          <Link to={{pathname: `author/${author}`}}>{author}</Link>
+          <Link to={{pathname: `/author/${author}`}}>{author}</Link>
         </div>
       </div>
     );

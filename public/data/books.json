@@ -1,6 +1,41 @@
 {
   "books": [
     {
+      "title": "Life, the Universe and Everything",
+      "author": "Douglas Adams",
+      "genre" : "sci-fi"
+    },
+    {
+      "title": "The Restaurant at the End of the Universe",
+      "author": "Douglas Adams",
+      "genre" : "sci-fi"
+    },
+    {
+      "title": "The Hitchhiker's Guide to the Galaxy",
+      "author": "Douglas Adams",
+      "genre" : "sci-fi"
+    },
+    {
+      "title": "A Clockwork Orange",
+      "author": "Anthony Burgess",
+      "genre": "sci-fi"
+    },
+    {
+      "title": "Dune",
+      "author": "Frank Herbert",
+      "genre": "sci-fi"
+    },
+    {
+      "title": "Fahrenheit 451",
+      "author": "Ray Bradbury",
+      "genre": "sci-fi"
+    },
+    {
+      "title": "The Girl Who Kicked the Hornets' Nest",
+      "author": "Stieg Larsson",
+      "genre": "thriller"
+    },
+    {
       "title": "The Gods Themselves",
       "author": "Isaac Asimov",
       "genre": "sci-fi"
