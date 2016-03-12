@@ -1,6 +1,26 @@
 {
   "books": [
     {
+      "title": "The Andromeda Strain",
+      "author": "Michael Crichton",
+      "genre": "sci-fi"
+    }
+    {
+      "title": "One Child",
+      "author": "Mei Fong",
+      "genre": "non-fiction"
+    },
+    {
+      "title": "Mostly Harmless",
+      "author": "Douglas Adams",
+      "genre" : "sci-fi"
+    },
+    {
+      "title": "So Long, and Thanks for All the Fish",
+      "author": "Douglas Adams",
+      "genre" : "sci-fi"
+    },
+    {
       "title": "Life, the Universe and Everything",
       "author": "Douglas Adams",
       "genre" : "sci-fi"
