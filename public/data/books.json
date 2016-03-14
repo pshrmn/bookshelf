@@ -1,6 +1,11 @@
 {
   "books": [
     {
+      "title": "Leviathan Wakes",
+      "author": "James S.A. Corey",
+      "genre": "sci-fi"
+    },
+    {
       "title": "The Andromeda Strain",
       "author": "Michael Crichton",
       "genre": "sci-fi"
