@@ -1,6 +1,16 @@
 {
   "books": [
     {
+      "title": "Abaddon's Gate",
+      "author": "James S.A. Corey",
+      "genre": "sci-fi"
+    },
+    {
+      "title": "Caliban's War",
+      "author": "James S.A. Corey",
+      "genre": "sci-fi"
+    },
+    {
       "title": "Leviathan Wakes",
       "author": "James S.A. Corey",
       "genre": "sci-fi"
