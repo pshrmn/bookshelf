@@ -1,6 +1,21 @@
 {
   "books": [
     {
+      "title": "Nemesis Games",
+      "author": "James S.A. Corey",
+      "genre": "sci-fi"
+    },
+    {
+      "title": "The Rift",
+      "author": "Alex Perry",
+      "genre": "non-fiction"
+    },
+    {
+      "title": "2001: A Space Odyssey",
+      "author": "Arthur C. Clarke",
+      "genre": "sci-fi"
+    },
+    {
       "title": "When to Rob a Bank",
       "author": "Steven D. Levitt & Stephen J. Dubner",
       "genre": "non-fiction"
@@ -29,7 +44,7 @@
       "title": "The Andromeda Strain",
       "author": "Michael Crichton",
       "genre": "sci-fi"
-    }
+    },
     {
       "title": "One Child",
       "author": "Mei Fong",
