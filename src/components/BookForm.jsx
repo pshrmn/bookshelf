@@ -1,11 +1,18 @@
 import React from "react";
 import { connect } from "react-redux";
-import { push } from "react-router-redux";
 
 import { addBook } from "../actions";
 import genres from "../constants/genres";
 
 const BookForm = React.createClass({
+  propTypes: {
+    author: React.PropTypes.string,
+    genre: React.PropTypes.string,
+    next: React.PropTypes.string
+  },
+  contextTypes: {
+    router: React.PropTypes.object
+  },
   getInitialState: function() {
     return {
       title: "",
@@ -25,12 +32,13 @@ const BookForm = React.createClass({
         title: this.state.title,
         author: this.state.author,
         genre: this.state.genre
-      }, this.props.next || "/");
+      });
+      this.context.router.push(this.props.next || "/");
     }
   },
   cancel: function(event) {
     event.preventDefault();
-    this.props.push(this.props.next || "/");
+    this.context.router.push(this.props.next || "/");
   },
   changeTitle: function(event) {
     this.setState({
@@ -64,7 +72,8 @@ const BookForm = React.createClass({
     }
   },
   render: function() {
-    const authorInput = this.props.author ? (
+    const { author, genre } = this.props;
+    const authorInput = author !== undefined ? (
       this.props.author
     ) : (
       <input type="text"
@@ -72,7 +81,7 @@ const BookForm = React.createClass({
              onChange={this.changeAuthor} />
     );
 
-    const genreInput = this.props.genre ? (
+    const genreInput = genre !== undefined ? (
       <p>
         {this.props.genre}
       </p>
@@ -126,5 +135,5 @@ const BookForm = React.createClass({
 
 export default connect(
   null,
-  { addBook, push }
+  { addBook }
 )(BookForm);

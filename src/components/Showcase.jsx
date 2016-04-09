@@ -6,7 +6,7 @@ import { Link } from "react-router";
 export default React.createClass({
   getInitialState: function() {
     return {
-      show: 10
+      show: 20
     };
   },
   showMore: function() {
