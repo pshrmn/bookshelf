@@ -1,5 +1,15 @@
 {
   "books": [
+  {
+      "title": "The Girl in the Spider's Web",
+      "author": "David Lagercrantz",
+      "genre": "thriller"
+    },
+    {
+      "title": "How to Talk About Places You've Never Been",
+      "author": "Pierre Bayard",
+      "genre": "non-fiction"
+    },
     {
       "title": "Nemesis Games",
       "author": "James S.A. Corey",
