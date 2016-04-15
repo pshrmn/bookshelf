@@ -1,6 +1,11 @@
 {
   "books": [
-  {
+    {
+      "title": "The Joy of π",
+      "author": "David Blatner",
+      "genre": "non-fiction"
+    },
+    {
       "title": "The Girl in the Spider's Web",
       "author": "David Lagercrantz",
       "genre": "thriller"
