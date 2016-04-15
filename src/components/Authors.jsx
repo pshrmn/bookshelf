@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router";
 
 import Breadcrumbs from "./Breadcrumbs";
+import Cover from "./Cover";
 
 const Authors = React.createClass({
   propTypes: {
@@ -12,8 +13,8 @@ const Authors = React.createClass({
     const books = author.books !== 1 ? "books": "book";
     return (
       <li key={index}>
-        <Link to={{pathname: `/author/${author.author}`}}>{author.author}</Link>
-        {` - ${author.books} ${books}`}
+        <Cover title={author.author}
+               path={{pathname: `/author/${author.author}`}} />
       </li>
     );
   },
@@ -34,7 +35,7 @@ const Authors = React.createClass({
       <div>
         {this.breadcrumbs()}
         <h1>Authors</h1>
-        <ul>
+        <ul className="authors">
           {authors}
         </ul>
       </div>
@@ -55,10 +56,12 @@ export default connect(
       return authors;
     }, {});
     // convert the object to an array
-    const authors = Object.keys(authorsObject).map(key => ({
-      author: key,
-      books: authorsObject[key]
-    }));
+    const authors = Object.keys(authorsObject)
+      .map(key => ({
+        author: key,
+        books: authorsObject[key]
+      }))
+      .sort((a,b) => b.books - a.books);
     return {
       authors: authors
     };

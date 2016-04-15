@@ -36,6 +36,7 @@ p, h1, h2, h3, h4, h5, h6 {
 
 .main {
     width: 80%;
+    min-height: 80vh;
     margin: 0 auto;
 }
 
@@ -53,6 +54,10 @@ p, h1, h2, h3, h4, h5, h6 {
     h1 {
         text-transform: capitalize;
     }
+}
+
+a .cover {
+    text-decoration: none;
 }
 
 .cover {
@@ -89,6 +94,10 @@ p, h1, h2, h3, h4, h5, h6 {
         text-overflow: ellipsis;
         overflow: hidden;
         max-height: 100%;
+    }
+
+    a {
+        text-decoration: none;
     }
 }
 
@@ -208,10 +217,18 @@ rect {
     &.poetry {
         background: $poetry;
         color: $light-gray;
+
+        a, a:visited {
+            color: $light-gray;
+        }
     }
     &.sci-fi {
         background: $sci-fi;
         color: $light-gray;
+
+        a, a:visited {
+            color: $light-gray;
+        }
     }
     &.thriller {
         background: $thriller;
@@ -219,6 +236,10 @@ rect {
     &.war {
         background: $war;
         color: $light-gray;
+
+        a, a:visited {
+            color: $light-gray;
+        }
     }
 }
 
@@ -419,5 +440,14 @@ footer a {
 .breadcrumbs {
     a {
         margin: 0 5px;
+    }
+}
+
+ul.genres, ul.authors {
+    display: flex;
+    flex-flow: row wrap;
+
+    li {
+        margin: 0 15px 15px 0;
     }
 }

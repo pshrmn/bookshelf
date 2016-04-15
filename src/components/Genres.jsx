@@ -1,9 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router";
 
-import Breadcrumbs from "./Breadcrumbs";
 import genres from "../constants/genres";
+import Breadcrumbs from "./Breadcrumbs";
+import Cover from "./Cover";
 
 export default React.createClass({
   breadcrumbs: function() {
@@ -19,9 +19,10 @@ export default React.createClass({
   },
   render: function() {
     const genreLis = genres.map((g,i) => {
+      const cleanGenre = g.replace("'", "");
       return (
         <li key={i}>
-          <Link to={{pathname: `/genre/${g}`}}>{g}</Link>
+          <Cover title={g} classes={[cleanGenre]} path={{pathname: `/genre/${g}`}}/>
         </li>
       );
     });
@@ -29,7 +30,7 @@ export default React.createClass({
       <div>
         {this.breadcrumbs()}
         <h1>Genres</h1>
-        <ul>
+        <ul className="genres">
           {genreLis}
         </ul>
       </div>

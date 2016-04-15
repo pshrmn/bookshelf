@@ -1,7 +1,8 @@
 import React from "react";
+import { Link } from "react-router";
 
 import Book from "./Book";
-import { Link } from "react-router";
+import Cover from "./Cover";
 
 export default React.createClass({
   getInitialState: function() {
@@ -33,9 +34,7 @@ export default React.createClass({
         <div className="books">
           {bookTiles}
           <div className="book">
-            <div className="cover add">
-              <Link to={{pathname: addPath}}>Add A Book</Link>
-            </div>
+            <Cover classes={["add"]} path={{pathname: addPath}} title="Add A Book" />
           </div>
         </div>
       </div>

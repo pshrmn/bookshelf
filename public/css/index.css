@@ -30,6 +30,9 @@ p, h1, h2, h3, h4, h5, h6 {
 .genre-page h1 {
   text-transform: capitalize; }
 
+a .cover {
+  text-decoration: none; }
+
 .cover {
   width: 100px;
   height: 125px;
@@ -57,6 +60,8 @@ p, h1, h2, h3, h4, h5, h6 {
     text-overflow: ellipsis;
     overflow: hidden;
     max-height: 100%; }
+  .cover a {
+    text-decoration: none; }
 
 .author {
   text-align: center; }
@@ -132,10 +137,14 @@ rect {
 .cover.poetry {
   background: #A02C40;
   color: #EFEFEF; }
+  .cover.poetry a, .cover.poetry a:visited {
+    color: #EFEFEF; }
 
 .cover.sci-fi {
   background: #6B5A88;
   color: #EFEFEF; }
+  .cover.sci-fi a, .cover.sci-fi a:visited {
+    color: #EFEFEF; }
 
 .cover.thriller {
   background: #E8B76F; }
@@ -143,6 +152,8 @@ rect {
 .cover.war {
   background: #795548;
   color: #EFEFEF; }
+  .cover.war a, .cover.war a:visited {
+    color: #EFEFEF; }
 
 header {
   width: 100%;
@@ -293,3 +304,13 @@ footer a {
 
 .breadcrumbs a {
   margin: 0 5px; }
+
+ul.genres, ul.authors {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap; }
+  ul.genres li, ul.authors li {
+    margin: 0 15px 15px 0; }
