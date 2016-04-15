@@ -1,0 +1,75 @@
+.axis {
+
+  &.x {
+    .tick {
+      text {
+        text-anchor: middle;
+      }
+    }
+  }
+
+  &.y {
+    .tick {
+      text {
+        text-anchor:end;
+      }
+    }
+  }
+
+  line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+  }
+}
+
+
+.bar {
+  text {
+    text-anchor: middle;
+  }
+}
+
+rect {
+  shape-rendering: crispEdges;
+
+  &.adventure {
+    fill: $adventure;
+  }
+
+  &.childrens {
+    fill: $childrens;
+  }
+
+  &.fantasy {
+    fill: $fantasy;
+  }
+
+  &.historical {
+    fill: $historical;
+  }
+
+  &.mystery {
+    fill: $mystery;
+  }
+
+  &.non-fiction {
+    fill: $non-fiction;
+  }
+
+  &.poetry {
+    fill: $poetry;
+  }
+
+  &.sci-fi {
+    fill: $sci-fi;
+  }
+
+  &.thriller {
+    fill: $thriller;
+  }
+
+  &.war {
+    fill: $war;
+  }
+}

@@ -1,0 +1,113 @@
+body {
+  margin: 0;
+}
+
+a, a:visited {
+  color: $black;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+}
+
+h1 {
+  text-transform: capitalize;
+}
+
+// the holder element
+main {
+  width: 100%;
+  font-family: "Josefin Sans", sans-serif;
+
+}
+
+.main {
+  width: 80%;
+  min-height: 80vh;
+  margin: 0 auto;
+}
+
+header {
+  width: 100%;
+  background: $light-brown;
+  margin-bottom: 15px;
+  text-align: center;
+
+  a {
+    text-decoration: none;
+  }
+
+  .title {
+    margin: 0;
+    font-family: "Grand Hotel", sans-serif;
+    font-size: 3em;
+  }
+
+  nav {
+    a {
+      text-decoration: underline;
+      padding: 0 5px;
+    }
+  }
+
+  ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    height: 5px;
+    flex-grow: 1;
+
+    &.adventure {
+      background: $adventure;
+    }
+    &.childrens {
+      background: $childrens;
+    }
+    &.fantasy {
+      background: $fantasy;
+    }
+    &.historical {
+      background: $historical;
+    }
+    &.mystery {
+      background: $mystery;
+    }
+    &.non-fiction {
+      background: $non-fiction;
+    }
+    &.poetry {
+      background: $poetry;
+    }
+    &.sci-fi {
+      background: $sci-fi;
+      color: $light-gray;
+    }
+    &.thriller {
+      background: $thriller;
+    }
+    &.war {
+      background: $war;
+      color: $light-gray;
+    }
+  }
+}
+
+footer {
+  text-align: center;
+  padding: 5px 0;
+  width: 100vw;
+  
+  a {
+    color: $black;
+  }
+}
+
+.breadcrumbs {
+  a {
+  margin: 0 5px;
+  }
+}

@@ -1,0 +1,13 @@
+.books {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.book {
+  width: 100px;
+  margin: 5px;
+
+  .author {
+    text-align: center;
+  }
+}

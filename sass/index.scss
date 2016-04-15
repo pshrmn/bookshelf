@@ -6,7 +6,7 @@ $mystery: #94B76B;
 $non-fiction: #E6C150;
 $poetry: #A02C40;
 $sci-fi: #6B5A88;
-$thriller: #E8B76F;
+$thriller: #616161;
 $war: #795548;
 
 $white: #FFF;
@@ -15,171 +15,12 @@ $light-gray: #EFEFEF;
 $gray: #CCCCCC;
 $light-brown: #ECE4E0;
 
-body {
-    margin: 0;
-}
+@import 'base';
+@import 'form';
+@import 'cover';
+@import 'chart';
+@import 'book';
 
-a, a:visited {
-    color: $black;
-}
-
-main {
-    width: 100%;
-    font-family: "Josefin Sans", sans-serif;
-
-}
-
-p, h1, h2, h3, h4, h5, h6 {
-    margin: 0;
-}
-
-
-.main {
-    width: 80%;
-    min-height: 80vh;
-    margin: 0 auto;
-}
-
-.books {
-    display: flex;
-    flex-flow: row wrap;
-}
-
-.book {
-    width: 100px;
-    margin: 5px;
-}
-
-.genre-page {
-    h1 {
-        text-transform: capitalize;
-    }
-}
-
-a .cover {
-    text-decoration: none;
-}
-
-.cover {
-    width: 100px;
-    height: 125px;
-    box-sizing: border-box;
-    padding: 15px;
-    background: #8BC34A;
-    text-align: center;
-    border-radius: 0px 5px 5px 0px;
-    position: relative;
-
-    &::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: -5px;
-        width: 5px;
-        height: 100%;
-        background: inherit;
-        opacity: 0.5;
-    }
-
-    &.add {
-        background: $white;
-        border: 2px dashed $gray;
-    }
-
-    &.add::before {
-        opacity: 0;
-    }
-
-    .title {
-        text-overflow: ellipsis;
-        overflow: hidden;
-        max-height: 100%;
-    }
-
-    a {
-        text-decoration: none;
-    }
-}
-
-.author {
-    text-align: center;
-}
-
-.axis {
-
-    &.x {
-        .tick {
-            text {
-                text-anchor: middle;
-            }
-        }
-    }
-
-    &.y {
-        .tick {
-            text {
-                text-anchor:end;
-            }
-        }
-    }
-
-    line {
-        fill: none;
-        stroke: #000;
-        shape-rendering: crispEdges;
-    }
-}
-
-
-.bar {
-    text {
-        text-anchor: middle;
-    }
-}
-
-rect {
-    shape-rendering: crispEdges;
-
-    &.adventure {
-        fill: $adventure;
-    }
-
-    &.childrens {
-        fill: $childrens;
-    }
-
-    &.fantasy {
-        fill: $fantasy;
-    }
-
-    &.historical {
-        fill: $historical;
-    }
-
-    &.mystery {
-        fill: $mystery;
-    }
-
-    &.non-fiction {
-        fill: $non-fiction;
-    }
-
-    &.poetry {
-        fill: $poetry;
-    }
-
-    &.sci-fi {
-        fill: $sci-fi;
-    }
-
-    &.thriller {
-        fill: $thriller;
-    }
-
-    &.war {
-        fill: $war;
-    }
-}
 
 /*
  * genre specific css
@@ -195,259 +36,32 @@ rect {
 .war {}
  */
 
-.cover {
-    &.adventure {
-        background: $adventure;
-    }
-    &.childrens {
-        background: $childrens;
-    }
-    &.fantasy {
-        background: $fantasy;
-    }
-    &.historical {
-        background: $historical;
-    }
-    &.mystery {
-        background: $mystery;
-    }
-    &.non-fiction {
-        background: $non-fiction;
-    }
-    &.poetry {
-        background: $poetry;
-        color: $light-gray;
-
-        a, a:visited {
-            color: $light-gray;
-        }
-    }
-    &.sci-fi {
-        background: $sci-fi;
-        color: $light-gray;
-
-        a, a:visited {
-            color: $light-gray;
-        }
-    }
-    &.thriller {
-        background: $thriller;
-    }
-    &.war {
-        background: $war;
-        color: $light-gray;
-
-        a, a:visited {
-            color: $light-gray;
-        }
-    }
-}
-
-header {
-    width: 100%;
-    background: $light-brown;
-    margin-bottom: 15px;
-    text-align: center;
-
-    a {
-        text-decoration: none;
-    }
-
-    .title {
-        margin: 0;
-        font-family: "Grand Hotel", sans-serif;
-        font-size: 3em;
-    }
-
-    nav {
-        a {
-            text-decoration: underline;
-            padding: 0 5px;
-        }
-    }
-
-    ul {
-        display: flex;
-        list-style: none;
-        margin: 0;
-        padding: 0;
-    }
-
-    li {
-        height: 5px;
-        flex-grow: 1;
-
-        &.adventure {
-            background: $adventure;
-        }
-        &.childrens {
-            background: $childrens;
-        }
-        &.fantasy {
-            background: $fantasy;
-        }
-        &.historical {
-            background: $historical;
-        }
-        &.mystery {
-            background: $mystery;
-        }
-        &.non-fiction {
-            background: $non-fiction;
-        }
-        &.poetry {
-            background: $poetry;
-        }
-        &.sci-fi {
-            background: $sci-fi;
-            color: $light-gray;
-        }
-        &.thriller {
-            background: $thriller;
-        }
-        &.war {
-            background: $war;
-            color: $light-gray;
-        }
-    }
-}
-
 .stats {
-    display: flex;
-    flex-flow: row wrap;
-    margin: 10px 0;
+  display: flex;
+  flex-flow: row wrap;
+  margin: 10px 0;
 
-    h2 {
-        text-align: center;
-    }
+  h2 {
+    text-align: center;
+  }
 
-    > div {
-        margin: 15px;
-    }
-}
-
-form {
-    padding: 15px;
-    box-sizing: border-box;
-
-    p {
-        padding: 3px 0;
-    }
-
-    input[type=text] {
-        width: 50%;
-        min-width: 300px;
-    }
-
-    .genre-options {
-        max-height: 100px;
-        display: flex;
-        flex-flow: column wrap;
-        align-content: flex-start;
-    }
-
-    button {
-        margin-right: 5px;
-    }
+  > div {
+    margin: 15px;
+  }
 }
 
 .showcase {
 
-    .info {
-        margin: 10px 0;
-    }
-}
-
-ul.keyholder {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-flow: row wrap;
-}
-
-.key {
-    flex-grow: 1;
-    border-style: solid;
-    border-width: 0 0 3px 0;
-    cursor: pointer;
-    text-align: center;
-    padding: 2px 5px;
-
-    input[type=radio] {
-        display: none;
-    }
-
-    a {
-        display: block;
-        text-decoration: none;
-    }
-
-    &:hover {
-        background: $light-gray;
-    }
-
-    &.active {
-        background: $light-gray;
-    }
-
-    &.all {
-        border-color: $black;
-    }
-
-    &.adventure {
-        border-color: $adventure;
-    }
-    &.childrens {
-        border-color: $childrens;
-    }
-    &.fantasy {
-        border-color: $fantasy;
-    }
-    &.historical {
-        border-color: $historical;
-    }
-    &.mystery {
-        border-color: $mystery;
-    }
-    &.non-fiction {
-        border-color: $non-fiction;
-    }
-    &.poetry {
-        border-color: $poetry;
-    }
-    &.sci-fi {
-        border-color: $sci-fi;
-    }
-    &.thriller {
-        border-color: $thriller;
-    }
-    &.war {
-        border-color: $war;
-    }
-}
-
-footer {
-    text-align: center;
-    padding: 5px 0;
-    width: 100vw;
-}
-
-footer a {
-    color: $black;
-}
-
-.breadcrumbs {
-    a {
-        margin: 0 5px;
-    }
+  .info {
+    margin: 10px 0;
+  }
 }
 
 ul.genres, ul.authors {
-    display: flex;
-    flex-flow: row wrap;
+  display: flex;
+  flex-flow: row wrap;
 
-    li {
-        margin: 0 15px 15px 0;
-    }
+  li {
+    margin: 0 15px 15px 0;
+  }
 }
