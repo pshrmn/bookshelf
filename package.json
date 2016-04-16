@@ -1,15 +1,17 @@
 {
   "name": "bookshelf",
-  "version": "0.12.2",
+  "version": "0.12.3",
   "description": "track books that you've read (or will read)",
   "main": "server/index.js",
   "scripts": {
     "autoprefix": "postcss --use autoprefixer --autoprefixer.browsers \"last 2 versions\" public/css/index.css --dir public/css/",
-    "build": "npm run webpack & npm run css",
+    "build-dev": "npm run webpack-dev & npm run css",
+    "build-prod": "npm run webpack-prod & npm run css",
     "css": "npm run sass & npm run autoprefix",
     "test": "echo \"Error: no test specified\" && exit 1",
     "sass": "node-sass sass/** -o public/css/**",
-    "webpack": "webpack & webpack --config=webpack.config.min.js"
+    "webpack-dev": "webpack",
+    "webpack-prod": "webpack --config=webpack.config.min.js"
   },
   "repository": {
     "type": "git",

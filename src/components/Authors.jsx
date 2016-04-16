@@ -10,11 +10,13 @@ const Authors = React.createClass({
     authors: React.PropTypes.array.isRequired
   },
   authorLi: function(author, index) {
-    const books = author.books !== 1 ? "books": "book";
+    const { name, genre } = author;
+    const cleanGenre = author.genre.replace("'", '');
     return (
-      <li key={index}>
-        <Cover title={author.author}
-               path={{pathname: `/author/${author.author}`}} />
+      <li key={name}>
+        <Cover title={name}
+               classes={[cleanGenre]}
+               path={{pathname: `/author/${name}`}} />
       </li>
     );
   },
@@ -46,20 +48,27 @@ const Authors = React.createClass({
 export default connect(
   state => {
     // get an object containing all authors and their book count
-    const authorsObject = state.books.reduce((authors, books) => {
-      const { author } = books;
-      if ( authors[author] ) {
-        authors[author] += 1;
+    const authorsObject = state.books.reduce((authors, book) => {
+      const { author } = book;
+      if ( !authors[author] ) {
+        authors[author] = {
+          // use the first book's genre as the author's genre (should
+          // be accurate in most cases)
+          genre: book.genre,
+          books: 1
+        };
       } else {
-        authors[author] = 1;
+        authors[author].books += 1;
       }
+
       return authors;
     }, {});
     // convert the object to an array
     const authors = Object.keys(authorsObject)
       .map(key => ({
-        author: key,
-        books: authorsObject[key]
+        name: key,
+        books: authorsObject[key].books,
+        genre: authorsObject[key].genre
       }))
       .sort((a,b) => b.books - a.books);
     return {

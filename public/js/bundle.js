@@ -12347,12 +12347,16 @@
 	    authors: _react2.default.PropTypes.array.isRequired
 	  },
 	  authorLi: function authorLi(author, index) {
-	    var books = author.books !== 1 ? "books" : "book";
+	    var name = author.name;
+	    var genre = author.genre;
+
+	    var cleanGenre = author.genre.replace("'", '');
 	    return _react2.default.createElement(
 	      "li",
-	      { key: index },
-	      _react2.default.createElement(_Cover2.default, { title: author.author,
-	        path: { pathname: "/author/" + author.author } })
+	      { key: name },
+	      _react2.default.createElement(_Cover2.default, { title: name,
+	        classes: [cleanGenre],
+	        path: { pathname: "/author/" + name } })
 	    );
 	  },
 	  breadcrumbs: function breadcrumbs() {
@@ -12388,21 +12392,28 @@
 
 	exports.default = (0, _reactRedux.connect)(function (state) {
 	  // get an object containing all authors and their book count
-	  var authorsObject = state.books.reduce(function (authors, books) {
-	    var author = books.author;
+	  var authorsObject = state.books.reduce(function (authors, book) {
+	    var author = book.author;
 
-	    if (authors[author]) {
-	      authors[author] += 1;
+	    if (!authors[author]) {
+	      authors[author] = {
+	        // use the first book's genre as the author's genre (should
+	        // be accurate in most cases)
+	        genre: book.genre,
+	        books: 1
+	      };
 	    } else {
-	      authors[author] = 1;
+	      authors[author].books += 1;
 	    }
+
 	    return authors;
 	  }, {});
 	  // convert the object to an array
 	  var authors = Object.keys(authorsObject).map(function (key) {
 	    return {
-	      author: key,
-	      books: authorsObject[key]
+	      name: key,
+	      books: authorsObject[key].books,
+	      genre: authorsObject[key].genre
 	    };
 	  }).sort(function (a, b) {
 	    return b.books - a.books;
