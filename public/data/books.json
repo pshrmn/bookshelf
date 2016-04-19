@@ -1,6 +1,11 @@
 {
   "books": [
     {
+      "title": "The Laws of Medicine",
+      "author": "Siddhartha Mukherjee",
+      "genre": "non-fiction"
+    },
+    {
       "title": "The Joy of π",
       "author": "David Blatner",
       "genre": "non-fiction"
