@@ -1,6 +1,11 @@
 {
   "books": [
     {
+      "title": "A Briefer History of Time",
+      "author": "Stephen Hawking & Leonard Mlodinow",
+      "genre": "non-fiction"
+    },
+    {
       "title": "The Laws of Medicine",
       "author": "Siddhartha Mukherjee",
       "genre": "non-fiction"
