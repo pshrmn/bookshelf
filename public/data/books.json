@@ -1,6 +1,16 @@
 {
   "books": [
     {
+      "title": "The Ugly Little Boy",
+      "author": "Isaac Asimov & Robert Silverberg",
+      "genre": "sci-fi"
+    },
+    {
+      "title": "Takedown",
+      "author": "Jeff Buck",
+      "genre": "non-fiction"
+    },
+    {
       "title": "A Briefer History of Time",
       "author": "Stephen Hawking & Leonard Mlodinow",
       "genre": "non-fiction"
