@@ -65,7 +65,7 @@ header {
       color: #EFEFEF; }
     header li.thriller {
       background: #616161; }
-    header li.war {
+    header li.drama {
       background: #795548;
       color: #EFEFEF; }
 
@@ -159,10 +159,10 @@ a .cover {
     color: #EFEFEF; }
     .cover.thriller a, .cover.thriller a:visited {
       color: #EFEFEF; }
-  .cover.war {
+  .cover.drama {
     background: #795548;
     color: #EFEFEF; }
-    .cover.war a, .cover.war a:visited {
+    .cover.drama a, .cover.drama a:visited {
       color: #EFEFEF; }
 
 .axis.x .tick text {
@@ -199,7 +199,7 @@ rect {
     fill: #6B5A88; }
   rect.thriller {
     fill: #616161; }
-  rect.war {
+  rect.drama {
     fill: #795548; }
 
 .books {
@@ -227,7 +227,7 @@ rect {
 .poetry {}
 .sci-fi {}
 .thriller {}
-.war {}
+.drama {}
  */
 .stats {
   display: -webkit-flex;

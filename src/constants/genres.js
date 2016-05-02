@@ -8,5 +8,5 @@ export default [
   "poetry",
   "sci-fi",
   "thriller",
-  "war"
+  "drama"
 ];
