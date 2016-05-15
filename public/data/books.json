@@ -1,6 +1,16 @@
 {
   "books": [
     {
+      "title": "Alibaba: The House that Jack Ma Built",
+      "author": "Duncan Clark",
+      "genre": "non-fiction"
+    },
+    {
+      "title": "The Best of Larry Niven",
+      "author": "Larry Niven",
+      "genre": "sci-fi"
+    },
+    {
       "title": "Floating City",
       "author": "Sudhir Venkatesh",
       "genre": "non-fiction"
