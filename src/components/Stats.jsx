@@ -2,98 +2,57 @@ import React from "react";
 
 import { Link } from "react-router";
 import BarChart from "./OrdinalBarChart";
+import { genresByCount, mostPopularAuthors } from "../helpers/counts";
 
-export default React.createClass({
-  render: function() {
-    let { books } = this.props;
-    return (
-      <div className="stats">
-        <GenreBars books={books} />
-        <PopularAuthors books={books} />
-      </div>
-    );
+export default function Stats(props) {
+  const { books } = props;
+  return (
+    <div className="stats">
+      <GenreBars books={books} />
+      <PopularAuthors books={books} />
+    </div>
+  );
+}
+
+function GenreBars(props) {
+  const { books } = props;
+  if ( books.length === 0 ) {
+    return null;
   }
-});
-
-let GenreBars = React.createClass({
-  // count how many instances of each genre there are
-  counts: function() {
-    let genreCounts = this.props.books.reduce((dict, curr) => {
-      let genre = curr.genre;
-      if ( dict[genre] !== undefined ) {
-        dict[genre] += 1;
-      } else {
-        dict[genre] = 1;
-      }
-      return dict;
-    }, {});
-
-    return Object.keys(genreCounts).map(genre => {
-      return {
-        genre: genre,
-        count: genreCounts[genre]
-      };
-    });
-  },
-  render: function() {
-    if ( this.props.books.length === 0 ) {
-      return null;
-    }
-    let genreCounts = this.counts();
-    // don't bother with a bar chart when there is only one class
-    if ( genreCounts.length <= 1 ) {
-      return null;
-    }
-    return (
-      <div className="bars">
-        <h2>Books per Genre</h2>
-        <BarChart data={genreCounts}
-                  getX={d => d.genre}
-                  getY={d => d.count} />
-      </div>
-    );
+  const genreCounts = genresByCount(books);
+  // don't bother with a bar chart when there is only one class
+  if ( genreCounts.length <= 1 ) {
+    return null;
   }
-});
+  return (
+    <div className="bars">
+      <h2>Books per Genre</h2>
+      <BarChart
+        data={genreCounts}
+        getX={d => d.genre}
+        getY={d => d.count} />
+    </div>
+  );
+}
 
-let PopularAuthors = React.createClass({
-  counts: function() {
-    let authorCounts = this.props.books.reduce((dict, curr) => {
-      let author = curr.author;
-      if ( dict[author] !== undefined ) {
-        dict[author] += 1;
-      } else {
-        dict[author] = 1;
-      }
-      return dict;
-    }, {});
-
-    let authorMap = Object.keys(authorCounts).map(author => {
-      return {
-        author: author,
-        count: authorCounts[author]
-      }
-    });
-    authorMap.sort((a,b) => a.count < b.count);
-    return authorMap.slice(0,5);
-  },
-  render: function() {
-    if ( this.props.books.length === 0 ) {
-      return null;
-    }
-    let authors = this.counts().map((a,i) => {
-      return (
-        <li key={i}>
-          <Link to={{pathname: `/author/${a.author}`}}>{a.author}</Link> - {a.count}
-        </li>
-      );
-    });
-    return (
-      <div className="authors">
-        <h2>Most Read Authors</h2>
-        <ol>
-          {authors}
-        </ol>
-      </div>
-    );
+function PopularAuthors(props) {
+  const { books } = props;
+  if ( books.length === 0 ) {
+    return null;
   }
-});
+  return (
+    <div className="authors">
+      <h2>Most Read Authors</h2>
+      <ol>
+        {
+          mostPopularAuthors(books)
+            .map((a,i) =>
+              <li key={i}>
+                <Link to={{pathname: `/author/${a.author}`}}>{a.author}</Link> - {a.count}
+              </li>
+            )
+        }
+      </ol>
+    </div>
+  );
+}

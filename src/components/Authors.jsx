@@ -5,11 +5,16 @@ import { Link } from "react-router";
 import Breadcrumbs from "./Breadcrumbs";
 import Cover from "./Cover";
 
-const Authors = React.createClass({
-  propTypes: {
-    authors: React.PropTypes.array.isRequired
-  },
-  authorLi: function(author, index) {
+const authors_breadcrumb_paths = [
+  {
+    to: {pathname: "/"},
+    title: "Home"
+  }
+];
+const AuthorsBreadcrumbs = <Breadcrumbs paths={authors_breadcrumb_paths} />;
+
+function Authors(props) {
+  const authors = props.authors.map(author => {
     const { name, genre } = author;
     const cleanGenre = author.genre.replace("'", '');
     return (
@@ -19,31 +24,22 @@ const Authors = React.createClass({
                path={{pathname: `/author/${name}`}} />
       </li>
     );
-  },
-  breadcrumbs: function() {
-    const paths = [
-      {
-        to: {pathname: "/"},
-        title: "Home"
-      }
-    ];
-    return (
-      <Breadcrumbs paths={paths} />
-    );
-  },
-  render: function() {
-    const authors = this.props.authors.map((a,i) => this.authorLi(a,i));
-    return (
-      <div>
-        {this.breadcrumbs()}
-        <h1>Authors</h1>
-        <ul className="authors">
-          {authors}
-        </ul>
-      </div>
-    );
-  }
-});
+  });
+
+  return (
+    <div>
+      {AuthorsBreadcrumbs}
+      <h1>Authors</h1>
+      <ul className="authors">
+        {authors}
+      </ul>
+    </div>
+  );
+}
+
+Authors.propTypes = {
+  authors: React.PropTypes.array.isRequired
+};
 
 export default connect(
   state => {

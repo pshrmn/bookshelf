@@ -16,13 +16,13 @@ export default React.createClass({
     });
   },
   render: function() {
-    let { books, addPath } = this.props;
-    let { show } = this.state;
+    const { books, addPath } = this.props;
+    const { show } = this.state;
 
-    let bookTiles = books.slice(0, show).map((b, i) => {
+    const bookTiles = books.slice(0, show).map((b, i) => {
       return <Book key={i} index={i%10} {...b} />;
     });
-    let more = books.length > show ? (
+    const more = books.length > show ? (
       <button onClick={this.showMore}>Show More</button>
     ) : null;
 

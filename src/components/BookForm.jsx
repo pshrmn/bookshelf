@@ -21,7 +21,9 @@ const BookForm = React.createClass({
     };
   },
   validate: function() {
-    return (this.state.title !== "" && this.state.author !== "" && this.state.genre !== -1);
+    return (this.state.title !== "" &&
+      this.state.author !== "" &&
+      this.state.genre !== -1);
   },
   save: function(event) {
     event.preventDefault();
@@ -76,9 +78,10 @@ const BookForm = React.createClass({
     const authorInput = author !== undefined ? (
       this.props.author
     ) : (
-      <input type="text"
-             value={this.state.author}
-             onChange={this.changeAuthor} />
+      <input
+        type="text"
+        value={this.state.author}
+        onChange={this.changeAuthor} />
     );
 
     const genreInput = genre !== undefined ? (
@@ -91,10 +94,11 @@ const BookForm = React.createClass({
           genres.map((g, i) => {
             return (
               <label key={i}>
-                <input type="radio"
-                       value={g}
-                       name="genre"
-                       onChange={this.changeGenre} />
+                <input
+                  type="radio"
+                  value={g}
+                  name="genre"
+                  onChange={this.changeGenre} />
                 {g}
               </label>
             );
@@ -109,9 +113,10 @@ const BookForm = React.createClass({
           Title: 
         </p>
         <p>
-          <input type="text"
-                 value={this.state.title}
-                 onChange={this.changeTitle} />
+          <input
+            type="text"
+            value={this.state.title}
+            onChange={this.changeTitle} />
         </p>
         <div>
           <p>
@@ -127,7 +132,7 @@ const BookForm = React.createClass({
         </div>
 
         <button>Save</button>
-        <button onClick={this.cancel}>Cancel</button>
+        <button onClick={this.cancel} type="button">Cancel</button>
       </form>
     );
   }

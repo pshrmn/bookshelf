@@ -6,44 +6,41 @@ import Stats from "./Stats";
 import Showcase from "./Showcase";
 import Breadcrumbs from "./Breadcrumbs";
 
-const Genre = React.createClass({
-  breadcrumbs: function() {
-    const paths = [
-      {
-        to: {pathname: "/"},
-        title: "Home"
-      },
-      {
-        to: {pathname: "/genres"},
-        title: "Genres"
-      }
-    ];
-    return (
-      <Breadcrumbs paths={paths} />
-    );
+const genre_breadcrumb_paths = [
+  {
+    to: {pathname: "/"},
+    title: "Home"
   },
-  render: function() {
-    const { genre, books } = this.props;
-    // inserts such as the add book form
-    const children = this.props.children ? (
-      <div className="children">
-        {this.props.children}
-      </div>
-    ) : null;
-    return (
-      <div className="genre-page">
-        {this.breadcrumbs()}
-        <h1>
-          {genre} Books
-        </h1>
-        {children}
-        <Stats books={books} />
-        <Showcase books={books}
-                  addPath={`/genre/${genre}/add`} />
-      </div>
-    );
+  {
+    to: {pathname: "/genres"},
+    title: "Genres"
   }
-});
+];
+
+const GenreBreadcrumbs = <Breadcrumbs paths={genre_breadcrumb_paths} />;
+
+function Genre(props) {
+  const { genre, books, children } = props;
+  return (
+    <div className="genre-page">
+      {GenreBreadcrumbs}
+      <h1>
+        {genre} Books
+      </h1>
+      {
+        children ? (
+          <div className="children">
+            {children}
+          </div>
+        ) : null
+      }
+      <Stats books={books} />
+      <Showcase
+        books={books}
+        addPath={`/genre/${genre}/add`} />
+    </div>
+  );
+}
 
 export default connect(
   (state, ownProps) => {

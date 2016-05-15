@@ -1,23 +1,22 @@
 import React from "react";
 import { Link } from "react-router";
 
-export default React.createClass({
-  render: function() {
-    const {
-      classes = [],
-      title,
-      path
-    } = this.props;
-    const coverClasses = ["cover"].concat(classes);
-    const baseCover = (
-      <div className={coverClasses.join(' ')}>
-        <div className="title">
-          {title}
-        </div>
+export default function Cover(props) {
+  const {
+    classes = [],
+    title,
+    path
+  } = props;
+  const coverClasses = ["cover"].concat(classes);
+  const baseCover = (
+    <div className={coverClasses.join(' ')}>
+      <div className="title">
+        {title}
       </div>
-    );
-    return path === undefined ? baseCover : (
-      <Link to={path}>{baseCover}</Link>
-    );
-  }
-});
+    </div>
+  );
+  // when a path is provided, wrap the cover in a Link
+  return path === undefined ? baseCover : (
+    <Link to={path}>{baseCover}</Link>
+  );
+}

@@ -17,8 +17,8 @@ export default React.createClass({
     };
   },
   render: function() {
-    let { height, margin, data, getX, getY } = this.props;
-    let width = data.length*60;
+    const { height, margin, data, getX, getY } = this.props;
+    const width = data.length*60;
 
     if ( data.length === 0 ) {
       return null;
@@ -71,73 +71,70 @@ export default React.createClass({
   }
 });
 
-let Bar = React.createClass({
-  render: function() {
-    let { x, y, width, height, genre, count } = this.props;
-    return (
-      <g className="bar"
-         transform={`translate(${x}, 0)`}>
-        <rect className={genre.replace("'","")}
-              x="0"
-              y={y}
-              width={width}
-              height={height} />
-        <text x={width/2} y={y-2}>{count}</text>
-      </g>
-    );
-  }
-});
+function Bar(props) {
+  const { x, y, width, height, genre, count } = props;
+  return (
+    <g
+      className="bar"
+      transform={`translate(${x}, 0)`}>
+      <rect
+        className={genre.replace("'","")}
+        x="0"
+        y={y}
+        width={width}
+        height={height} />
+      <text x={width/2} y={y-2}>{count}</text>
+    </g>
+  );
+  
+}
 
-let XAxis = React.createClass({
-  render: function() {
-    let { values, scale, height, width } = this.props;
-    let midbar = scale.bandwidth() / 2;
-    let ticks = values.map((t,i) => {
-      return (
-        <g key={i}
-           className="tick"
-           transform={`translate(${scale(t) + midbar},0)`}>
-          <line y2="6" x2="0"></line>
-          <text dy="0.715em" y="9" x="0">
-            {t}
-          </text>
-        </g>
-      );
-    });
-    return (
-      <g className="axis x"
-         transform={`translate(0,${height})`}>
-        <line x1="0" x2={width}></line>
-        <g className="ticks">
-          {ticks}
-        </g>
+function XAxis(props) {
+  const { values, scale, height, width } = props;
+  const midbar = scale.bandwidth() / 2;
+  return (
+    <g className="axis x"
+       transform={`translate(0,${height})`}>
+      <line x1="0" x2={width}></line>
+      <g className="ticks">
+        {
+          values.map((t,i) =>
+            <g
+              key={i}
+              className="tick"
+              transform={`translate(${scale(t) + midbar},0)`}>
+              <line y2="6" x2="0"></line>
+              <text dy="0.715em" y="9" x="0">
+                {t}
+              </text>
+            </g>
+          )
+        }
       </g>
-    );
-  }
-});
+    </g>
+  );
+}
 
-let YAxis = React.createClass({
-  render: function() {
-    let { scale, height } = this.props;
-    let ticks = scale.ticks(5).map((t,i) => {
-      return (
-        <g key={i}
-           className="tick"
-           transform={`translate(0,${scale(t)})`}>
-          <line x2="-6" y2="0"></line>
-          <text dx="0.715em" y="5" x="-20">
-            {t}
-          </text>
-        </g>
-      );
-    });
-    return (
-      <g className="axis y">
-        <line y1="0" y2={height}></line>
-        <g className="ticks">
-          {ticks}
-        </g>
+function YAxis(props) {
+  const { scale, height } = props;
+  return (
+    <g className="axis y">
+      <line y1="0" y2={height}></line>
+      <g className="ticks">
+        {
+          scale.ticks(5).map((t,i) => 
+            <g
+              key={i}
+              className="tick"
+              transform={`translate(0,${scale(t)})`}>
+              <line x2="-6" y2="0"></line>
+              <text dx="0.715em" y="5" x="-20">
+                {t}
+              </text>
+            </g>
+          )
+        }
       </g>
-    );
-  }
-})
+    </g>
+  );
+}

@@ -64,11 +64,11 @@
 
 	var _routes2 = _interopRequireDefault(_routes);
 
-	var _reducers = __webpack_require__(112);
+	var _reducers = __webpack_require__(113);
 
 	var _reducers2 = _interopRequireDefault(_reducers);
 
-	var _bookLoader = __webpack_require__(114);
+	var _bookLoader = __webpack_require__(115);
 
 	var _bookLoader2 = _interopRequireDefault(_bookLoader);
 
@@ -6734,31 +6734,31 @@
 
 	var _Index2 = _interopRequireDefault(_Index);
 
-	var _AddBook = __webpack_require__(101);
+	var _AddBook = __webpack_require__(102);
 
 	var _AddBook2 = _interopRequireDefault(_AddBook);
 
-	var _Genres = __webpack_require__(105);
+	var _Genres = __webpack_require__(106);
 
 	var _Genres2 = _interopRequireDefault(_Genres);
 
-	var _Genre = __webpack_require__(107);
+	var _Genre = __webpack_require__(108);
 
 	var _Genre2 = _interopRequireDefault(_Genre);
 
-	var _AddBookByGenre = __webpack_require__(108);
+	var _AddBookByGenre = __webpack_require__(109);
 
 	var _AddBookByGenre2 = _interopRequireDefault(_AddBookByGenre);
 
-	var _Authors = __webpack_require__(109);
+	var _Authors = __webpack_require__(110);
 
 	var _Authors2 = _interopRequireDefault(_Authors);
 
-	var _Author = __webpack_require__(110);
+	var _Author = __webpack_require__(111);
 
 	var _Author2 = _interopRequireDefault(_Author);
 
-	var _AddBookByAuthor = __webpack_require__(111);
+	var _AddBookByAuthor = __webpack_require__(112);
 
 	var _AddBookByAuthor2 = _interopRequireDefault(_AddBookByAuthor);
 
@@ -6803,6 +6803,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+	exports.default = App;
 
 	var _react = __webpack_require__(1);
 
@@ -6814,32 +6815,28 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	exports.default = _react2.default.createClass({
-	  displayName: "App",
-
-	  render: function render() {
-	    return _react2.default.createElement(
+	function App(props) {
+	  return _react2.default.createElement(
+	    "div",
+	    null,
+	    _react2.default.createElement(_TopBar2.default, null),
+	    _react2.default.createElement(
 	      "div",
+	      { className: "main" },
+	      props.children
+	    ),
+	    _react2.default.createElement(
+	      "footer",
 	      null,
-	      _react2.default.createElement(_TopBar2.default, null),
+	      "made by ",
 	      _react2.default.createElement(
-	        "div",
-	        { className: "main" },
-	        this.props.children
-	      ),
-	      _react2.default.createElement(
-	        "footer",
-	        null,
-	        "made by ",
-	        _react2.default.createElement(
-	          "a",
-	          { href: "http://www.pshrmn.com" },
-	          "pshrmn.com"
-	        )
+	        "a",
+	        { href: "http://www.pshrmn.com" },
+	        "pshrmn.com"
 	      )
-	    );
-	  }
-	});
+	    )
+	  );
+	}
 
 /***/ },
 /* 85 */
@@ -6863,6 +6860,10 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	var GenreBars = _genres2.default.map(function (genre) {
+	  return _react2.default.createElement("li", { key: genre, className: genre.replace("'", "") });
+	});
+
 	exports.default = _react2.default.createClass({
 	  displayName: "TopBar",
 
@@ -6870,17 +6871,13 @@
 	    return false;
 	  },
 	  render: function render() {
-	    var genreBars = _genres2.default.map(function (g, i) {
-	      return _react2.default.createElement("li", { key: i,
-	        className: g.replace("'", "") });
-	    });
 	    return _react2.default.createElement(
 	      "header",
 	      null,
 	      _react2.default.createElement(
 	        "ul",
 	        null,
-	        genreBars
+	        GenreBars
 	      ),
 	      _react2.default.createElement(
 	        "div",
@@ -6918,7 +6915,7 @@
 	      _react2.default.createElement(
 	        "ul",
 	        null,
-	        genreBars
+	        GenreBars
 	      )
 	    );
 	  }
@@ -6955,27 +6952,24 @@
 
 	var _Stats2 = _interopRequireDefault(_Stats);
 
-	var _Showcase = __webpack_require__(98);
+	var _Showcase = __webpack_require__(99);
 
 	var _Showcase2 = _interopRequireDefault(_Showcase);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var Index = _react2.default.createClass({
-	  displayName: "Index",
+	function Index(props) {
+	  var books = props.books;
 
-	  render: function render() {
-	    var books = this.props.books;
-
-	    return _react2.default.createElement(
-	      "div",
-	      null,
-	      _react2.default.createElement(_Stats2.default, { books: books }),
-	      _react2.default.createElement(_Showcase2.default, { books: books,
-	        addPath: "/add" })
-	    );
-	  }
-	});
+	  return _react2.default.createElement(
+	    "div",
+	    null,
+	    _react2.default.createElement(_Stats2.default, { books: books }),
+	    _react2.default.createElement(_Showcase2.default, {
+	      books: books,
+	      addPath: "/add" })
+	  );
+	}
 
 	exports.default = (0, _reactRedux.connect)(function (state) {
 	  return { books: state.books };
@@ -6990,6 +6984,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+	exports.default = Stats;
 
 	var _react = __webpack_require__(1);
 
@@ -7001,132 +6996,84 @@
 
 	var _OrdinalBarChart2 = _interopRequireDefault(_OrdinalBarChart);
 
+	var _counts = __webpack_require__(98);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	exports.default = _react2.default.createClass({
-	  displayName: "Stats",
+	function Stats(props) {
+	  var books = props.books;
 
-	  render: function render() {
-	    var books = this.props.books;
+	  return _react2.default.createElement(
+	    "div",
+	    { className: "stats" },
+	    _react2.default.createElement(GenreBars, { books: books }),
+	    _react2.default.createElement(PopularAuthors, { books: books })
+	  );
+	}
 
-	    return _react2.default.createElement(
-	      "div",
-	      { className: "stats" },
-	      _react2.default.createElement(GenreBars, { books: books }),
-	      _react2.default.createElement(PopularAuthors, { books: books })
-	    );
+	function GenreBars(props) {
+	  var books = props.books;
+
+	  if (books.length === 0) {
+	    return null;
 	  }
-	});
-
-
-	var GenreBars = _react2.default.createClass({
-	  displayName: "GenreBars",
-
-	  // count how many instances of each genre there are
-	  counts: function counts() {
-	    var genreCounts = this.props.books.reduce(function (dict, curr) {
-	      var genre = curr.genre;
-	      if (dict[genre] !== undefined) {
-	        dict[genre] += 1;
-	      } else {
-	        dict[genre] = 1;
-	      }
-	      return dict;
-	    }, {});
-
-	    return Object.keys(genreCounts).map(function (genre) {
-	      return {
-	        genre: genre,
-	        count: genreCounts[genre]
-	      };
-	    });
-	  },
-	  render: function render() {
-	    if (this.props.books.length === 0) {
-	      return null;
-	    }
-	    var genreCounts = this.counts();
-	    // don't bother with a bar chart when there is only one class
-	    if (genreCounts.length <= 1) {
-	      return null;
-	    }
-	    return _react2.default.createElement(
-	      "div",
-	      { className: "bars" },
-	      _react2.default.createElement(
-	        "h2",
-	        null,
-	        "Books per Genre"
-	      ),
-	      _react2.default.createElement(_OrdinalBarChart2.default, { data: genreCounts,
-	        getX: function getX(d) {
-	          return d.genre;
-	        },
-	        getY: function getY(d) {
-	          return d.count;
-	        } })
-	    );
+	  var genreCounts = (0, _counts.genresByCount)(books);
+	  // don't bother with a bar chart when there is only one class
+	  if (genreCounts.length <= 1) {
+	    return null;
 	  }
-	});
+	  return _react2.default.createElement(
+	    "div",
+	    { className: "bars" },
+	    _react2.default.createElement(
+	      "h2",
+	      null,
+	      "Books per Genre"
+	    ),
+	    _react2.default.createElement(_OrdinalBarChart2.default, {
+	      data: genreCounts,
+	      getX: function getX(d) {
+	        return d.genre;
+	      },
+	      getY: function getY(d) {
+	        return d.count;
+	      } })
+	  );
+	}
 
-	var PopularAuthors = _react2.default.createClass({
-	  displayName: "PopularAuthors",
+	function PopularAuthors(props) {
+	  var books = props.books;
 
-	  counts: function counts() {
-	    var authorCounts = this.props.books.reduce(function (dict, curr) {
-	      var author = curr.author;
-	      if (dict[author] !== undefined) {
-	        dict[author] += 1;
-	      } else {
-	        dict[author] = 1;
-	      }
-	      return dict;
-	    }, {});
-
-	    var authorMap = Object.keys(authorCounts).map(function (author) {
-	      return {
-	        author: author,
-	        count: authorCounts[author]
-	      };
-	    });
-	    authorMap.sort(function (a, b) {
-	      return a.count < b.count;
-	    });
-	    return authorMap.slice(0, 5);
-	  },
-	  render: function render() {
-	    if (this.props.books.length === 0) {
-	      return null;
-	    }
-	    var authors = this.counts().map(function (a, i) {
-	      return _react2.default.createElement(
-	        "li",
-	        { key: i },
-	        _react2.default.createElement(
-	          _reactRouter.Link,
-	          { to: { pathname: "/author/" + a.author } },
-	          a.author
-	        ),
-	        " - ",
-	        a.count
-	      );
-	    });
-	    return _react2.default.createElement(
-	      "div",
-	      { className: "authors" },
-	      _react2.default.createElement(
-	        "h2",
-	        null,
-	        "Most Read Authors"
-	      ),
-	      _react2.default.createElement(
-	        "ol",
-	        null,
-	        authors
-	      )
-	    );
+	  if (books.length === 0) {
+	    return null;
 	  }
-	});
+	  return _react2.default.createElement(
+	    "div",
+	    { className: "authors" },
+	    _react2.default.createElement(
+	      "h2",
+	      null,
+	      "Most Read Authors"
+	    ),
+	    _react2.default.createElement(
+	      "ol",
+	      null,
+	      (0, _counts.mostPopularAuthors)(books).map(function (a, i) {
+	        return _react2.default.createElement(
+	          "li",
+	          { key: i },
+	          _react2.default.createElement(
+	            _reactRouter.Link,
+	            { to: { pathname: "/author/" + a.author } },
+	            a.author
+	          ),
+	          " - ",
+	          a.count
+	        );
+	      })
+	    )
+	  );
+	}
 
 /***/ },
 /* 89 */
@@ -7226,109 +7173,96 @@
 	});
 
 
-	var Bar = _react2.default.createClass({
-	  displayName: "Bar",
+	function Bar(props) {
+	  var x = props.x;
+	  var y = props.y;
+	  var width = props.width;
+	  var height = props.height;
+	  var genre = props.genre;
+	  var count = props.count;
 
-	  render: function render() {
-	    var _props2 = this.props;
-	    var x = _props2.x;
-	    var y = _props2.y;
-	    var width = _props2.width;
-	    var height = _props2.height;
-	    var genre = _props2.genre;
-	    var count = _props2.count;
+	  return _react2.default.createElement(
+	    "g",
+	    {
+	      className: "bar",
+	      transform: "translate(" + x + ", 0)" },
+	    _react2.default.createElement("rect", {
+	      className: genre.replace("'", ""),
+	      x: "0",
+	      y: y,
+	      width: width,
+	      height: height }),
+	    _react2.default.createElement(
+	      "text",
+	      { x: width / 2, y: y - 2 },
+	      count
+	    )
+	  );
+	}
 
-	    return _react2.default.createElement(
+	function XAxis(props) {
+	  var values = props.values;
+	  var scale = props.scale;
+	  var height = props.height;
+	  var width = props.width;
+
+	  var midbar = scale.bandwidth() / 2;
+	  return _react2.default.createElement(
+	    "g",
+	    { className: "axis x",
+	      transform: "translate(0," + height + ")" },
+	    _react2.default.createElement("line", { x1: "0", x2: width }),
+	    _react2.default.createElement(
 	      "g",
-	      { className: "bar",
-	        transform: "translate(" + x + ", 0)" },
-	      _react2.default.createElement("rect", { className: genre.replace("'", ""),
-	        x: "0",
-	        y: y,
-	        width: width,
-	        height: height }),
-	      _react2.default.createElement(
-	        "text",
-	        { x: width / 2, y: y - 2 },
-	        count
-	      )
-	    );
-	  }
-	});
+	      { className: "ticks" },
+	      values.map(function (t, i) {
+	        return _react2.default.createElement(
+	          "g",
+	          {
+	            key: i,
+	            className: "tick",
+	            transform: "translate(" + (scale(t) + midbar) + ",0)" },
+	          _react2.default.createElement("line", { y2: "6", x2: "0" }),
+	          _react2.default.createElement(
+	            "text",
+	            { dy: "0.715em", y: "9", x: "0" },
+	            t
+	          )
+	        );
+	      })
+	    )
+	  );
+	}
 
-	var XAxis = _react2.default.createClass({
-	  displayName: "XAxis",
+	function YAxis(props) {
+	  var scale = props.scale;
+	  var height = props.height;
 
-	  render: function render() {
-	    var _props3 = this.props;
-	    var values = _props3.values;
-	    var scale = _props3.scale;
-	    var height = _props3.height;
-	    var width = _props3.width;
-
-	    var midbar = scale.bandwidth() / 2;
-	    var ticks = values.map(function (t, i) {
-	      return _react2.default.createElement(
-	        "g",
-	        { key: i,
-	          className: "tick",
-	          transform: "translate(" + (scale(t) + midbar) + ",0)" },
-	        _react2.default.createElement("line", { y2: "6", x2: "0" }),
-	        _react2.default.createElement(
-	          "text",
-	          { dy: "0.715em", y: "9", x: "0" },
-	          t
-	        )
-	      );
-	    });
-	    return _react2.default.createElement(
+	  return _react2.default.createElement(
+	    "g",
+	    { className: "axis y" },
+	    _react2.default.createElement("line", { y1: "0", y2: height }),
+	    _react2.default.createElement(
 	      "g",
-	      { className: "axis x",
-	        transform: "translate(0," + height + ")" },
-	      _react2.default.createElement("line", { x1: "0", x2: width }),
-	      _react2.default.createElement(
-	        "g",
-	        { className: "ticks" },
-	        ticks
-	      )
-	    );
-	  }
-	});
-
-	var YAxis = _react2.default.createClass({
-	  displayName: "YAxis",
-
-	  render: function render() {
-	    var _props4 = this.props;
-	    var scale = _props4.scale;
-	    var height = _props4.height;
-
-	    var ticks = scale.ticks(5).map(function (t, i) {
-	      return _react2.default.createElement(
-	        "g",
-	        { key: i,
-	          className: "tick",
-	          transform: "translate(0," + scale(t) + ")" },
-	        _react2.default.createElement("line", { x2: "-6", y2: "0" }),
-	        _react2.default.createElement(
-	          "text",
-	          { dx: "0.715em", y: "5", x: "-20" },
-	          t
-	        )
-	      );
-	    });
-	    return _react2.default.createElement(
-	      "g",
-	      { className: "axis y" },
-	      _react2.default.createElement("line", { y1: "0", y2: height }),
-	      _react2.default.createElement(
-	        "g",
-	        { className: "ticks" },
-	        ticks
-	      )
-	    );
-	  }
-	});
+	      { className: "ticks" },
+	      scale.ticks(5).map(function (t, i) {
+	        return _react2.default.createElement(
+	          "g",
+	          {
+	            key: i,
+	            className: "tick",
+	            transform: "translate(0," + scale(t) + ")" },
+	          _react2.default.createElement("line", { x2: "-6", y2: "0" }),
+	          _react2.default.createElement(
+	            "text",
+	            { dx: "0.715em", y: "5", x: "-20" },
+	            t
+	          )
+	        );
+	      })
+	    )
+	  );
+	}
 
 /***/ },
 /* 90 */
@@ -11674,6 +11608,59 @@
 
 /***/ },
 /* 98 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.genresByCount = genresByCount;
+	exports.mostPopularAuthors = mostPopularAuthors;
+	function genresByCount(books) {
+	  var genreCounts = books.reduce(function (dict, curr) {
+	    var genre = curr.genre;
+	    if (dict[genre] !== undefined) {
+	      dict[genre] += 1;
+	    } else {
+	      dict[genre] = 1;
+	    }
+	    return dict;
+	  }, {});
+
+	  return Object.keys(genreCounts).map(function (genre) {
+	    return {
+	      genre: genre,
+	      count: genreCounts[genre]
+	    };
+	  });
+	}
+
+	function mostPopularAuthors(books) {
+	  var authorCounts = books.reduce(function (dict, curr) {
+	    var author = curr.author;
+	    if (dict[author] !== undefined) {
+	      dict[author] += 1;
+	    } else {
+	      dict[author] = 1;
+	    }
+	    return dict;
+	  }, {});
+
+	  var authorMap = Object.keys(authorCounts).map(function (author) {
+	    return {
+	      author: author,
+	      count: authorCounts[author]
+	    };
+	  });
+	  authorMap.sort(function (a, b) {
+	    return b.count - a.count;
+	  });
+	  return authorMap.slice(0, 5);
+	}
+
+/***/ },
+/* 99 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -11690,11 +11677,11 @@
 
 	var _reactRouter = __webpack_require__(15);
 
-	var _Book = __webpack_require__(99);
+	var _Book = __webpack_require__(100);
 
 	var _Book2 = _interopRequireDefault(_Book);
 
-	var _Cover = __webpack_require__(100);
+	var _Cover = __webpack_require__(101);
 
 	var _Cover2 = _interopRequireDefault(_Cover);
 
@@ -11757,55 +11744,6 @@
 	});
 
 /***/ },
-/* 99 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactRouter = __webpack_require__(15);
-
-	var _Cover = __webpack_require__(100);
-
-	var _Cover2 = _interopRequireDefault(_Cover);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	exports.default = _react2.default.createClass({
-	  displayName: "Book",
-
-	  render: function render() {
-	    var _props = this.props;
-	    var title = _props.title;
-	    var author = _props.author;
-	    var genre = _props.genre;
-
-	    var cleanGenre = genre.replace("'", "");
-	    return _react2.default.createElement(
-	      "div",
-	      { className: "book", title: title },
-	      _react2.default.createElement(_Cover2.default, { classes: [cleanGenre], title: title }),
-	      _react2.default.createElement(
-	        "div",
-	        { className: "author" },
-	        _react2.default.createElement(
-	          _reactRouter.Link,
-	          { to: { pathname: "/author/" + author } },
-	          author
-	        )
-	      )
-	    );
-	  }
-	});
-
-/***/ },
 /* 100 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -11814,6 +11752,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+	exports.default = Book;
 
 	var _react = __webpack_require__(1);
 
@@ -11821,35 +11760,33 @@
 
 	var _reactRouter = __webpack_require__(15);
 
+	var _Cover = __webpack_require__(101);
+
+	var _Cover2 = _interopRequireDefault(_Cover);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	exports.default = _react2.default.createClass({
-	  displayName: "Cover",
+	function Book(props) {
+	  var title = props.title;
+	  var author = props.author;
+	  var genre = props.genre;
 
-	  render: function render() {
-	    var _props = this.props;
-	    var _props$classes = _props.classes;
-	    var classes = _props$classes === undefined ? [] : _props$classes;
-	    var title = _props.title;
-	    var path = _props.path;
-
-	    var coverClasses = ["cover"].concat(classes);
-	    var baseCover = _react2.default.createElement(
+	  var cleanGenre = genre.replace("'", "");
+	  return _react2.default.createElement(
+	    "div",
+	    { className: "book", title: title },
+	    _react2.default.createElement(_Cover2.default, { classes: [cleanGenre], title: title }),
+	    _react2.default.createElement(
 	      "div",
-	      { className: coverClasses.join(' ') },
+	      { className: "author" },
 	      _react2.default.createElement(
-	        "div",
-	        { className: "title" },
-	        title
+	        _reactRouter.Link,
+	        { to: { pathname: "/author/" + author } },
+	        author
 	      )
-	    );
-	    return path === undefined ? baseCover : _react2.default.createElement(
-	      _reactRouter.Link,
-	      { to: path },
-	      baseCover
-	    );
-	  }
-	});
+	    )
+	  );
+	}
 
 /***/ },
 /* 101 */
@@ -11860,27 +11797,67 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+	exports.default = Cover;
 
 	var _react = __webpack_require__(1);
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _BookForm = __webpack_require__(102);
+	var _reactRouter = __webpack_require__(15);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function Cover(props) {
+	  var _props$classes = props.classes;
+	  var classes = _props$classes === undefined ? [] : _props$classes;
+	  var title = props.title;
+	  var path = props.path;
+
+	  var coverClasses = ["cover"].concat(classes);
+	  var baseCover = _react2.default.createElement(
+	    "div",
+	    { className: coverClasses.join(' ') },
+	    _react2.default.createElement(
+	      "div",
+	      { className: "title" },
+	      title
+	    )
+	  );
+	  // when a path is provided, wrap the cover in a Link
+	  return path === undefined ? baseCover : _react2.default.createElement(
+	    _reactRouter.Link,
+	    { to: path },
+	    baseCover
+	  );
+	}
+
+/***/ },
+/* 102 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = AddBook;
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _BookForm = __webpack_require__(103);
 
 	var _BookForm2 = _interopRequireDefault(_BookForm);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	exports.default = _react2.default.createClass({
-	  displayName: "AddBook",
-
-	  render: function render() {
-	    return _react2.default.createElement(_BookForm2.default, null);
-	  }
-	});
+	function AddBook(props) {
+	  return _react2.default.createElement(_BookForm2.default, null);
+	}
 
 /***/ },
-/* 102 */
+/* 103 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -11895,7 +11872,7 @@
 
 	var _reactRedux = __webpack_require__(72);
 
-	var _actions = __webpack_require__(103);
+	var _actions = __webpack_require__(104);
 
 	var _genres = __webpack_require__(86);
 
@@ -11982,7 +11959,8 @@
 	    var author = _props2.author;
 	    var genre = _props2.genre;
 
-	    var authorInput = author !== undefined ? this.props.author : _react2.default.createElement("input", { type: "text",
+	    var authorInput = author !== undefined ? this.props.author : _react2.default.createElement("input", {
+	      type: "text",
 	      value: this.state.author,
 	      onChange: this.changeAuthor });
 
@@ -11997,7 +11975,8 @@
 	        return _react2.default.createElement(
 	          "label",
 	          { key: i },
-	          _react2.default.createElement("input", { type: "radio",
+	          _react2.default.createElement("input", {
+	            type: "radio",
 	            value: g,
 	            name: "genre",
 	            onChange: _this.changeGenre }),
@@ -12017,7 +11996,8 @@
 	      _react2.default.createElement(
 	        "p",
 	        null,
-	        _react2.default.createElement("input", { type: "text",
+	        _react2.default.createElement("input", {
+	          type: "text",
 	          value: this.state.title,
 	          onChange: this.changeTitle })
 	      ),
@@ -12048,7 +12028,7 @@
 	      ),
 	      _react2.default.createElement(
 	        "button",
-	        { onClick: this.cancel },
+	        { onClick: this.cancel, type: "button" },
 	        "Cancel"
 	      )
 	    );
@@ -12058,7 +12038,7 @@
 	exports.default = (0, _reactRedux.connect)(null, { addBook: _actions.addBook })(BookForm);
 
 /***/ },
-/* 103 */
+/* 104 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -12068,7 +12048,7 @@
 	});
 	exports.addBook = addBook;
 
-	var _ActionTypes = __webpack_require__(104);
+	var _ActionTypes = __webpack_require__(105);
 
 	var types = _interopRequireWildcard(_ActionTypes);
 
@@ -12082,7 +12062,7 @@
 	}
 
 /***/ },
-/* 104 */
+/* 105 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -12093,7 +12073,7 @@
 	var ADD_BOOK = exports.ADD_BOOK = "ADD_BOOK";
 
 /***/ },
-/* 105 */
+/* 106 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -12101,6 +12081,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+	exports.default = Genres;
 
 	var _react = __webpack_require__(1);
 
@@ -12112,55 +12093,51 @@
 
 	var _genres2 = _interopRequireDefault(_genres);
 
-	var _Breadcrumbs = __webpack_require__(106);
+	var _Breadcrumbs = __webpack_require__(107);
 
 	var _Breadcrumbs2 = _interopRequireDefault(_Breadcrumbs);
 
-	var _Cover = __webpack_require__(100);
+	var _Cover = __webpack_require__(101);
 
 	var _Cover2 = _interopRequireDefault(_Cover);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	exports.default = _react2.default.createClass({
-	  displayName: "Genres",
+	var genres_breadcrumb_paths = [{
+	  to: { pathname: "/" },
+	  title: "Home"
+	}];
 
-	  breadcrumbs: function breadcrumbs() {
-	    var paths = [{
-	      to: { pathname: "/" },
-	      title: "Home"
-	    }];
-	    return _react2.default.createElement(_Breadcrumbs2.default, { paths: paths });
-	  },
-	  render: function render() {
-	    var genreLis = _genres2.default.map(function (g, i) {
-	      var cleanGenre = g.replace("'", "");
-	      return _react2.default.createElement(
-	        "li",
-	        { key: i },
-	        _react2.default.createElement(_Cover2.default, { title: g, classes: [cleanGenre], path: { pathname: "/genre/" + g } })
-	      );
-	    });
+	var GenresBreadcrumbs = _react2.default.createElement(_Breadcrumbs2.default, { paths: genres_breadcrumb_paths });
+
+	function Genres(props) {
+	  var genreLis = _genres2.default.map(function (g, i) {
+	    var cleanGenre = g.replace("'", "");
 	    return _react2.default.createElement(
-	      "div",
-	      null,
-	      this.breadcrumbs(),
-	      _react2.default.createElement(
-	        "h1",
-	        null,
-	        "Genres"
-	      ),
-	      _react2.default.createElement(
-	        "ul",
-	        { className: "genres" },
-	        genreLis
-	      )
+	      "li",
+	      { key: i },
+	      _react2.default.createElement(_Cover2.default, { title: g, classes: [cleanGenre], path: { pathname: "/genre/" + g } })
 	    );
-	  }
-	});
+	  });
+	  return _react2.default.createElement(
+	    "div",
+	    null,
+	    GenresBreadcrumbs,
+	    _react2.default.createElement(
+	      "h1",
+	      null,
+	      "Genres"
+	    ),
+	    _react2.default.createElement(
+	      "ul",
+	      { className: "genres" },
+	      genreLis
+	    )
+	  );
+	}
 
 /***/ },
-/* 106 */
+/* 107 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -12168,6 +12145,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+	exports.default = Breadcrumbs;
 
 	var _react = __webpack_require__(1);
 
@@ -12177,27 +12155,23 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	exports.default = _react2.default.createClass({
-	  displayName: "Breadcrumbs",
-
-	  render: function render() {
-	    var pathLinks = this.props.paths.map(function (p, i) {
-	      return _react2.default.createElement(
-	        _reactRouter.Link,
-	        { key: i, to: p.to },
-	        p.title
-	      );
-	    });
+	function Breadcrumbs(props) {
+	  var pathLinks = props.paths.map(function (p, i) {
 	    return _react2.default.createElement(
-	      "div",
-	      { className: "breadcrumbs" },
-	      pathLinks
+	      _reactRouter.Link,
+	      { key: i, to: p.to },
+	      p.title
 	    );
-	  }
-	});
+	  });
+	  return _react2.default.createElement(
+	    "div",
+	    { className: "breadcrumbs" },
+	    pathLinks
+	  );
+	}
 
 /***/ },
-/* 107 */
+/* 108 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -12218,57 +12192,52 @@
 
 	var _Stats2 = _interopRequireDefault(_Stats);
 
-	var _Showcase = __webpack_require__(98);
+	var _Showcase = __webpack_require__(99);
 
 	var _Showcase2 = _interopRequireDefault(_Showcase);
 
-	var _Breadcrumbs = __webpack_require__(106);
+	var _Breadcrumbs = __webpack_require__(107);
 
 	var _Breadcrumbs2 = _interopRequireDefault(_Breadcrumbs);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var Genre = _react2.default.createClass({
-	  displayName: "Genre",
+	var genre_breadcrumb_paths = [{
+	  to: { pathname: "/" },
+	  title: "Home"
+	}, {
+	  to: { pathname: "/genres" },
+	  title: "Genres"
+	}];
 
-	  breadcrumbs: function breadcrumbs() {
-	    var paths = [{
-	      to: { pathname: "/" },
-	      title: "Home"
-	    }, {
-	      to: { pathname: "/genres" },
-	      title: "Genres"
-	    }];
-	    return _react2.default.createElement(_Breadcrumbs2.default, { paths: paths });
-	  },
-	  render: function render() {
-	    var _props = this.props;
-	    var genre = _props.genre;
-	    var books = _props.books;
-	    // inserts such as the add book form
+	var GenreBreadcrumbs = _react2.default.createElement(_Breadcrumbs2.default, { paths: genre_breadcrumb_paths });
 
-	    var children = this.props.children ? _react2.default.createElement(
+	function Genre(props) {
+	  var genre = props.genre;
+	  var books = props.books;
+	  var children = props.children;
+
+	  return _react2.default.createElement(
+	    "div",
+	    { className: "genre-page" },
+	    GenreBreadcrumbs,
+	    _react2.default.createElement(
+	      "h1",
+	      null,
+	      genre,
+	      " Books"
+	    ),
+	    children ? _react2.default.createElement(
 	      "div",
 	      { className: "children" },
-	      this.props.children
-	    ) : null;
-	    return _react2.default.createElement(
-	      "div",
-	      { className: "genre-page" },
-	      this.breadcrumbs(),
-	      _react2.default.createElement(
-	        "h1",
-	        null,
-	        genre,
-	        " Books"
-	      ),
-	      children,
-	      _react2.default.createElement(_Stats2.default, { books: books }),
-	      _react2.default.createElement(_Showcase2.default, { books: books,
-	        addPath: "/genre/" + genre + "/add" })
-	    );
-	  }
-	});
+	      children
+	    ) : null,
+	    _react2.default.createElement(_Stats2.default, { books: books }),
+	    _react2.default.createElement(_Showcase2.default, {
+	      books: books,
+	      addPath: "/genre/" + genre + "/add" })
+	  );
+	}
 
 	exports.default = (0, _reactRedux.connect)(function (state, ownProps) {
 	  var genre = ownProps.params.genre;
@@ -12282,7 +12251,7 @@
 	})(Genre);
 
 /***/ },
-/* 108 */
+/* 109 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -12290,30 +12259,28 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+	exports.default = AddBookByGenre;
 
 	var _react = __webpack_require__(1);
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _BookForm = __webpack_require__(102);
+	var _BookForm = __webpack_require__(103);
 
 	var _BookForm2 = _interopRequireDefault(_BookForm);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	exports.default = _react2.default.createClass({
-	  displayName: "AddBookByGenre",
+	function AddBookByGenre(props) {
+	  var genre = props.params.genre;
 
-	  render: function render() {
-	    var genre = this.props.params.genre;
-
-	    return _react2.default.createElement(_BookForm2.default, { genre: genre,
-	      next: "/genre/" + genre });
-	  }
-	});
+	  return _react2.default.createElement(_BookForm2.default, {
+	    genre: genre,
+	    next: "/genre/" + genre });
+	}
 
 /***/ },
-/* 109 */
+/* 110 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -12330,23 +12297,24 @@
 
 	var _reactRouter = __webpack_require__(15);
 
-	var _Breadcrumbs = __webpack_require__(106);
+	var _Breadcrumbs = __webpack_require__(107);
 
 	var _Breadcrumbs2 = _interopRequireDefault(_Breadcrumbs);
 
-	var _Cover = __webpack_require__(100);
+	var _Cover = __webpack_require__(101);
 
 	var _Cover2 = _interopRequireDefault(_Cover);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var Authors = _react2.default.createClass({
-	  displayName: "Authors",
+	var authors_breadcrumb_paths = [{
+	  to: { pathname: "/" },
+	  title: "Home"
+	}];
+	var AuthorsBreadcrumbs = _react2.default.createElement(_Breadcrumbs2.default, { paths: authors_breadcrumb_paths });
 
-	  propTypes: {
-	    authors: _react2.default.PropTypes.array.isRequired
-	  },
-	  authorLi: function authorLi(author, index) {
+	function Authors(props) {
+	  var authors = props.authors.map(function (author) {
 	    var name = author.name;
 	    var genre = author.genre;
 
@@ -12358,37 +12326,28 @@
 	        classes: [cleanGenre],
 	        path: { pathname: "/author/" + name } })
 	    );
-	  },
-	  breadcrumbs: function breadcrumbs() {
-	    var paths = [{
-	      to: { pathname: "/" },
-	      title: "Home"
-	    }];
-	    return _react2.default.createElement(_Breadcrumbs2.default, { paths: paths });
-	  },
-	  render: function render() {
-	    var _this = this;
+	  });
 
-	    var authors = this.props.authors.map(function (a, i) {
-	      return _this.authorLi(a, i);
-	    });
-	    return _react2.default.createElement(
-	      "div",
+	  return _react2.default.createElement(
+	    "div",
+	    null,
+	    AuthorsBreadcrumbs,
+	    _react2.default.createElement(
+	      "h1",
 	      null,
-	      this.breadcrumbs(),
-	      _react2.default.createElement(
-	        "h1",
-	        null,
-	        "Authors"
-	      ),
-	      _react2.default.createElement(
-	        "ul",
-	        { className: "authors" },
-	        authors
-	      )
-	    );
-	  }
-	});
+	      "Authors"
+	    ),
+	    _react2.default.createElement(
+	      "ul",
+	      { className: "authors" },
+	      authors
+	    )
+	  );
+	}
+
+	Authors.propTypes = {
+	  authors: _react2.default.PropTypes.array.isRequired
+	};
 
 	exports.default = (0, _reactRedux.connect)(function (state) {
 	  // get an object containing all authors and their book count
@@ -12424,7 +12383,7 @@
 	})(Authors);
 
 /***/ },
-/* 110 */
+/* 111 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -12439,55 +12398,51 @@
 
 	var _reactRedux = __webpack_require__(72);
 
-	var _Showcase = __webpack_require__(98);
+	var _Showcase = __webpack_require__(99);
 
 	var _Showcase2 = _interopRequireDefault(_Showcase);
 
-	var _Breadcrumbs = __webpack_require__(106);
+	var _Breadcrumbs = __webpack_require__(107);
 
 	var _Breadcrumbs2 = _interopRequireDefault(_Breadcrumbs);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var Author = _react2.default.createClass({
-	  displayName: "Author",
+	var author_breadcrumb_paths = [{
+	  to: { pathname: "/" },
+	  title: "Home"
+	}, {
+	  to: { pathname: "/authors" },
+	  title: "Authors"
+	}];
 
-	  breadcrumbs: function breadcrumbs() {
-	    var paths = [{
-	      to: { pathname: "/" },
-	      title: "Home"
-	    }, {
-	      to: { pathname: "/authors" },
-	      title: "Authors"
-	    }];
-	    return _react2.default.createElement(_Breadcrumbs2.default, { paths: paths });
-	  },
-	  render: function render() {
-	    var _props = this.props;
-	    var author = _props.author;
-	    var books = _props.books;
-	    // inserts such as the add book form
+	var AuthorBreadcrumbs = _react2.default.createElement(_Breadcrumbs2.default, { paths: author_breadcrumb_paths });
 
-	    var children = this.props.children ? _react2.default.createElement(
+	function Author(props) {
+	  var author = props.author;
+	  var books = props.books;
+	  var children = props.children;
+
+
+	  return _react2.default.createElement(
+	    "div",
+	    null,
+	    AuthorBreadcrumbs,
+	    _react2.default.createElement(
+	      "h1",
+	      null,
+	      author
+	    ),
+	    children ? _react2.default.createElement(
 	      "div",
 	      { className: "children" },
-	      this.props.children
-	    ) : null;
-	    return _react2.default.createElement(
-	      "div",
-	      null,
-	      this.breadcrumbs(),
-	      _react2.default.createElement(
-	        "h1",
-	        null,
-	        author
-	      ),
-	      children,
-	      _react2.default.createElement(_Showcase2.default, { books: books,
-	        addPath: "/author/" + author + "/add" })
-	    );
-	  }
-	});
+	      children
+	    ) : null,
+	    _react2.default.createElement(_Showcase2.default, {
+	      books: books,
+	      addPath: "/author/" + author + "/add" })
+	  );
+	}
 
 	exports.default = (0, _reactRedux.connect)(function (state, ownProps) {
 	  // access the author param using ownProps
@@ -12502,37 +12457,6 @@
 	})(Author);
 
 /***/ },
-/* 111 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _BookForm = __webpack_require__(102);
-
-	var _BookForm2 = _interopRequireDefault(_BookForm);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	exports.default = _react2.default.createClass({
-	  displayName: "AddBookByAuthor",
-
-	  render: function render() {
-	    var author = this.props.params.author;
-
-	    return _react2.default.createElement(_BookForm2.default, { author: author,
-	      next: "/author/" + author });
-	  }
-	});
-
-/***/ },
 /* 112 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -12541,8 +12465,37 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+	exports.default = AddBookByAuthor;
 
-	var _books = __webpack_require__(113);
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _BookForm = __webpack_require__(103);
+
+	var _BookForm2 = _interopRequireDefault(_BookForm);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function AddBookByAuthor(props) {
+	  var author = props.params.author;
+
+	  return _react2.default.createElement(_BookForm2.default, {
+	    author: author,
+	    next: "/author/" + author });
+	}
+
+/***/ },
+/* 113 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _books = __webpack_require__(114);
 
 	var _books2 = _interopRequireDefault(_books);
 
@@ -12553,7 +12506,7 @@
 	};
 
 /***/ },
-/* 113 */
+/* 114 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -12574,7 +12527,7 @@
 	  }
 	};
 
-	var _ActionTypes = __webpack_require__(104);
+	var _ActionTypes = __webpack_require__(105);
 
 	var types = _interopRequireWildcard(_ActionTypes);
 
@@ -12583,7 +12536,7 @@
 	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
 /***/ },
-/* 114 */
+/* 115 */
 /***/ function(module, exports) {
 
 	"use strict";

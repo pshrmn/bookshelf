@@ -3,21 +3,17 @@ import { IndexLink, Link } from "react-router";
 
 import genres from "../constants/genres";
 
+const GenreBars = genres.map(genre => <li key={genre} className={genre.replace("'","")}></li> );
+
 export default React.createClass({
   shouldComponentUpdate: function(nextProps, nextState) {
     return false;
   },
   render: function() {
-    let genreBars = genres.map((g, i) => {
-      return (
-        <li key={i}
-            className={g.replace("'","")}></li>
-      );
-    });
     return (
       <header>
         <ul>
-          {genreBars}
+          {GenreBars}
         </ul>
         <div className="title">
           <IndexLink to={{pathname: "/"}} title="home">Bookshelf</IndexLink>
@@ -31,7 +27,7 @@ export default React.createClass({
           <Link to={{pathname: "/authors"}}>Authors</Link>
         </nav>
         <ul>
-          {genreBars}
+          {GenreBars}
         </ul>
       </header>
     );
