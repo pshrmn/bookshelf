@@ -1,6 +1,11 @@
 {
   "books": [
     {
+      "title": "The Hunger Games",
+      "author": "Suzanne Collins",
+      "genre": "sci-fi"
+    },
+    {
       "title": "Alibaba: The House that Jack Ma Built",
       "author": "Duncan Clark",
       "genre": "non-fiction"
