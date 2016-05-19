@@ -1,6 +1,11 @@
 {
   "books": [
     {
+      "title": "Catching Fire",
+      "author": "Suzanne Collins",
+      "genre": "sci-fi"
+    },
+    {
       "title": "The Hunger Games",
       "author": "Suzanne Collins",
       "genre": "sci-fi"
