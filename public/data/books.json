@@ -1,6 +1,16 @@
 {
   "books": [
     {
+      "title": "Mockingjay",
+      "author": "Suzanne Collins",
+      "genre": "sci-fi"
+    },
+    {
+      "title": "The Battle for Room 314",
+      "author": "Ed Boland",
+      "genre": "non-fiction"
+    },
+    {
       "title": "Catching Fire",
       "author": "Suzanne Collins",
       "genre": "sci-fi"
