@@ -7006,12 +7006,12 @@
 	  return _react2.default.createElement(
 	    "div",
 	    { className: "stats" },
-	    _react2.default.createElement(GenreBars, { books: books }),
+	    _react2.default.createElement(GenreBarChart, { books: books }),
 	    _react2.default.createElement(PopularAuthors, { books: books })
 	  );
 	}
 
-	function GenreBars(props) {
+	function GenreBarChart(props) {
 	  var books = props.books;
 
 	  if (books.length === 0) {
@@ -7140,10 +7140,10 @@
 	      var count = getY(d);
 	      var y = yScale(count);
 	      var barWidth = xScale.bandwidth();
-	      return _react2.default.createElement(Bar, { key: i,
+	      return _react2.default.createElement(Bar, {
+	        key: i,
 	        x: x,
 	        y: y,
-	        count: count,
 	        width: barWidth,
 	        height: height - y,
 	        genre: d.genre });
@@ -7151,18 +7151,21 @@
 
 	    return _react2.default.createElement(
 	      "svg",
-	      { width: margin.left + width + margin.right,
+	      {
+	        width: margin.left + width + margin.right,
 	        height: margin.top + height + margin.bottom },
 	      _react2.default.createElement(
 	        "g",
 	        { transform: "translate(" + margin.left + "," + margin.top + ")" },
-	        _react2.default.createElement(XAxis, { values: data.map(function (d) {
+	        _react2.default.createElement(XAxis, {
+	          values: data.map(function (d) {
 	            return getX(d);
 	          }),
 	          scale: xScale,
 	          height: height,
 	          width: width }),
-	        _react2.default.createElement(YAxis, { scale: yScale,
+	        _react2.default.createElement(YAxis, {
+	          scale: yScale,
 	          height: height }),
 	        bars
 	      )
@@ -7207,7 +7210,8 @@
 	  var midbar = scale.bandwidth() / 2;
 	  return _react2.default.createElement(
 	    "g",
-	    { className: "axis x",
+	    {
+	      className: "axis x",
 	      transform: "translate(0," + height + ")" },
 	    _react2.default.createElement("line", { x1: "0", x2: width }),
 	    _react2.default.createElement(
@@ -11615,16 +11619,20 @@
 	});
 	exports.genresByCount = genresByCount;
 	exports.mostPopularAuthors = mostPopularAuthors;
-	function genresByCount(books) {
-	  var genreCounts = books.reduce(function (dict, curr) {
-	    var genre = curr.genre;
-	    if (dict[genre] !== undefined) {
-	      dict[genre] += 1;
+	function countByProperty(arr, prop) {
+	  return arr.reduce(function (dict, curr) {
+	    var value = curr[prop];
+	    if (dict[value] !== undefined) {
+	      dict[value] += 1;
 	    } else {
-	      dict[genre] = 1;
+	      dict[value] = 1;
 	    }
 	    return dict;
 	  }, {});
+	}
+
+	function genresByCount(books) {
+	  var genreCounts = countByProperty(books, "genre");
 
 	  return Object.keys(genreCounts).map(function (genre) {
 	    return {
@@ -11635,26 +11643,16 @@
 	}
 
 	function mostPopularAuthors(books) {
-	  var authorCounts = books.reduce(function (dict, curr) {
-	    var author = curr.author;
-	    if (dict[author] !== undefined) {
-	      dict[author] += 1;
-	    } else {
-	      dict[author] = 1;
-	    }
-	    return dict;
-	  }, {});
+	  var authorCounts = countByProperty(books, "author");
 
-	  var authorMap = Object.keys(authorCounts).map(function (author) {
+	  return Object.keys(authorCounts).map(function (author) {
 	    return {
 	      author: author,
 	      count: authorCounts[author]
 	    };
-	  });
-	  authorMap.sort(function (a, b) {
+	  }).sort(function (a, b) {
 	    return b.count - a.count;
-	  });
-	  return authorMap.slice(0, 5);
+	  }).slice(0, 5);
 	}
 
 /***/ },
@@ -11824,33 +11822,29 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _counts = __webpack_require__(98);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	/*
+	 * A bar made up of blocks for each genre where each block's width
+	 * is determined by the percent of total books that are that genre
+	 */
 	function GenreBar(props) {
 	  var books = props.books;
 
 	  var bookCount = books.length;
-	  var genreCounts = books.reduce(function (genres, book) {
-	    var genre = book.genre;
-	    if (genres[genre] !== undefined) {
-	      genres[genre] += 1;
-	    } else {
-	      genres[genre] = 1;
-	    }
-	    return genres;
-	  }, {});
-	  var bars = Object.keys(genreCounts).map(function (g) {
-	    var count = genreCounts[g];
-	    var percent = count / bookCount;
-	    var classNames = ["genre", g.replace("'", "")];
-	    return _react2.default.createElement("div", {
-	      className: classNames.join(" "),
-	      style: { flexGrow: percent } });
-	  });
+
 	  return _react2.default.createElement(
 	    "div",
 	    { className: "genre-bar" },
-	    bars
+	    (0, _counts.genresByCount)(books).map(function (g) {
+	      var percent = g.count / bookCount;
+	      return _react2.default.createElement("div", {
+	        className: ["genre", g.genre.replace("'", "")].join(" "),
+	        style: { flexGrow: percent },
+	        title: Math.floor(100 * percent) + "% of books are " + g.genre });
+	    })
 	  );
 	}
 
@@ -12179,17 +12173,16 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function Breadcrumbs(props) {
-	  var pathLinks = props.paths.map(function (p, i) {
-	    return _react2.default.createElement(
-	      _reactRouter.Link,
-	      { key: i, to: p.to },
-	      p.title
-	    );
-	  });
 	  return _react2.default.createElement(
 	    "div",
 	    { className: "breadcrumbs" },
-	    pathLinks
+	    props.paths.map(function (p, i) {
+	      return _react2.default.createElement(
+	        _reactRouter.Link,
+	        { key: i, to: p.to },
+	        p.title
+	      );
+	    })
 	  );
 	}
 

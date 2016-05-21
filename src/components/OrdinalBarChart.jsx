@@ -44,26 +44,29 @@ export default React.createClass({
       let y = yScale(count);
       let barWidth = xScale.bandwidth();
       return (
-        <Bar key={i}
-             x={x}
-             y={y}
-             count={count}
-             width={barWidth}
-             height={height-y}
-             genre={d.genre} />
+        <Bar
+          key={i}
+          x={x}
+          y={y}
+          width={barWidth}
+          height={height-y}
+          genre={d.genre} />
       );
     });
 
     return (
-      <svg width={margin.left + width + margin.right}
-           height={margin.top + height + margin.bottom }>
+      <svg
+        width={margin.left + width + margin.right}
+        height={margin.top + height + margin.bottom }>
         <g transform={`translate(${margin.left},${margin.top})`}>
-          <XAxis values={data.map(d => getX(d))}
-                 scale={xScale}
-                 height={height}
-                 width={width} />
-          <YAxis scale={yScale}
-                 height={height} />
+          <XAxis
+            values={data.map(d => getX(d))}
+            scale={xScale}
+            height={height}
+            width={width} />
+          <YAxis
+            scale={yScale}
+            height={height} />
           {bars}
         </g>
       </svg>
@@ -93,8 +96,9 @@ function XAxis(props) {
   const { values, scale, height, width } = props;
   const midbar = scale.bandwidth() / 2;
   return (
-    <g className="axis x"
-       transform={`translate(0,${height})`}>
+    <g
+      className="axis x"
+      transform={`translate(0,${height})`}>
       <line x1="0" x2={width}></line>
       <g className="ticks">
         {

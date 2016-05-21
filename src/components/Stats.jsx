@@ -8,13 +8,13 @@ export default function Stats(props) {
   const { books } = props;
   return (
     <div className="stats">
-      <GenreBars books={books} />
+      <GenreBarChart books={books} />
       <PopularAuthors books={books} />
     </div>
   );
 }
 
-function GenreBars(props) {
+function GenreBarChart(props) {
   const { books } = props;
   if ( books.length === 0 ) {
     return null;
