@@ -1,0 +1,43 @@
+.info {
+  margin: 10px 0;
+}
+
+.genre-bar {
+  display: flex;
+  flex-flow: row nowrap;
+  .genre {
+    height: 5px;
+
+    &.adventure {
+      background: $adventure;
+    }
+    &.childrens {
+      background: $childrens;
+    }
+    &.fantasy {
+      background: $fantasy;
+    }
+    &.historical {
+      background: $historical;
+    }
+    &.mystery {
+      background: $mystery;
+    }
+    &.non-fiction {
+      background: $non-fiction;
+    }
+    &.poetry {
+      background: $poetry;
+    }
+    &.sci-fi {
+      background: $sci-fi;
+    }
+    &.thriller {
+      background: $thriller;
+    }
+
+    &.drama {
+      background: $drama;
+    }
+  }
+}

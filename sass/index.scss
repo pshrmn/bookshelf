@@ -20,7 +20,7 @@ $light-brown: #ECE4E0;
 @import 'cover';
 @import 'chart';
 @import 'book';
-
+@import 'showcase';
 
 /*
  * genre specific css
@@ -47,13 +47,6 @@ $light-brown: #ECE4E0;
 
   > div {
     margin: 15px;
-  }
-}
-
-.showcase {
-
-  .info {
-    margin: 10px 0;
   }
 }
 

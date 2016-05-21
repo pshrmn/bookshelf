@@ -83,6 +83,8 @@ footer {
 form {
   padding: 15px;
   box-sizing: border-box; }
+  form > p, form > div {
+    margin: 5px 0; }
   form p {
     padding: 3px 0; }
   form input[type=text] {
@@ -216,6 +218,39 @@ rect {
   .book .author {
     text-align: center; }
 
+.info {
+  margin: 10px 0; }
+
+.genre-bar {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row nowrap;
+      -ms-flex-flow: row nowrap;
+          flex-flow: row nowrap; }
+  .genre-bar .genre {
+    height: 5px; }
+    .genre-bar .genre.adventure {
+      background: #009688; }
+    .genre-bar .genre.childrens {
+      background: #CE7291; }
+    .genre-bar .genre.fantasy {
+      background: #86CFD8; }
+    .genre-bar .genre.historical {
+      background: #607D8B; }
+    .genre-bar .genre.mystery {
+      background: #94B76B; }
+    .genre-bar .genre.non-fiction {
+      background: #E6C150; }
+    .genre-bar .genre.poetry {
+      background: #A02C40; }
+    .genre-bar .genre.sci-fi {
+      background: #6B5A88; }
+    .genre-bar .genre.thriller {
+      background: #616161; }
+    .genre-bar .genre.drama {
+      background: #795548; }
+
 /*
  * genre specific css
 .adventure {}
@@ -241,9 +276,6 @@ rect {
     text-align: center; }
   .stats > div {
     margin: 15px; }
-
-.showcase .info {
-  margin: 10px 0; }
 
 ul.genres, ul.authors {
   display: -webkit-flex;

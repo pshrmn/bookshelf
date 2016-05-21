@@ -48,7 +48,7 @@ function PopularAuthors(props) {
           mostPopularAuthors(books)
             .map((a,i) =>
               <li key={i}>
-                <Link to={{pathname: `/author/${a.author}`}}>{a.author}</Link> - {a.count}
+                <Link to={{pathname: `/author/${a.author}`}}>{a.author}</Link>
               </li>
             )
         }

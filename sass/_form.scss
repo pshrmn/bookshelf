@@ -2,6 +2,10 @@ form {
   padding: 15px;
   box-sizing: border-box;
 
+  > p, > div {
+    margin: 5px 0;
+  }
+
   p {
     padding: 3px 0;
   }
