@@ -1,8 +1,13 @@
 {
   "books": [
     {
+      "title": "The Why Axis",
+      "author": "John A. List & Uri Gneezy",
+      "genre": "non-fiction"
+    },
+    {
       "title": "Saturn Run",
-      "author": "John Sandford and Ctein",
+      "author": "John Sandford & Ctein",
       "genre": "sci-fi"
     },
     {
