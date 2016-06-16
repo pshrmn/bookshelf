@@ -1,6 +1,16 @@
 {
   "books": [
     {
+      "title": "Door to Door",
+      "author": "Edward Humes",
+      "genre": "non-fiction"
+    },
+    {
+      "title": "Preacher: Book One",
+      "author": "Garth Ennis & Steve Dillon",
+      "genre": "fantasy"
+    },
+    {
       "title": "The Positronic Man",
       "author": "Isaac Asimov & Robert Silverberg",
       "genre": "sci-fi"
