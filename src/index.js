@@ -10,7 +10,6 @@ import bookLoader from "./bookLoader";
 
 const init = initialState => {
   const reducer = combineReducers(Object.assign({}, reducers));
-
   const store = createStore(
     reducer,
     initialState
@@ -29,6 +28,10 @@ const init = initialState => {
 
 bookLoader("data/books.json")
   .then(resp => {
+    // ie
+    if ( typeof resp === "string" ) {
+      resp = JSON.parse(resp);
+    }
     init({
       books: resp.books
     });

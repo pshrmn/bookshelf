@@ -76,7 +76,7 @@
 
 	var init = function init(initialState) {
 	  var reducer = (0, _redux.combineReducers)(Object.assign({}, _reducers2.default));
-
+	  console.log(JSON.stringify(initialState));
 	  var store = (0, _redux.createStore)(reducer, initialState);
 
 	  _reactDom2.default.render(_react2.default.createElement(
@@ -92,6 +92,11 @@
 	};
 
 	(0, _bookLoader2.default)("data/books.json").then(function (resp) {
+	  console.log(resp.books);
+	  // ie
+	  if (typeof resp === "string") {
+	    resp = JSON.parse(resp);
+	  }
 	  init({
 	    books: resp.books
 	  });
@@ -12560,6 +12565,9 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+
 	exports.default = bookLoader;
 	function bookLoader(url) {
 	  return new Promise(function (resolve, reject) {
@@ -12568,6 +12576,7 @@
 	    req.responseType = "json";
 	    req.onload = function () {
 	      if (req.status === 200) {
+	        console.log(_typeof(req.response));
 	        resolve(req.response);
 	      } else {
 	        reject(Error("Failed to load books from url " + url));

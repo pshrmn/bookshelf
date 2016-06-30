@@ -19,13 +19,20 @@ h1 {
 main {
   width: 100%;
   font-family: "Josefin Sans", sans-serif;
-
+  display: block;
 }
 
 .main {
   width: 80%;
   min-height: 80vh;
   margin: 0 auto;
+}
+
+ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 header {
