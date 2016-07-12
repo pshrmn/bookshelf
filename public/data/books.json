@@ -1,6 +1,31 @@
 {
   "books": [
     {
+      "title": "Ender's Game",
+      "author": "Orscon Scott Card",
+      "genre": "sci-fi"
+    },
+    {
+      "title": "You May Also Like",
+      "author": "Tom Vanderbilt",
+      "genre": "non-fiction"
+    },
+    {
+      "title": "2010: Odyssey Two",
+      "author": "Arthur C. Clarke",
+      "genre": "sci-fi"
+    },
+    {
+      "title": "The Regional Office is Under Attack",
+      "author": "Manuel Gonzales",
+      "genre": "fantasy"
+    },
+    {
+      "title": "We Are All Stardust",
+      "author": "Stefan Klein",
+      "genre": "non-fiction"
+    },
+    {
       "title": "Door to Door",
       "author": "Edward Humes",
       "genre": "non-fiction"
