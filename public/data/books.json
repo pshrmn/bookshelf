@@ -1,6 +1,16 @@
 {
   "books": [
     {
+      "title": "3001: The Final Odyssey",
+      "author": "Arthur C. Clarke",
+      "genre": "sci-fi"
+    },
+    {
+      "title": "2061: Odyssey Three",
+      "author": "Arthur C. Clarke",
+      "genre": "sci-fi"
+    },
+    {
       "title": "Ender's Game",
       "author": "Orscon Scott Card",
       "genre": "sci-fi"
