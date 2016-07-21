@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const config = {
   context: path.join(__dirname, 'src'),
@@ -13,8 +14,8 @@ const config = {
     root: path.join(__dirname, 'src')
   },
   output: {
-    path: path.join(__dirname, 'public', 'js'),
-    filename: 'bundle.js',
+    path: path.join(__dirname, 'public'),
+    filename: 'js/bundle.js',
     publicPath: '/public/js/'
   },
   module: {
@@ -26,7 +27,7 @@ const config = {
       },
       {
         test: /\.scss$/,
-        loaders: ['style', 'css', 'postcss', 'sass']
+        loader: ExtractTextPlugin.extract('style', 'css!postcss!sass')
       }
     ]
   },
@@ -34,9 +35,10 @@ const config = {
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
-      filename: 'vendor.js',
+      filename: 'js/vendor.js',
       minChunks: Infinity
-    })
+    }),
+    new ExtractTextPlugin('css/index.css')
   ]
 };
 
@@ -65,7 +67,7 @@ case 'start':
     }
   });
   config.module.loaders[0].loaders = ['react-hot', 'babel'];
-case 'webpack-prod':
+case 'build':
   config.plugins = config.plugins.concat([
     new webpack.DefinePlugin({
       'process.env': {
