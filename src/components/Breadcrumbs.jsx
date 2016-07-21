@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router";
 
-import "sass/_breadcrumbs.scss";
+import "sass/breadcrumbs.scss";
 
 export default function Breadcrumbs(props){
   return (

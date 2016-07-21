@@ -1,11 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import genres from "constants/genres";
-import Breadcrumbs from "./Breadcrumbs";
-import Cover from "./Cover";
+import Breadcrumbs from "components/Breadcrumbs";
+import Cover from "components/Cover";
 
-import "sass/_genres.scss";
+import genres from "constants/genres";
+
+import "sass/genres.scss";
 
 const genres_breadcrumb_paths = [
   {

@@ -19,7 +19,6 @@
   "homepage": "https://github.com/psherman/bookshelf#readme",
   "dependencies": {
     "d3-scale": "^0.4.1",
-    "history": "^1.17.0",
     "react": "^15.2.1",
     "react-dom": "^15.2.1",
     "react-redux": "^4.4.5",

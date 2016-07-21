@@ -8,6 +8,8 @@ import routes from "./routes";
 import reducers from "./reducers";
 import bookLoader from "./bookLoader";
 
+import "sass/index.scss";
+
 const init = initialState => {
   const reducer = combineReducers(Object.assign({}, reducers));
   const store = createStore(

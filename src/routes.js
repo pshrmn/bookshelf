@@ -1,14 +1,14 @@
-import App from "components/App";
-import Index from "components/Index";
-import AddBook from "components/AddBook";
+import App from "pages/App";
+import Index from "pages/Index";
+import AddBook from "pages/AddBook";
 
-import Genres from "components/Genres";
-import Genre from "components/Genre";
-import AddBookByGenre from "components/AddBookByGenre";
+import Genres from "pages/Genres";
+import Genre from "pages/Genre";
+import AddBookByGenre from "pages/AddBookByGenre";
 
-import Authors from "components/Authors";
-import Author from "components/Author";
-import AddBookByAuthor from "components/AddBookByAuthor";
+import Authors from "pages/Authors";
+import Author from "pages/Author";
+import AddBookByAuthor from "pages/AddBookByAuthor";
 
 export default [{
   path: "/",

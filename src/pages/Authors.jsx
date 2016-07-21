@@ -2,10 +2,10 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router";
 
-import Breadcrumbs from "./Breadcrumbs";
-import Cover from "./Cover";
+import Breadcrumbs from "components/Breadcrumbs";
+import Cover from "components/Cover";
 
-import "sass/_authors.scss";
+import "sass/authors.scss";
 
 const authors_breadcrumb_paths = [
   {

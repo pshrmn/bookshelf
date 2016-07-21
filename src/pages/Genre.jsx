@@ -2,9 +2,9 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router";
 
-import Stats from "./Stats";
-import Showcase from "./Showcase";
-import Breadcrumbs from "./Breadcrumbs";
+import Stats from "components/Stats";
+import Showcase from "components/Showcase";
+import Breadcrumbs from "components/Breadcrumbs";
 
 const genre_breadcrumb_paths = [
   {

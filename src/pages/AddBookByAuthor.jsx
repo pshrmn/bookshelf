@@ -1,6 +1,6 @@
 import React from "react";
 
-import BookForm from "./BookForm";
+import BookForm from "components/BookForm";
 
 export default function AddBookByAuthor(props) {
   const { author } = props.params;

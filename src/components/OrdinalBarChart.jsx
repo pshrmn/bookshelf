@@ -1,7 +1,7 @@
 import React from "react";
 import d3_scale from "d3-scale";
 
-import "sass/_chart.scss";
+import "sass/chart.scss";
 
 /*
  * A bar chart with an ordinal x-axis and a linear y-axis

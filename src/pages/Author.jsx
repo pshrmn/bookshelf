@@ -1,8 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import Showcase from "./Showcase";
-import Breadcrumbs from "./Breadcrumbs";
+import Showcase from "components/Showcase";
+import Breadcrumbs from "components/Breadcrumbs";
 
 const author_breadcrumb_paths = [
   {

@@ -1,6 +1,6 @@
 import React from "react";
 
-import "sass/_footer.scss";
+import "sass/footer.scss";
 
 export default function Footer(props) {
   return (

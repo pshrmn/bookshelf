@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router";
 
-import "sass/_cover.scss";
+import "sass/cover.scss";
 
 export default function Cover(props) {
   const {

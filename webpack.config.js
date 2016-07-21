@@ -6,8 +6,8 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const config = {
   context: path.join(__dirname, 'src'),
   entry: {
-    bundle: ['sass/index.scss', './index.js'],
-    vendor: ['react', 'react-dom']
+    bundle: './index.js',
+    vendor: ['react', 'react-dom', 'redux', 'react-router', 'react-redux']
   },
   resolve: {
     extensions: ['', '.js', '.jsx'],
@@ -46,7 +46,6 @@ case 'start':
   config.entry.bundle = [
     'webpack-dev-server/client?http://0.0.0.0:8000',
     'webpack/hot/only-dev-server',
-    'sass/index.scss',
     './index.js'
   ]
   // I am unsure of the best way to do this. Hard-coding

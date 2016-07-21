@@ -5,7 +5,7 @@ import Book from "./Book";
 import Cover from "./Cover";
 import GenreBar from "./GenreBar";
 
-import "sass/_showcase.scss";
+import "sass/showcase.scss";
 
 export default function showcase(props) {
   const { books, addPath } = props;

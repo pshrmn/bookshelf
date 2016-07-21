@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 import { addBook } from "actions";
 import genres from "constants/genres";
 
+import "sass/form.scss";
+
 const BookForm = React.createClass({
   propTypes: {
     author: React.PropTypes.string,

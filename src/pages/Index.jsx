@@ -1,8 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import Stats from "./Stats";
-import Showcase from "./Showcase";
+import Stats from "components/Stats";
+import Showcase from "components/Showcase";
 
 function Index(props) {
   const { books } = props;

@@ -3,7 +3,7 @@ import { IndexLink, Link } from "react-router";
 
 import genres from "constants/genres";
 
-import "sass/_header.scss";
+import "sass/header.scss";
 
 const GenreBars = genres.map(genre => <li key={genre} className={genre.replace("'","")}></li> );
 
