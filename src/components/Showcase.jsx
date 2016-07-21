@@ -10,10 +10,10 @@ export default function showcase(props) {
 
   return (
     <div className="showcase">
-      <p className="info">
+      <div className="info">
         {books.length} Books
         <GenreBar books={books} />
-      </p>
+      </div>
       <div className="books">
         <div className="book">
           <Cover classes={["add"]} path={{pathname: addPath}} title="Add A Book" />

@@ -1,7 +1,7 @@
 import React from "react";
 import { IndexLink, Link } from "react-router";
 
-import genres from "../constants/genres";
+import genres from "constants/genres";
 
 const GenreBars = genres.map(genre => <li key={genre} className={genre.replace("'","")}></li> );
 

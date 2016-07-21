@@ -2,7 +2,7 @@ import React from "react";
 
 import { Link } from "react-router";
 import BarChart from "./OrdinalBarChart";
-import { genresByCount, mostPopularAuthors } from "../helpers/counts";
+import { genresByCount, mostPopularAuthors } from "helpers/counts";
 
 export default function Stats(props) {
   const { books } = props;

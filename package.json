@@ -4,12 +4,6 @@
   "description": "track books that you've read (or will read)",
   "main": "server/index.js",
   "scripts": {
-    "autoprefix": "postcss --use autoprefixer --autoprefixer.browsers \"last 2 versions\" public/css/index.css --dir public/css/",
-    "build-dev": "npm run start & npm run css",
-    "build-prod": "npm run build & npm run css",
-    "css": "npm run sass & npm run autoprefix",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "sass": "node-sass sass/** -o public/css/**",
     "start": "node devServer.js",
     "build": "webpack"
   },
@@ -37,9 +31,13 @@
     "babel-core": "^6.11.4",
     "babel-preset-es2015": "^6.9.0",
     "babel-preset-react": "^6.11.1",
+    "css-loader": "^0.23.1",
     "node-sass": "^3.8.0",
     "postcss-cli": "^2.5.2",
+    "postcss-loader": "^0.9.1",
     "react-hot-loader": "^1.3.0",
+    "sass-loader": "^4.0.0",
+    "style-loader": "^0.13.1",
     "webpack": "^1.13.1",
     "webpack-dev-server": "^1.14.1"
   },

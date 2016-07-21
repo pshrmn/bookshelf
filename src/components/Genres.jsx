@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import genres from "../constants/genres";
+import genres from "constants/genres";
 import Breadcrumbs from "./Breadcrumbs";
 import Cover from "./Cover";
 

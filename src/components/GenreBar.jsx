@@ -1,6 +1,6 @@
 import React from "react";
 
-import { genresByCount } from "../helpers/counts";
+import { genresByCount } from "helpers/counts";
 
 /*
  * A bar made up of blocks for each genre where each block's width
@@ -18,6 +18,7 @@ export default function GenreBar(props) {
             const percent = (g.count / bookCount);
             return (
               <div
+                key={g.genre}
                 className={["genre", g.genre.replace("'", "")].join(" ")}
                 style={{flexGrow: percent}}
                 title={`${Math.floor(100*percent)}% of books are ${g.genre}`}>

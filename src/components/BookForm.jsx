@@ -1,8 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { addBook } from "../actions";
-import genres from "../constants/genres";
+import { addBook } from "actions";
+import genres from "constants/genres";
 
 const BookForm = React.createClass({
   propTypes: {
