@@ -5,6 +5,8 @@ import { Link } from "react-router";
 import Breadcrumbs from "./Breadcrumbs";
 import Cover from "./Cover";
 
+import "sass/_authors.scss";
+
 const authors_breadcrumb_paths = [
   {
     to: {pathname: "/"},

@@ -16,7 +16,7 @@ const config = {
   output: {
     path: path.join(__dirname, 'public'),
     filename: 'js/bundle.js',
-    publicPath: '/public/js/'
+    publicPath: '/'
   },
   module: {
     loaders: [
@@ -27,7 +27,7 @@ const config = {
       },
       {
         test: /\.scss$/,
-        loader: ExtractTextPlugin.extract('style', 'css!postcss!sass')
+        loaders: ['style', 'css', 'postcss', 'sass']
       }
     ]
   },
@@ -37,22 +37,18 @@ const config = {
       name: 'vendor',
       filename: 'js/vendor.js',
       minChunks: Infinity
-    }),
-    new ExtractTextPlugin('css/index.css')
+    })
   ]
 };
 
 switch(process.env.npm_lifecycle_event){
 case 'start':
-  config.plugins = config.plugins.concat([
-    new webpack.HotModuleReplacementPlugin()
-  ]);
   config.entry.bundle = [
     'webpack-dev-server/client?http://0.0.0.0:8000',
     'webpack/hot/only-dev-server',
+    'sass/index.scss',
     './index.js'
   ]
-  // find the js(x) loader and add the react-hot-loader
   // I am unsure of the best way to do this. Hard-coding
   // will break if another loader is placed at the index
   // that the jsx loader currently is. Replacing all of 
@@ -62,12 +58,25 @@ case 'start':
   // test pattern).
   config.module.loaders.forEach(l => {
     if ( l.test.test('matches.jsx') ) {
-      l.loaders = ['react-hot', 'babel']
+      l.loaders = ['react-hot', 'babel'];
       delete l.loader;
     }
   });
-  config.module.loaders[0].loaders = ['react-hot', 'babel'];
+
+  config.plugins = config.plugins.concat([
+    new webpack.HotModuleReplacementPlugin()
+  ]);
+  
+  break;
 case 'build':
+  // same idea as the jsx loader above
+  config.module.loaders.forEach(l => {
+    if ( l.test.test('matches.scss') ) {
+      l.loader = ExtractTextPlugin.extract('style', 'css!postcss!sass');
+      delete l.loaders;
+    }
+  });
+
   config.plugins = config.plugins.concat([
     new webpack.DefinePlugin({
       'process.env': {
@@ -80,8 +89,10 @@ case 'build':
       compress: {
         warnings: false
       }
-    })
+    }),
+    new ExtractTextPlugin('css/index.css')
   ]);
+  break;
 }
 
 module.exports = config;

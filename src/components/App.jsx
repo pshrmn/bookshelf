@@ -1,6 +1,7 @@
 import React from "react";
 
 import TopBar from "./TopBar";
+import Footer from "./Footer";
 
 export default function App(props) {
   return (
@@ -9,9 +10,7 @@ export default function App(props) {
       <div className="main">
         {props.children}
       </div>
-      <footer>
-        made by <a href="http://www.pshrmn.com">pshrmn.com</a>
-      </footer>
+      <Footer />
     </div>
   );
 }

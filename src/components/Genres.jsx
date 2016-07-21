@@ -5,6 +5,8 @@ import genres from "constants/genres";
 import Breadcrumbs from "./Breadcrumbs";
 import Cover from "./Cover";
 
+import "sass/_genres.scss";
+
 const genres_breadcrumb_paths = [
   {
     to: {pathname: "/"},

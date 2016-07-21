@@ -3,6 +3,8 @@ import { Link } from "react-router";
 
 import Cover from "./Cover";
 
+import "sass/_book.scss";
+
 export default function Book(props) {
   const { title, author, genre } = props;
   const cleanGenre = genre.replace("'", "");

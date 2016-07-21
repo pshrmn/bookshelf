@@ -1,0 +1,11 @@
+@import 'variables';
+
+footer {
+  text-align: center;
+  padding: 5px 0;
+  width: 100vw;
+  
+  a {
+    color: $black;
+  }
+}

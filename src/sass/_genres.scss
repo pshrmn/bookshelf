@@ -1,0 +1,8 @@
+ul.genres {
+  display: flex;
+  flex-flow: row wrap;
+
+  li {
+    margin: 0 15px 15px 0;
+  }
+}

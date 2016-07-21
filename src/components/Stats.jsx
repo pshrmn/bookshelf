@@ -4,6 +4,8 @@ import { Link } from "react-router";
 import BarChart from "./OrdinalBarChart";
 import { genresByCount, mostPopularAuthors } from "helpers/counts";
 
+import "sass/_stats.scss";
+
 export default function Stats(props) {
   const { books } = props;
   return (

@@ -1,0 +1,13 @@
+.stats {
+  display: flex;
+  flex-flow: row wrap;
+  margin: 10px 0;
+
+  h2 {
+    text-align: center;
+  }
+
+  > div {
+    margin: 15px;
+  }
+}
