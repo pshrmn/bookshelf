@@ -1,6 +1,11 @@
 {
   "books": [
     {
+      "title": "And the Weak Suffer What They Must?",
+      "author": "Yanis Varoufakis",
+      "genre": "non-fiction"
+    },
+    {
       "title": "3001: The Final Odyssey",
       "author": "Arthur C. Clarke",
       "genre": "sci-fi"
