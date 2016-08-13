@@ -1,16 +1,16 @@
-import React from "react";
+import React from 'react';
 
-import { Link } from "react-router";
-import BarChart from "./OrdinalBarChart";
-import { genresByCount, mostPopularAuthors } from "helpers/counts";
+import { Link } from 'react-router';
+import BarChart from './OrdinalBarChart';
+import { genresByCount, mostPopularAuthors } from 'helpers/counts';
 import { genreMap } from 'constants/genres';
 
-import "sass/stats.scss";
+import 'sass/stats.scss';
 
 export default function Stats(props) {
   const { books } = props;
   return (
-    <div className="stats">
+    <div className='stats'>
       <GenreBarChart books={books} />
       <PopularAuthors books={books} />
     </div>
@@ -28,7 +28,7 @@ function GenreBarChart(props) {
     return null;
   }
   return (
-    <div className="bars">
+    <div className='bars'>
       <h2>Books per Genre</h2>
       <BarChart
         data={genreCounts}
@@ -44,7 +44,7 @@ function PopularAuthors(props) {
     return null;
   }
   return (
-    <div className="authors">
+    <div className='authors'>
       <h2>Most Read Authors</h2>
       <ol>
         {

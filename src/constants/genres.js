@@ -1,43 +1,43 @@
 const genres = [
   {
-    name: "adventure",
-    className: "adventure"
+    name: 'adventure',
+    className: 'adventure'
   },
   {
-    name: "children's",
-    className: "childrens"
+    name: 'children\'s',
+    className: 'childrens'
   },
   {
-    name: "fantasy",
-    className: "fantasy"
+    name: 'fantasy',
+    className: 'fantasy'
   },
   {
-    name: "historical",
-    className: "historical"
+    name: 'historical',
+    className: 'historical'
   },
   {
-    name: "mystery",
-    className: "mystery"
+    name: 'mystery',
+    className: 'mystery'
   },
   {
-    name: "non-fiction",
-    className: "non-fiction"
+    name: 'non-fiction',
+    className: 'non-fiction'
   },
   {
-    name: "poetry",
-    className: "poetry"
+    name: 'poetry',
+    className: 'poetry'
   },
   {
-    name: "sci-fi",
-    className: "sci-fi"
+    name: 'sci-fi',
+    className: 'sci-fi'
   },
   {
-    name: "thriller",
-    className: "thriller"
+    name: 'thriller',
+    className: 'thriller'
   },
   {
-    name: "drama",
-    className: "drama"
+    name: 'drama',
+    className: 'drama'
   },
 ];
 

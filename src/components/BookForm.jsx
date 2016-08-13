@@ -1,10 +1,10 @@
-import React from "react";
-import { connect } from "react-redux";
+import React from 'react';
+import { connect } from 'react-redux';
 
-import { addBook } from "actions";
-import genres from "constants/genres";
+import { addBook } from 'actions';
+import genres from 'constants/genres';
 
-import "sass/form.scss";
+import 'sass/form.scss';
 
 const BookForm = React.createClass({
   propTypes: {
@@ -17,14 +17,14 @@ const BookForm = React.createClass({
   },
   getInitialState: function() {
     return {
-      title: "",
-      author: "",
+      title: '',
+      author: '',
       genre: undefined
     };
   },
   validate: function() {
-    return (this.state.title !== "" &&
-      this.state.author !== "" &&
+    return (this.state.title !== '' &&
+      this.state.author !== '' &&
       this.state.genre !== -1);
   },
   save: function(event) {
@@ -37,12 +37,12 @@ const BookForm = React.createClass({
         author: this.state.author,
         genre: this.state.genre
       });
-      this.context.router.push(this.props.next || "/");
+      this.context.router.push(this.props.next || '/');
     }
   },
   cancel: function(event) {
     event.preventDefault();
-    this.context.router.push(this.props.next || "/");
+    this.context.router.push(this.props.next || '/');
   },
   changeTitle: function(event) {
     this.setState({
@@ -81,7 +81,7 @@ const BookForm = React.createClass({
       this.props.author
     ) : (
       <input
-        type="text"
+        type='text'
         value={this.state.author}
         onChange={this.changeAuthor} />
     );
@@ -91,17 +91,17 @@ const BookForm = React.createClass({
         {this.props.genre}
       </p>
     ) : (
-      <div className="genre-options">
+      <div className='genre-options'>
         {
           genres.map((g, i) => {
             return (
               <label key={i}>
                 <input
-                  type="radio"
+                  type='radio'
                   value={g.name}
-                  name="genre"
+                  name='genre'
                   onChange={this.changeGenre} />
-                {g}
+                {g.name}
               </label>
             );
           })
@@ -116,7 +116,7 @@ const BookForm = React.createClass({
         </p>
         <p>
           <input
-            type="text"
+            type='text'
             value={this.state.title}
             onChange={this.changeTitle} />
         </p>
@@ -134,7 +134,7 @@ const BookForm = React.createClass({
         </div>
 
         <button>Save</button>
-        <button onClick={this.cancel} type="button">Cancel</button>
+        <button onClick={this.cancel} type='button'>Cancel</button>
       </form>
     );
   }

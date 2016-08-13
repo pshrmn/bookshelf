@@ -1,6 +1,6 @@
 {
   "name": "bookshelf",
-  "version": "0.15.0",
+  "version": "0.15.1",
   "description": "track books that you've read (or will read)",
   "main": "server/index.js",
   "scripts": {

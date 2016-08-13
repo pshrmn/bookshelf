@@ -1,8 +1,8 @@
-import React from "react";
-import { connect } from "react-redux";
+import React from 'react';
+import { connect } from 'react-redux';
 
-import Stats from "components/Stats";
-import Showcase from "components/Showcase";
+import Stats from 'components/Stats';
+import Showcase from 'components/Showcase';
 
 function Index(props) {
   const { books } = props;
@@ -11,7 +11,7 @@ function Index(props) {
       <Stats books={books} />
       <Showcase
         books={books}
-        addPath="/add" />
+        addPath='/add' />
     </div>
   );
 }

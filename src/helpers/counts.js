@@ -12,7 +12,7 @@ function countByProperty(arr, prop) {
 }
 
 export function genresByCount(books) {
-  const genreCounts = countByProperty(books, "genre");
+  const genreCounts = countByProperty(books, 'genre');
   return Object.keys(genreCounts)
     .map(genre => {
       return {
@@ -23,7 +23,7 @@ export function genresByCount(books) {
 }
 
 export function mostPopularAuthors(books) {
-  const authorCounts = countByProperty(books, "author");
+  const authorCounts = countByProperty(books, 'author');
 
   return Object.keys(authorCounts)
     .map(author => {

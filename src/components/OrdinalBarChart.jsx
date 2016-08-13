@@ -1,9 +1,9 @@
-import React from "react";
-import { linear, band } from "d3-scale";
+import React from 'react';
+import { linear, band } from 'd3-scale';
 
 import { genreMap } from 'constants/genres';
 
-import "sass/chart.scss";
+import 'sass/chart.scss';
 
 /*
  * A bar chart with an ordinal x-axis and a linear y-axis
@@ -84,11 +84,11 @@ function Bar(props) {
   const g = genreMap[genre];
   return (
     <g
-      className="bar"
+      className='bar'
       transform={`translate(${x}, 0)`}>
       <rect
         className={g.className}
-        x="0"
+        x='0'
         y={y}
         width={width}
         height={height} />
@@ -103,18 +103,18 @@ function XAxis(props) {
   const midbar = scale.bandwidth() / 2;
   return (
     <g
-      className="axis x"
+      className='axis x'
       transform={`translate(0,${height})`}>
-      <line x1="0" x2={width}></line>
-      <g className="ticks">
+      <line x1='0' x2={width}></line>
+      <g className='ticks'>
         {
           values.map((t,i) =>
             <g
               key={i}
-              className="tick"
+              className='tick'
               transform={`translate(${scale(t) + midbar},0)`}>
-              <line y2="6" x2="0"></line>
-              <text dy="0.715em" y="9" x="0">
+              <line y2='6' x2='0'></line>
+              <text dy='0.715em' y='9' x='0'>
                 {t}
               </text>
             </g>
@@ -128,17 +128,17 @@ function XAxis(props) {
 function YAxis(props) {
   const { scale, height } = props;
   return (
-    <g className="axis y">
-      <line y1="0" y2={height}></line>
-      <g className="ticks">
+    <g className='axis y'>
+      <line y1='0' y2={height}></line>
+      <g className='ticks'>
         {
           scale.ticks(5).map((t,i) => 
             <g
               key={i}
-              className="tick"
+              className='tick'
               transform={`translate(0,${scale(t)})`}>
-              <line x2="-6" y2="0"></line>
-              <text dx="0.715em" y="5" x="-20">
+              <line x2='-6' y2='0'></line>
+              <text dx='0.715em' y='5' x='-20'>
                 {t}
               </text>
             </g>

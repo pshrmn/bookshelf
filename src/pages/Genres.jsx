@@ -1,17 +1,17 @@
-import React from "react";
-import { connect } from "react-redux";
+import React from 'react';
+import { connect } from 'react-redux';
 
-import Breadcrumbs from "components/Breadcrumbs";
-import Cover from "components/Cover";
+import Breadcrumbs from 'components/Breadcrumbs';
+import Cover from 'components/Cover';
 
-import genres from "constants/genres";
+import genres from 'constants/genres';
 
-import "sass/genres.scss";
+import 'sass/genres.scss';
 
 const genres_breadcrumb_paths = [
   {
-    to: {pathname: "/"},
-    title: "Home"
+    to: {pathname: '/'},
+    title: 'Home'
   }
 ];
 
@@ -27,7 +27,7 @@ export default function Genres(props) {
     <div>
       {GenresBreadcrumbs}
       <h1>Genres</h1>
-      <ul className="genres">
+      <ul className='genres'>
         {genreLis}
       </ul>
     </div>

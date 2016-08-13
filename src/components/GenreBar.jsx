@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-import { genresByCount } from "helpers/counts";
+import { genresByCount } from 'helpers/counts';
 import { genreMap } from 'constants/genres';
 
 /*
@@ -11,7 +11,7 @@ export default function GenreBar(props) {
   const { books } = props;
   const bookCount = books.length;
   return (
-    <div className="genre-bar">
+    <div className='genre-bar'>
       {
         genresByCount(books)
           .map(g => {
@@ -20,7 +20,7 @@ export default function GenreBar(props) {
             return (
               <div
                 key={genre.name}
-                className={["genre", genre.className].join(" ")}
+                className={['genre', genre.className].join(' ')}
                 style={{flexGrow: percent}}
                 title={`${Math.floor(100*percent)}% of books are ${genre.name}`}>
               </div>

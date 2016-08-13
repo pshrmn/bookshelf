@@ -1,17 +1,17 @@
-import React from "react";
-import { connect } from "react-redux";
-import { Link } from "react-router";
+import React from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router';
 
-import Breadcrumbs from "components/Breadcrumbs";
-import Cover from "components/Cover";
+import Breadcrumbs from 'components/Breadcrumbs';
+import Cover from 'components/Cover';
 import { genreMap } from 'constants/genres';
 
-import "sass/authors.scss";
+import 'sass/authors.scss';
 
 const authors_breadcrumb_paths = [
   {
-    to: {pathname: "/"},
-    title: "Home"
+    to: {pathname: '/'},
+    title: 'Home'
   }
 ];
 const AuthorsBreadcrumbs = <Breadcrumbs paths={authors_breadcrumb_paths} />;
@@ -32,7 +32,7 @@ function Authors(props) {
     <div>
       {AuthorsBreadcrumbs}
       <h1>Authors</h1>
-      <ul className="authors">
+      <ul className='authors'>
         {authors}
       </ul>
     </div>

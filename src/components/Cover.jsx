@@ -1,7 +1,7 @@
-import React from "react";
-import { Link } from "react-router";
+import React from 'react';
+import { Link } from 'react-router';
 
-import "sass/cover.scss";
+import 'sass/cover.scss';
 
 export default function Cover(props) {
   const {
@@ -9,10 +9,10 @@ export default function Cover(props) {
     title,
     path
   } = props;
-  const coverClasses = ["cover"].concat(classes);
+  const coverClasses = ['cover'].concat(classes);
   const baseCover = (
     <div className={coverClasses.join(' ')}>
-      <div className="title">
+      <div className='title'>
         {title}
       </div>
     </div>

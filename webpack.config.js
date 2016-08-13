@@ -7,7 +7,7 @@ const config = {
   context: path.join(__dirname, 'src'),
   entry: {
     bundle: './index.js',
-    vendor: ['react', 'react-dom', 'redux', 'react-router', 'react-redux']
+    vendor: ['react', 'react-dom', 'redux', 'react-router', 'react-redux', 'd3-scale']
   },
   resolve: {
     extensions: ['', '.js', '.jsx'],

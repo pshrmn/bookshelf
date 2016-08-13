@@ -1,17 +1,17 @@
-import React from "react";
-import { connect } from "react-redux";
+import React from 'react';
+import { connect } from 'react-redux';
 
-import Showcase from "components/Showcase";
-import Breadcrumbs from "components/Breadcrumbs";
+import Showcase from 'components/Showcase';
+import Breadcrumbs from 'components/Breadcrumbs';
 
 const author_breadcrumb_paths = [
   {
-    to: {pathname: "/"},
-    title: "Home"
+    to: {pathname: '/'},
+    title: 'Home'
   },
   {
-    to: {pathname: "/authors"},
-    title: "Authors"
+    to: {pathname: '/authors'},
+    title: 'Authors'
   }
 ];
 
@@ -26,7 +26,7 @@ function Author(props) {
       <h1>{author}</h1>
       {
         children ? (
-          <div className="children">
+          <div className='children'>
             {children}
           </div>
         ) : null

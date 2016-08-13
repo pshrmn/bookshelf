@@ -1,4 +1,4 @@
-import books from "./books";
+import books from './books';
 
 export default {
   books: books
