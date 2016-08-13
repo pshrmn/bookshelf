@@ -98,7 +98,7 @@ const BookForm = React.createClass({
               <label key={i}>
                 <input
                   type="radio"
-                  value={g}
+                  value={g.name}
                   name="genre"
                   onChange={this.changeGenre} />
                 {g}

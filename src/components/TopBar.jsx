@@ -5,7 +5,7 @@ import genres from "constants/genres";
 
 import "sass/header.scss";
 
-const GenreBars = genres.map(genre => <li key={genre} className={genre.replace("'","")}></li> );
+const GenreBars = genres.map(genre => <li key={genre.name} className={genre.className}></li>);
 
 export default React.createClass({
   shouldComponentUpdate: function(nextProps, nextState) {

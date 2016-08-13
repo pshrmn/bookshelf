@@ -4,6 +4,7 @@ import { Link } from "react-router";
 
 import Breadcrumbs from "components/Breadcrumbs";
 import Cover from "components/Cover";
+import { genreMap } from 'constants/genres';
 
 import "sass/authors.scss";
 
@@ -18,11 +19,10 @@ const AuthorsBreadcrumbs = <Breadcrumbs paths={authors_breadcrumb_paths} />;
 function Authors(props) {
   const authors = props.authors.map(author => {
     const { name, genre } = author;
-    const cleanGenre = author.genre.replace("'", '');
     return (
       <li key={name}>
         <Cover title={name}
-               classes={[cleanGenre]}
+               classes={[genre.className]}
                path={{pathname: `/author/${name}`}} />
       </li>
     );
@@ -52,7 +52,7 @@ export default connect(
         authors[author] = {
           // use the first book's genre as the author's genre (should
           // be accurate in most cases)
-          genre: book.genre,
+          genre: genreMap[book.genre],
           books: 1
         };
       } else {

@@ -3,6 +3,7 @@ import React from "react";
 import { Link } from "react-router";
 import BarChart from "./OrdinalBarChart";
 import { genresByCount, mostPopularAuthors } from "helpers/counts";
+import { genreMap } from 'constants/genres';
 
 import "sass/stats.scss";
 

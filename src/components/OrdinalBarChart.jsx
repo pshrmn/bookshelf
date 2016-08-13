@@ -1,5 +1,7 @@
 import React from "react";
-import d3_scale from "d3-scale";
+import { linear, band } from "d3-scale";
+
+import { genreMap } from 'constants/genres';
 
 import "sass/chart.scss";
 
@@ -14,7 +16,7 @@ export default React.createClass({
         top: 15,
         right: 15,
         bottom: 25,
-        left: 25
+        left: 30
       }  
     };
   },
@@ -32,10 +34,11 @@ export default React.createClass({
       return y > max ? y : max;
     }, 0);
 
-    let yScale = d3_scale.linear()
+    let yScale = linear()
       .domain([0, maxY])
-      .range([height, 0]);
-    let xScale = d3_scale.band()
+      .range([height, 0])
+      .nice();
+    let xScale = band()
       .domain(data.map(d => getX(d)))
       .range([0, width])
       .padding(0.1);
@@ -78,12 +81,13 @@ export default React.createClass({
 
 function Bar(props) {
   const { x, y, width, height, genre, count } = props;
+  const g = genreMap[genre];
   return (
     <g
       className="bar"
       transform={`translate(${x}, 0)`}>
       <rect
-        className={genre.replace("'","")}
+        className={g.className}
         x="0"
         y={y}
         width={width}

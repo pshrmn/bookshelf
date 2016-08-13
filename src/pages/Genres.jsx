@@ -18,14 +18,11 @@ const genres_breadcrumb_paths = [
 const GenresBreadcrumbs = <Breadcrumbs paths={genres_breadcrumb_paths} />;
 
 export default function Genres(props) {
-  const genreLis = genres.map((g,i) => {
-    const cleanGenre = g.replace("'", "");
-    return (
-      <li key={i}>
-        <Cover title={g} classes={[cleanGenre]} path={{pathname: `/genre/${g}`}}/>
-      </li>
-    );
-  });
+  const genreLis = genres.map((g,i) =>
+    <li key={i}>
+      <Cover title={g.name} classes={[g.className]} path={{pathname: `/genre/${g.name}`}}/>
+    </li>
+  );
   return (
     <div>
       {GenresBreadcrumbs}
