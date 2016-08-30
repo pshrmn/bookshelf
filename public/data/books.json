@@ -1,6 +1,31 @@
 {
   "books": [
     {
+      "title": "Bad News",
+      "author": "Anjan Sundaram",
+      "genre": "non-fiction"
+    },
+    {
+      "title": "Allegiant",
+      "author": "Veronic Roth",
+      "genre": "sci-fi"
+    },
+    {
+      "title": "Insurgent",
+      "author": "Veronic Roth",
+      "genre": "sci-fi"
+    },
+    {
+      "title": "Divergent",
+      "author": "Veronic Roth",
+      "genre": "sci-fi"
+    },
+    {
+      "title": "Cryptonomicon",
+      "author": "Neal Stephenson",
+      "genre": "historical"
+    },
+    {
       "title": "And the Weak Suffer What They Must?",
       "author": "Yanis Varoufakis",
       "genre": "non-fiction"
