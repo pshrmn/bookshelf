@@ -1,6 +1,11 @@
 {
   "books": [
     {
+      "title": "Snow Crash",
+      "author": "Neal Stephenson",
+      "genre": "sci-fi"
+    },
+    {
       "title": "Bad News",
       "author": "Anjan Sundaram",
       "genre": "non-fiction"
