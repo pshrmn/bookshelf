@@ -1,6 +1,11 @@
 {
   "books": [
     {
+      "title": "The Rest I Will Kill",
+      "author": "Brian McGinty",
+      "genre": "non-fiction"
+    },
+    {
       "title": "Snow Crash",
       "author": "Neal Stephenson",
       "genre": "sci-fi"
