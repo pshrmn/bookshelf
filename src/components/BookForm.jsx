@@ -88,7 +88,7 @@ const BookForm = React.createClass({
 
     const genreInput = genre !== undefined ? (
       <p>
-        {this.props.genre}
+        {genre}
       </p>
     ) : (
       <div className='genre-options'>
