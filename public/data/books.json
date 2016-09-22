@@ -1,6 +1,16 @@
 {
   "books": [
     {
+      "title": "Sleeping Giants",
+      "author": "Sylvain Neuvel",
+      "genre": "sci-fi"
+    },
+    {
+      "title": "The Maze Runner",
+      "author": "James Dashner",
+      "genre": "sci-fi"
+    },
+    {
       "title": "The Rest I Will Kill",
       "author": "Brian McGinty",
       "genre": "non-fiction"
