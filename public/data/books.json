@@ -1,6 +1,11 @@
 {
   "books": [
     {
+      "title": "The Scorch Trials",
+      "author": "James Dashner",
+      "genre": "sci-fi"
+    },
+    {
       "title": "Sleeping Giants",
       "author": "Sylvain Neuvel",
       "genre": "sci-fi"
