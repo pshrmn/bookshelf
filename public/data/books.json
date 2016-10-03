@@ -1,6 +1,16 @@
 {
   "books": [
     {
+      "title": "The Third Wave",
+      "author": "Steve Case",
+      "genre": "non-fiction"
+    },
+    {
+      "title": "The Death Cure",
+      "author": "James Dashner",
+      "genre": "sci-fi"
+    },
+    {
       "title": "The Scorch Trials",
       "author": "James Dashner",
       "genre": "sci-fi"
