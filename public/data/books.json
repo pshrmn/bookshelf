@@ -1,6 +1,11 @@
 {
   "books": [
     {
+      "title": "Death's End",
+      "author": "Liu Cixin",
+      "genre": "sci-fi"
+    },
+    {
       "title": "Underground Airlines",
       "author": "Ben H. Winters",
       "genre": "history"
