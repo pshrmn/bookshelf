@@ -23,7 +23,7 @@ const init = initialState => {
         <App />
       </HashRouter>
     </Provider>,
-    document.querySelector('#main')
+    document.querySelector('main')
   );
 }
 

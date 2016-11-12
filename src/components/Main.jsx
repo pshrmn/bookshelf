@@ -8,11 +8,11 @@ import Authors from './pages/Authors';
 import Author from './pages/Author';
 
 export default () => (
-  <main>
+  <div className="main">
     <Match pattern='/' exactly component={Index} />
     <Match pattern='/genres' component={Genres} />
     <Match pattern='/genre/:genre' component={Genre} />
     <Match pattern='/authors' component={Authors} />
     <Match pattern='/author/:author' component={Author} />
-  </main>
+  </div>
 );
