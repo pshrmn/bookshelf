@@ -9,7 +9,6 @@ import 'sass/showcase.scss';
 
 export default function showcase(props) {
   const { books, addPath } = props;
-
   return (
     <div className='showcase'>
       <div className='info'>
@@ -17,9 +16,6 @@ export default function showcase(props) {
         <GenreBar books={books} />
       </div>
       <div className='books'>
-        <div className='book'>
-          <Cover classes={['add']} path={{pathname: addPath}} title='Add A Book' />
-        </div>
         {
           books.map((b, i) => <Book key={i} index={i%10} {...b} />)
         }

@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore, combineReducers } from 'redux';
-import { Router, hashHistory } from 'react-router';
 import { Provider } from 'react-redux';
+import { HashRouter } from 'react-router';
 
-import routes from './routes';
 import reducers from './reducers';
 import bookLoader from './bookLoader';
+import App from 'components/pages/App';
 
 import 'sass/index.scss';
 
@@ -19,12 +19,11 @@ const init = initialState => {
 
   ReactDOM.render(
     <Provider store={store}>
-      <div>
-        <Router history={hashHistory}
-                routes={routes} />
-      </div>
+      <HashRouter>
+        <App />
+      </HashRouter>
     </Provider>,
-    document.querySelector('main')
+    document.querySelector('#main')
   );
 }
 

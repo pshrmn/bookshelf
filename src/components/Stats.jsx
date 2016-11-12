@@ -7,15 +7,12 @@ import { genreMap } from 'constants/genres';
 
 import 'sass/stats.scss';
 
-export default function Stats(props) {
-  const { books } = props;
-  return (
-    <div className='stats'>
-      <GenreBarChart books={books} />
-      <PopularAuthors books={books} />
-    </div>
-  );
-}
+export default ({ books }) => (
+  <div className='stats'>
+    <GenreBarChart books={books} />
+    <PopularAuthors books={books} />
+  </div>
+);
 
 function GenreBarChart(props) {
   const { books } = props;
@@ -51,7 +48,7 @@ function PopularAuthors(props) {
           mostPopularAuthors(books)
             .map((a,i) =>
               <li key={i}>
-                <Link to={{pathname: `/author/${a.author}`}}>{a.author}</Link>
+                <Link to={`/author/${a.author}`}>{a.author}</Link>
               </li>
             )
         }

@@ -20,20 +20,13 @@ const genre_breadcrumb_paths = [
 const GenreBreadcrumbs = <Breadcrumbs paths={genre_breadcrumb_paths} />;
 
 function Genre(props) {
-  const { genre, books, children } = props;
+  const { genre, books } = props;
   return (
     <div className='genre-page'>
       {GenreBreadcrumbs}
       <h1>
         {genre} Books
       </h1>
-      {
-        children ? (
-          <div className='children'>
-            {children}
-          </div>
-        ) : null
-      }
       <Stats books={books} />
       <Showcase
         books={books}

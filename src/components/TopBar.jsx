@@ -1,5 +1,5 @@
 import React from 'react';
-import { IndexLink, Link } from 'react-router';
+import { Link } from 'react-router';
 
 import genres from 'constants/genres';
 
@@ -18,15 +18,12 @@ export default React.createClass({
           {GenreBars}
         </ul>
         <div className='title'>
-          <IndexLink to={{pathname: '/'}} title='home'>Bookshelf</IndexLink>
-        </div>
-        <div className='subtitle'>
-          Track books that you have read.
+          <Link to='/' title='home'>Bookshelf</Link>
         </div>
         <nav>
-          <Link to={{pathname: '/'}}>Home</Link>
-          <Link to={{pathname: '/genres'}}>Genres</Link>
-          <Link to={{pathname: '/authors'}}>Authors</Link>
+          <Link to='/'>Home</Link>
+          <Link to='/genres'>Genres</Link>
+          <Link to='/authors'>Authors</Link>
         </nav>
         <ul>
           {GenreBars}

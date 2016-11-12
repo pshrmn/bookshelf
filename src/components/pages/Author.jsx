@@ -18,19 +18,12 @@ const author_breadcrumb_paths = [
 const AuthorBreadcrumbs = <Breadcrumbs paths={author_breadcrumb_paths} />;
 
 function Author(props) {
-  const { author, books, children } = props;
+  const { author, books } = props;
 
   return (
     <div>
       {AuthorBreadcrumbs}
       <h1>{author}</h1>
-      {
-        children ? (
-          <div className='children'>
-            {children}
-          </div>
-        ) : null
-      }
       <Showcase
         books={books}
         addPath={`/author/${author}/add`} />
