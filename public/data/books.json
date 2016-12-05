@@ -1,6 +1,11 @@
 {
   "books": [
     {
+      "title": "Wool",
+      "author": "Hugh Howey",
+      "genre": "sci-fi"
+    },
+    {
       "title": "Join",
       "author": "Steve Toutonghi",
       "genre": "sci-fi"
