@@ -1,6 +1,11 @@
 {
   "books": [
     {
+      "title": "Orange is the New Black",
+      "author": "Piper Kerman",
+      "genre": "non-fiction"
+    },
+    {
       "title": "Wool",
       "author": "Hugh Howey",
       "genre": "sci-fi"
