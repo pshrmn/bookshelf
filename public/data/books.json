@@ -1,6 +1,11 @@
 {
   "books": [
     {
+      "title": "Shift",
+      "author": "Hugh Howey",
+      "genre": "sci-fi"
+    },
+    {
       "title": "Orange is the New Black",
       "author": "Piper Kerman",
       "genre": "non-fiction"
