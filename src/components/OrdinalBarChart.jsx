@@ -1,5 +1,5 @@
 import React from 'react';
-import { linear, band } from 'd3-scale';
+import { scaleLinear as linear, scaleBand as band } from 'd3-scale';
 
 import { genreMap } from 'constants/genres';
 
