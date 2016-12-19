@@ -1,6 +1,11 @@
 {
   "books": [
     {
+      "title": "Dust",
+      "author": "Hugh Howey",
+      "genre": "sci-fi"
+    },
+    {
       "title": "Shift",
       "author": "Hugh Howey",
       "genre": "sci-fi"
