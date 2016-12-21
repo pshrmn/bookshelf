@@ -1,6 +1,11 @@
 {
   "books": [
     {
+      "title": "Normal",
+      "author": "Warren Ellis",
+      "genre": "sci-fi"
+    },
+    {
       "title": "300",
       "author": "Frank Miller",
       "genre": "fantasy"
