@@ -1,6 +1,11 @@
 {
   "books": [
     {
+      "title": "300",
+      "author": "Frank Miller",
+      "genre": "fantasy"
+    },
+    {
       "title": "Dust",
       "author": "Hugh Howey",
       "genre": "sci-fi"
