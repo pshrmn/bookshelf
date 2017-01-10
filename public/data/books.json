@@ -1,6 +1,11 @@
 {
   "books": [
     {
+      "title": "Babylon's Ashes",
+      "author": "James S.A. Corey",
+      "genre": "sci-fi"
+    },
+    {
       "title": "Normal",
       "author": "Warren Ellis",
       "genre": "sci-fi"
