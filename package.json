@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/psherman/bookshelf.git"
+    "url": "git+https://github.com/pshrmn/bookshelf.git"
   },
   "author": "Paul Sherman",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/psherman/bookshelf/issues"
+    "url": "https://github.com/pshrmn/bookshelf/issues"
   },
-  "homepage": "https://github.com/psherman/bookshelf#readme",
+  "homepage": "https://github.com/pshrmn/bookshelf#readme",
   "dependencies": {
     "d3-scale": "^1.0.4",
     "react": "^15.4.1",
