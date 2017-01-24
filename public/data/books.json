@@ -1,6 +1,11 @@
 {
   "books": [
     {
+      "title": "Seveneves",
+      "author": "Neal Stephenson",
+      "genre": "sci-fi"
+    },
+    {
       "title": "Babylon's Ashes",
       "author": "James S.A. Corey",
       "genre": "sci-fi"
