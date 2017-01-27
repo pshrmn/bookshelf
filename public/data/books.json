@@ -1,6 +1,11 @@
 {
   "books": [
     {
+      "title": "Ender's Shadow",
+      "author": "Orscon Scott Card",
+      "genre": "sci-fi"
+    },
+    {
       "title": "Seveneves",
       "author": "Neal Stephenson",
       "genre": "sci-fi"
