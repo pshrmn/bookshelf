@@ -1,6 +1,11 @@
 {
   "books": [
     {
+      "title": "Shadow of the Hegemon",
+      "author": "Orscon Scott Card",
+      "genre": "sci-fi"
+    },
+    {
       "title": "Ender's Shadow",
       "author": "Orscon Scott Card",
       "genre": "sci-fi"
