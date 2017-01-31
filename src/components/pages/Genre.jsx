@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 
 import Stats from 'components/Stats';
 import Showcase from 'components/Showcase';
@@ -37,7 +37,7 @@ function Genre(props) {
 
 export default connect(
   (state, ownProps) => {
-    const { genre } = ownProps.params;
+    const { genre } = ownProps.match.params;
     return {
       genre: genre,
       books: state.books.filter(book => book.genre === genre)

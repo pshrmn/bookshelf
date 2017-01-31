@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import BarChart from './OrdinalBarChart';
 import { genresByCount, mostPopularAuthors } from 'helpers/counts';
 import { genreMap } from 'constants/genres';

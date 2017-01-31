@@ -34,7 +34,7 @@ function Author(props) {
 export default connect(
   (state, ownProps) => {
     // access the author param using ownProps
-    const { author } = ownProps.params;
+    const { author } = ownProps.match.params;
     return {
       author: author,
       books: state.books.filter(book => book.author === author)
