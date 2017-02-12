@@ -1,6 +1,11 @@
 {
   "books": [
     {
+      "title": "The Diamond Age",
+      "author": "Neal Stephenson",
+      "genre": "sci-fi"
+    },
+    {
       "title": "Shadow of the Hegemon",
       "author": "Orscon Scott Card",
       "genre": "sci-fi"
