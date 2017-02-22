@@ -1,6 +1,11 @@
 {
   "books": [
     {
+      "title": "Dune Messiah",
+      "author": "Frank Herbert",
+      "genre": "sci-fi"
+    },
+    {
       "title": "The Diamond Age",
       "author": "Neal Stephenson",
       "genre": "sci-fi"
