@@ -1,6 +1,11 @@
 {
   "books": [
     {
+      "title": "The Stars are Legion",
+      "author": "Kameron Hurley",
+      "genre": "sci-fi"
+    },
+    {
       "title": "Dune Messiah",
       "author": "Frank Herbert",
       "genre": "sci-fi"
