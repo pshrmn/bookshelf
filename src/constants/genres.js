@@ -4,8 +4,8 @@ const genres = [
     className: 'adventure'
   },
   {
-    name: 'children\'s',
-    className: 'childrens'
+    name: 'dystopian',
+    className: 'dystopian'
   },
   {
     name: 'fantasy',
