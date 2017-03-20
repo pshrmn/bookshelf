@@ -1,6 +1,11 @@
 {
   "books": [
     {
+      "title": "Legend",
+      "author": "Marie Lu",
+      "genre": "dystopian"
+    },
+    {
       "title": "The Stars are Legion",
       "author": "Kameron Hurley",
       "genre": "sci-fi"
