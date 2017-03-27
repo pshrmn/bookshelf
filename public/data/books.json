@@ -1,6 +1,16 @@
 {
   "books": [
     {
+      "title": "A Space Traveler's Guide to the Solar System",
+      "author": "Mark Thompson",
+      "genre": "non-fiction"
+    },
+    {
+      "title": "Prodigy",
+      "author": "Marie Lu",
+      "genre": "dystopian"
+    },
+    {
       "title": "Legend",
       "author": "Marie Lu",
       "genre": "dystopian"
