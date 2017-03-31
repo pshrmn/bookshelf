@@ -1,6 +1,11 @@
 {
   "books": [
     {
+      "title": "Champion",
+      "author": "Marie Lu",
+      "genre": "dystopian"
+    },
+    {
       "title": "A Space Traveler's Guide to the Solar System",
       "author": "Mark Thompson",
       "genre": "non-fiction"
