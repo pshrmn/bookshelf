@@ -1,6 +1,21 @@
 {
   "books": [
     {
+      "title": "Norse Mythology",
+      "author": "Neil Gaiman",
+      "genre": "fantasy"
+    },
+    {
+      "title": "Freakonomics",
+      "author": "Steven D. Levitt & Stephen J. Dubner",
+      "genre": "non-fiction"
+    },
+    {
+      "title": "Selected Short Stories of Franz Kafka",
+      "author": "Franz Kafka",
+      "genre": "fiction"
+    },
+    {
       "title": "Champion",
       "author": "Marie Lu",
       "genre": "dystopian"
