@@ -24,8 +24,8 @@ const genres = [
     className: 'non-fiction'
   },
   {
-    name: 'poetry',
-    className: 'poetry'
+    name: 'fiction',
+    className: 'fiction'
   },
   {
     name: 'sci-fi',
