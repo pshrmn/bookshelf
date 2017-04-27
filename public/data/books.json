@@ -1,6 +1,26 @@
 {
   "books": [
     {
+      "title": "Waking Gods",
+      "author": "Sylvain Neuvel",
+      "genre": "sci-fi"
+    },
+    {
+      "title": "The Man in the High Castle",
+      "author": "Philip K. Dick",
+      "genre": "historical"
+    }
+    {
+      "title": "Why Wall Street Matters",
+      "author": "William D. Cohan",
+      "genre": "non-fiction"
+    },
+    {
+      "title": "Ready Player One",
+      "author": "Ernest Cline",
+      "genre": "sci-fi"
+    },
+    {
       "title": "Norse Mythology",
       "author": "Neil Gaiman",
       "genre": "fantasy"
