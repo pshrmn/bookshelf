@@ -1,6 +1,11 @@
 {
   "books": [
     {
+      "title": "Shadow Puppets",
+      "author": "Orson Scott Card",
+      "genre": "sci-fi"
+    },
+    {
       "title": "Waking Gods",
       "author": "Sylvain Neuvel",
       "genre": "sci-fi"
@@ -72,12 +77,12 @@
     },
     {
       "title": "Shadow of the Hegemon",
-      "author": "Orscon Scott Card",
+      "author": "Orson Scott Card",
       "genre": "sci-fi"
     },
     {
       "title": "Ender's Shadow",
-      "author": "Orscon Scott Card",
+      "author": "Orson Scott Card",
       "genre": "sci-fi"
     },
     {
@@ -212,7 +217,7 @@
     },
     {
       "title": "Ender's Game",
-      "author": "Orscon Scott Card",
+      "author": "Orson Scott Card",
       "genre": "sci-fi"
     },
     {
