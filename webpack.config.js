@@ -12,7 +12,8 @@ const config = {
       'react-dom',
       'redux',
       'react-redux',
-      'react-router-dom',
+      'curi',
+      'curi-react',
       'd3-scale'
     ]
   },

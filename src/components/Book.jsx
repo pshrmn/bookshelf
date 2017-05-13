@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from 'curi-react';
 
 import Cover from './Cover';
 import { genreMap } from 'constants/genres';
@@ -13,7 +13,7 @@ export default function Book(props) {
     <div className='book' title={title}>
       <Cover classes={[g.className]} title={title} />
       <div className='author'>
-        <Link to={{pathname: `/author/${author}`}}>{author}</Link>
+        <Link to='Author' params={{ author }}>{author}</Link>
       </div>
     </div>
   );

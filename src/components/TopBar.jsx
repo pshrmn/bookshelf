@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from 'curi-react';
 
 import genres from 'constants/genres';
 
@@ -18,12 +18,12 @@ export default React.createClass({
           {GenreBars}
         </ul>
         <div className='title'>
-          <Link to='/' title='home'>Bookshelf</Link>
+          <Link to='Home' title='home'>Bookshelf</Link>
         </div>
         <nav>
-          <Link to='/'>Home</Link>
-          <Link to='/genres'>Genres</Link>
-          <Link to='/authors'>Authors</Link>
+          <Link to='Home'>Home</Link>
+          <Link to='Genres'>Genres</Link>
+          <Link to='Authors'>Authors</Link>
         </nav>
         <ul>
           {GenreBars}

@@ -1,6 +1,6 @@
 import React from 'react';
+import { Link } from 'curi-react';
 
-import { Link } from 'react-router-dom';
 import BarChart from './OrdinalBarChart';
 import { genresByCount, mostPopularAuthors } from 'helpers/counts';
 import { genreMap } from 'constants/genres';
@@ -48,7 +48,9 @@ function PopularAuthors(props) {
           mostPopularAuthors(books)
             .map((a,i) =>
               <li key={i}>
-                <Link to={`/author/${a.author}`}>{a.author}</Link>
+                <Link to='Author' params={{ author: a.author }}>
+                  {a.author}
+                </Link>
               </li>
             )
         }

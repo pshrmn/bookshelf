@@ -1,36 +1,26 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link } from 'curi-react';
 
-import Breadcrumbs from 'components/Breadcrumbs';
 import Cover from 'components/Cover';
 import { genreMap } from 'constants/genres';
 
 import 'sass/authors.scss';
-
-const authors_breadcrumb_paths = [
-  {
-    to: {pathname: '/'},
-    title: 'Home'
-  }
-];
-const AuthorsBreadcrumbs = <Breadcrumbs paths={authors_breadcrumb_paths} />;
 
 function Authors(props) {
   const authors = props.authors.map(author => {
     const { name, genre } = author;
     return (
       <li key={name}>
-        <Cover title={name}
-               classes={[genre.className]}
-               path={{pathname: `/author/${name}`}} />
+        <Link to='Author' params={{ author: name }}>
+          <Cover title={name} classes={[genre.className]} />
+        </Link>
       </li>
     );
   });
 
   return (
     <div>
-      {AuthorsBreadcrumbs}
       <h1>Authors</h1>
       <ul className='authors'>
         {authors}

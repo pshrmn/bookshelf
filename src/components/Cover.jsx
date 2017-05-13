@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from 'curi-react';
 
 import 'sass/cover.scss';
 
@@ -10,15 +10,11 @@ export default function Cover(props) {
     path
   } = props;
   const coverClasses = ['cover'].concat(classes);
-  const baseCover = (
+  return (
     <div className={coverClasses.join(' ')}>
       <div className='title'>
         {title}
       </div>
     </div>
-  );
-  // when a path is provided, wrap the cover in a Link
-  return path === undefined ? baseCover : (
-    <Link to={path}>{baseCover}</Link>
   );
 }

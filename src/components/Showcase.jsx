@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 import Book from './Book';
 import Cover from './Cover';
@@ -8,7 +7,7 @@ import GenreBar from './GenreBar';
 import 'sass/showcase.scss';
 
 export default function showcase(props) {
-  const { books, addPath } = props;
+  const { books } = props;
   return (
     <div className='showcase'>
       <div className='info'>
