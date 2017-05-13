@@ -8,19 +8,9 @@ import 'sass/chart.scss';
 /*
  * A bar chart with an ordinal x-axis and a linear y-axis
  */
-export default React.createClass({
-  getDefaultProps: function() {
-    return {
-      height: 100,
-      margin: {
-        top: 15,
-        right: 15,
-        bottom: 25,
-        left: 30
-      }  
-    };
-  },
-  render: function() {
+class OrdinalBarChart extends React.Component {
+
+  render() {
     const { height, margin, data, getX, getY } = this.props;
     const width = data.length*60;
 
@@ -77,7 +67,7 @@ export default React.createClass({
       </svg>
     );
   }
-});
+};
 
 function Bar(props) {
   const { x, y, width, height, genre, count } = props;
@@ -148,3 +138,15 @@ function YAxis(props) {
     </g>
   );
 }
+
+OrdinalBarChart.defaultProps = {
+  height: 100,
+  margin: {
+    top: 15,
+    right: 15,
+    bottom: 25,
+    left: 30
+  }
+};
+
+export default OrdinalBarChart;
