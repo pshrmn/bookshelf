@@ -1,6 +1,11 @@
 {
   "books": [
     {
+      "title": "Dragon Teeth",
+      "author": "Michael Crichton",
+      "genre": "adventure"
+    },
+    {
       "title": "Shadow Puppets",
       "author": "Orson Scott Card",
       "genre": "sci-fi"
