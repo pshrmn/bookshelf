@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'curi-react';
 
 import Showcase from 'components/Showcase';
 import Breadcrumbs from 'components/Breadcrumbs';
@@ -10,9 +9,7 @@ function Author(props) {
 
   return (
     <div>
-      <Breadcrumbs>
-        <Link to='Authors'>Authors</Link>
-      </Breadcrumbs>
+      <Breadcrumbs name='Author' />
       <h1>{author}</h1>
       <Showcase books={books} />
     </div>

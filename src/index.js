@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import { createHashHistory } from 'tmp-history';
 import createConfig from 'curi';
 import { Navigator } from 'curi-react';
+import createAncestors from 'curi-addon-ancestors';
 
 import routes from './routes';
 import renderFunction from './renderFunction';
@@ -14,7 +15,9 @@ import bookLoader from './bookLoader';
 import 'sass/index.scss';
 
 const history = createHashHistory();
-const config = createConfig(history, routes);
+const config = createConfig(history, routes, {
+  addons: [createAncestors]
+});
 
 const init = initialState => {
   const reducer = combineReducers(Object.assign({}, reducers));

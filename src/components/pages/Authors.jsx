@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'curi-react';
 
@@ -30,7 +31,7 @@ function Authors(props) {
 }
 
 Authors.propTypes = {
-  authors: React.PropTypes.array.isRequired
+  authors: PropTypes.array.isRequired
 };
 
 export default connect(

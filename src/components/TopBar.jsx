@@ -7,11 +7,12 @@ import 'sass/header.scss';
 
 const GenreBars = genres.map(genre => <li key={genre.name} className={genre.className}></li>);
 
-export default React.createClass({
-  shouldComponentUpdate: function(nextProps, nextState) {
+export default class TopBar extends React.Component {
+  shouldComponentUpdate(nextProps, nextState) {
     return false;
-  },
-  render: function() {
+  }
+
+  render() {
     return (
       <header>
         <ul>
@@ -31,4 +32,4 @@ export default React.createClass({
       </header>
     );
   }
-});
+};

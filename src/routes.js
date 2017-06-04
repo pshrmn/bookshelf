@@ -8,26 +8,30 @@ export default [
   {
     name: 'Home',
     path: '',
-    value: Index
+    body: () => Index
   },
   {
     name: 'Genres',
     path: 'genres',
-    value: Genres
-  },
-  {
-    name: 'Genre',
-    path: 'genre/:genre',
-    value: Genre
+    body: () => Genres,
+    children: [
+      {
+        name: 'Genre',
+        path: ':genre',
+        body: () => Genre
+      },
+    ]
   },
   {
     name: 'Authors',
     path: 'authors',
-    value: Authors
-  },
-  {
-    name: 'Author',
-    path: 'author/:author',
-    value: Author
+    body: () => Authors,
+    children: [
+      {
+        name: 'Author',
+        path: ':author',
+        body: () => Author
+      }
+    ]
   }
 ];
