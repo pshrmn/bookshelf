@@ -1,6 +1,11 @@
 {
   "books": [
     {
+      "title": "Eclipse",
+      "author": "Frank Close",
+      "genre": "non-fiction"
+    },
+    {
       "title": "Dragon Teeth",
       "author": "Michael Crichton",
       "genre": "adventure"
