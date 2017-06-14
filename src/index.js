@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
-import { createHashHistory } from 'tmp-history';
+import { createHashHistory } from 'history';
 import createConfig from 'curi';
 import { Navigator } from 'curi-react';
 import createAncestors from 'curi-addon-ancestors';
