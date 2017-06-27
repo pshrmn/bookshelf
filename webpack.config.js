@@ -29,6 +29,7 @@ const config = {
   output: {
     path: path.join(__dirname, 'public'),
     filename: 'js/bundle.js',
+    chunkFilename: 'js/[id].js',
     publicPath: '/'
   },
   module: {

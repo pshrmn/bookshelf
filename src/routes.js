@@ -1,36 +1,91 @@
-import Index from './components/pages/Index';
-import Genres from './components/pages/Genres';
-import Genre from './components/pages/Genre';
-import Authors from './components/pages/Authors';
-import Author from './components/pages/Author';
+import PageMissing from './components/pages/PageMissing';
+
+const RouteComponents = {};
+function getRoute(name) {
+  return RouteComponents[name] || PageMissing;
+}
+
+function importAndSave(name) {
+  
+}
 
 export default [
   {
     name: 'Home',
     path: '',
-    body: () => Index
+    preload: () => {
+      return import('./components/pages/Index')
+        .then(module => {
+          RouteComponents['Index'] = module.default;
+        })
+        .catch(err => {
+          console.err(err);
+          return;
+        });
+    },
+    body: () => getRoute('Index')
   },
   {
     name: 'Genres',
     path: 'genres',
-    body: () => Genres,
+    preload: () => {
+      return import('./components/pages/Genres')
+        .then(module => {
+          RouteComponents['Genres'] = module.default;
+        })
+        .catch(err => {
+          console.err(err);
+          return;
+        });
+    },
+    body: () => getRoute('Genres'),
     children: [
       {
         name: 'Genre',
         path: ':genre',
-        body: () => Genre
+        preload: () => {
+        return import('./components/pages/Genre')
+          .then(module => {
+            RouteComponents['Genre'] = module.default;
+          })
+          .catch(err => {
+            console.err(err);
+            return;
+          });
+      },
+        body: () => getRoute('Genre')
       },
     ]
   },
   {
     name: 'Authors',
     path: 'authors',
-    body: () => Authors,
+    preload: () => {
+      return import('./components/pages/Authors')
+        .then(module => {
+          RouteComponents['Authors'] = module.default;
+        })
+        .catch(err => {
+          console.err(err);
+          return;
+        });
+    },
+    body: () => getRoute('Authors'),
     children: [
       {
         name: 'Author',
         path: ':author',
-        body: () => Author
+        preload: () => {
+          return import('./components/pages/Author')
+            .then(module => {
+              RouteComponents['Author'] = module.default;
+            })
+            .catch(err => {
+              console.err(err);
+              return;
+            });
+        },
+        body: () => getRoute('Author')
       }
     ]
   }

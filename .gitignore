@@ -3,4 +3,5 @@ node_modules
 .env
 *.map
 public/js
+public/css
 TOREAD.txt
