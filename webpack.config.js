@@ -18,8 +18,11 @@ const config = {
     ]
   },
   resolve: {
-    extensions: ['', '.js', '.jsx'],
-    root: path.join(__dirname, 'src')
+    extensions: ['.js', '.jsx'],
+    modules: [
+      path.join(__dirname, 'src'),
+      'node_modules'
+    ]
   },
   output: {
     path: path.join(__dirname, 'public'),
@@ -27,7 +30,7 @@ const config = {
     publicPath: '/'
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
@@ -35,12 +38,17 @@ const config = {
       },
       {
         test: /\.scss$/,
-        loaders: ['style', 'css', 'postcss', 'sass']
+        use: [
+          'style-loader',
+          { loader: 'css-loader', options: { importLoaders: 2 } },
+          'postcss-loader',
+          'sass-loader'
+        ]
       }
     ]
   },
-  postcss: () => [autoprefixer],
   plugins: [
+    new ExtractTextPlugin('css/index.css'),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       filename: 'js/vendor.js',
@@ -51,6 +59,7 @@ const config = {
 
 switch(process.env.npm_lifecycle_event){
 case 'start':
+/*
   config.entry.bundle = [
     'webpack-dev-server/client?http://0.0.0.0:8000',
     'webpack/hot/only-dev-server',
@@ -65,7 +74,7 @@ case 'start':
   // test pattern).
   config.module.loaders.forEach(l => {
     if ( l.test.test('matches.jsx') ) {
-      l.loaders = ['react-hot', 'babel'];
+      l.loaders = ['react-hot-loader', 'babel-loader'];
       delete l.loader;
     }
   });
@@ -74,16 +83,28 @@ case 'start':
     new webpack.HotModuleReplacementPlugin()
   ]);
   
+  */
   break;
 case 'build':
-  // same idea as the jsx loader above
-  config.module.loaders.forEach(l => {
+  config.module.rules.forEach(l => {
     if ( l.test.test('matches.scss') ) {
-      l.loader = ExtractTextPlugin.extract('style', 'css!postcss!sass');
-      delete l.loaders;
+      l.use = ExtractTextPlugin.extract({
+        fallback: 'style-loader',
+        use: [
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 2,
+              minimize: true
+            }
+          },
+          'postcss-loader',
+          'sass-loader'
+        ]
+      });
     }
   });
-
+  
   config.plugins = config.plugins.concat([
     new webpack.DefinePlugin({
       'process.env': {
@@ -97,7 +118,6 @@ case 'build':
         warnings: false
       }
     }),
-    new ExtractTextPlugin('css/index.css')
   ]);
   break;
 }
