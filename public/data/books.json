@@ -1,6 +1,11 @@
 {
   "books": [
     {
+      "title": "New York 2140",
+      "author": "Kim Stanley Robinson",
+      "genre": "sci-fi"
+    },
+    {
       "title": "Eclipse",
       "author": "Frank Close",
       "genre": "non-fiction"
