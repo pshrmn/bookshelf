@@ -1,6 +1,16 @@
 {
   "books": [
     {
+      "title": "One of the Boys",
+      "author": "Daniel Magariel",
+      "genre": "fiction"
+    }
+    {
+      "title": "Waiting for Godot",
+      "author": "Samuel Beckett",
+      "genre": "fiction"
+    },
+    {
       "title": "New York 2140",
       "author": "Kim Stanley Robinson",
       "genre": "sci-fi"
