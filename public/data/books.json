@@ -1,6 +1,11 @@
 {
   "books": [
     {
+      "title": "The Black Hand",
+      "author": "Stephan Talty",
+      "genre": "non-fiction"
+    },
+    {
       "title": "One of the Boys",
       "author": "Daniel Magariel",
       "genre": "fiction"
