@@ -1,6 +1,21 @@
 {
   "books": [
     {
+      "title": "Armada",
+      "author": "Ernest Cline",
+      "genre": "sci-fi"
+    },
+    {
+      "title": "Speaker for the Dead",
+      "author": "Orson Scott Wells",
+      "genre": "sci-fi"
+    },
+    {
+      "title": "Change Agent",
+      "author": "Daniel Suarez",
+      "genre": "sci-fi"
+    }
+    {
       "title": "The Black Hand",
       "author": "Stephan Talty",
       "genre": "non-fiction"
