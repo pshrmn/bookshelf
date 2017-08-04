@@ -1,6 +1,11 @@
 {
   "books": [
     {
+      "title": "Catastrophic Care",
+      "author": "David Goldhill",
+      "genre": "non-fiction"
+    },
+    {
       "title": "Armada",
       "author": "Ernest Cline",
       "genre": "sci-fi"
@@ -14,7 +19,7 @@
       "title": "Change Agent",
       "author": "Daniel Suarez",
       "genre": "sci-fi"
-    }
+    },
     {
       "title": "The Black Hand",
       "author": "Stephan Talty",
@@ -24,7 +29,7 @@
       "title": "One of the Boys",
       "author": "Daniel Magariel",
       "genre": "fiction"
-    }
+    },
     {
       "title": "Waiting for Godot",
       "author": "Samuel Beckett",
