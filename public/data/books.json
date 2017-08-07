@@ -1,6 +1,11 @@
 {
   "books": [
     {
+      "title": "4th Rock From the Sun",
+      "author": "Nicky Jenner",
+      "genre": "non-fiction"
+    },
+    {
       "title": "Catastrophic Care",
       "author": "David Goldhill",
       "genre": "non-fiction"
