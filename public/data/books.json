@@ -1,6 +1,16 @@
 {
   "books": [
     {
+      "title": "Children of the Mind",
+      "author": "Orson Scott Wells",
+      "genre": "sci-fi"
+    },
+    {
+      "title": "Xenocide",
+      "author": "Orson Scott Wells",
+      "genre": "sci-fi"
+    },
+    {
       "title": "4th Rock From the Sun",
       "author": "Nicky Jenner",
       "genre": "non-fiction"
