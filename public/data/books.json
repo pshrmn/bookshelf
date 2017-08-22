@@ -1,6 +1,11 @@
 {
   "books": [
     {
+      "title": "Pillars of the Earth",
+      "author": "Ken Follett",
+      "genre": "historical"
+    },
+    {
       "title": "Children of the Mind",
       "author": "Orson Scott Wells",
       "genre": "sci-fi"
