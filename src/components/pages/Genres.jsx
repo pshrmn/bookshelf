@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'curi-react';
+import { Link } from '@curi/react';
 
 import Cover from 'components/Cover';
 

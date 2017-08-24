@@ -14,9 +14,10 @@ const config = {
       'react-dom',
       'redux',
       'react-redux',
-      'curi',
-      'curi-react',
-      'd3-scale'
+      '@curi/core',
+      '@curi/react',
+      'd3-scale',
+      '@hickory/hash'
     ]
   },
   resolve: {

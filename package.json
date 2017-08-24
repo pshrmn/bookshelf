@@ -1,6 +1,6 @@
 {
   "name": "bookshelf",
-  "version": "0.15.2",
+  "version": "0.16.0",
   "description": "track books that you've read (or will read)",
   "main": "server/index.js",
   "scripts": {
@@ -18,11 +18,11 @@
   },
   "homepage": "https://github.com/pshrmn/bookshelf#readme",
   "dependencies": {
-    "curi": "^0.10.0",
-    "curi-addon-ancestors": "^0.2.1",
-    "curi-react": "^0.8.0",
+    "@curi/addon-ancestors": "^1.0.0-beta.3",
+    "@curi/core": "^1.0.0-beta.4",
+    "@curi/react": "^1.0.0-beta.5",
+    "@hickory/hash": "^1.0.0-beta.0",
     "d3-scale": "^1.0.6",
-    "hickory": "^0.5.0",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",

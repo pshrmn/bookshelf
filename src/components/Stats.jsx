@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'curi-react';
+import { Link } from '@curi/react';
 
 import BarChart from './OrdinalBarChart';
 import { genresByCount, mostPopularAuthors } from 'helpers/counts';

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Link } from 'curi-react';
+import { Link } from '@curi/react';
 
 import Cover from 'components/Cover';
 import { genreMap } from 'constants/genres';

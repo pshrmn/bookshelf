@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'curi-react';
+import { Link } from '@curi/react';
 
 import Cover from './Cover';
 import { genreMap } from 'constants/genres';

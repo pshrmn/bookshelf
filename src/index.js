@@ -2,10 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
-import { Hash } from 'hickory';
-import createConfig from 'curi';
-import { Navigator } from 'curi-react';
-import createAncestors from 'curi-addon-ancestors';
+import Hash from '@hickory/hash';
+import createConfig from '@curi/core';
+import { Navigator } from '@curi/react';
+import createAncestors from '@curi/addon-ancestors';
 
 import routes from './routes';
 import renderFunction from './renderFunction';
@@ -30,9 +30,7 @@ const init = values => {
 
   ReactDOM.render((
     <Provider store={store}>
-      <Navigator config={config}>
-        {renderFunction}
-      </Navigator>
+      <Navigator config={config} render={renderFunction} />
     </Provider>
   ), document.querySelector('main'));
 }
