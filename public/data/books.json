@@ -1,6 +1,11 @@
 {
   "books": [
     {
+      "title": "The Diving Bell and the Butterfly",
+      "author": "Jean-Dominique Bauby",
+      "genre": "non-fiction"
+    },
+    {
       "title": "Pillars of the Earth",
       "author": "Ken Follett",
       "genre": "historical"
