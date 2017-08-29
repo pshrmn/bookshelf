@@ -1,6 +1,11 @@
 {
   "books": [
     {
+      "title": "American Gods",
+      "author": "Neil Gaiman",
+      "genre": "fantasy"
+    },
+    {
       "title": "The Diving Bell and the Butterfly",
       "author": "Jean-Dominique Bauby",
       "genre": "non-fiction"
