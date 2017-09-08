@@ -1,6 +1,11 @@
 {
   "books": [
     {
+      "title": "The Way of Kings",
+      "author": "Brandon Sanderson",
+      "genre": "fantasy"
+    },
+    {
       "title": "American Gods",
       "author": "Neil Gaiman",
       "genre": "fantasy"
