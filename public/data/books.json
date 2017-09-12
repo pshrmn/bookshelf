@@ -1,6 +1,11 @@
 {
   "books": [
     {
+      "title": "A Closed and Common Orbit",
+      "author": "Becky Chambers",
+      "genre": "sci-fi"
+    },
+    {
       "title": "The Way of Kings",
       "author": "Brandon Sanderson",
       "genre": "fantasy"
