@@ -1,6 +1,16 @@
 {
   "books": [
     {
+      "title": "Seven Surrenders",
+      "author": "Ada Palmer",
+      "genre": "sci-fi"
+    },
+    {
+      "title": "Too Like the Lightning",
+      "author": "Ada Palmer",
+      "genre": "sci-fi"
+    },
+    {
       "title": "A Closed and Common Orbit",
       "author": "Becky Chambers",
       "genre": "sci-fi"
