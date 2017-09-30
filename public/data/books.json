@@ -1,6 +1,11 @@
 {
   "books": [
     {
+      "title": "Warbreaker",
+      "author": "Brandon Sanderson",
+      "genre": "fantasy"
+    },
+    {
       "title": "Seven Surrenders",
       "author": "Ada Palmer",
       "genre": "sci-fi"
