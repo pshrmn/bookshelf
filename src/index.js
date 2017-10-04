@@ -11,6 +11,7 @@ import routes from './routes';
 import renderFunction from './renderFunction';
 import reducers from './reducers';
 import bookLoader from './bookLoader';
+import parseData from './parseData';
 
 import 'sass/index.scss';
 
@@ -20,7 +21,6 @@ const config = createConfig(history, routes, {
 });
 
 const init = values => {
-
   const [ initialState ] = values;
   const reducer = combineReducers(Object.assign({}, reducers));
   const store = createStore(
@@ -40,9 +40,7 @@ const booksPromise = bookLoader('data/books.json')
     if ( typeof resp === 'string' ) {
       resp = JSON.parse(resp);
     }
-    return Promise.resolve({
-      books: resp.books
-    });
+    return Promise.resolve(parseData(resp.books));
   })
   .catch(err => {
     console.error(`Failed to load books: ${err}`);

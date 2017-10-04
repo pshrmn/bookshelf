@@ -22,7 +22,7 @@ export default connect(
     const { author } = ownProps.params;
     return {
       author: author,
-      books: state.books.filter(book => book.author === author)
+      books: state.authors[author].books
     }
   }
 )(Author);

@@ -28,7 +28,7 @@ export default connect(
     return {
       genre: genre,
       description: genreMap[genre].description,
-      books: state.books.filter(book => book.genre === genre)
-    }
+      books: state.genres[genre]
+    };
   }
 )(Genre);

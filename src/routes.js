@@ -5,10 +5,6 @@ function getRoute(name) {
   return RouteComponents[name] || PageMissing;
 }
 
-function importAndSave(name) {
-  
-}
-
 export default [
   {
     name: 'Home',

@@ -14,7 +14,7 @@ function Authors(props) {
     return (
       <li key={name}>
         <Link to='Author' params={{ author: name }}>
-          <Cover title={name} classes={[genre.className]} />
+          <Cover title={name} classes={[genreMap[genre].className]} />
         </Link>
       </li>
     );
@@ -35,33 +35,9 @@ Authors.propTypes = {
 };
 
 export default connect(
-  state => {
-    // get an object containing all authors and their book count
-    const authorsObject = state.books.reduce((authors, book) => {
-      const { author } = book;
-      if ( !authors[author] ) {
-        authors[author] = {
-          // use the first book's genre as the author's genre (should
-          // be accurate in most cases)
-          genre: genreMap[book.genre],
-          books: 1
-        };
-      } else {
-        authors[author].books += 1;
-      }
-
-      return authors;
-    }, {});
-    // convert the object to an array
-    const authors = Object.keys(authorsObject)
-      .map(key => ({
-        name: key,
-        books: authorsObject[key].books,
-        genre: authorsObject[key].genre
-      }))
-      .sort((a,b) => b.books - a.books);
-    return {
-      authors: authors
-    };
-  }
+  state => ({
+    authors: Object.keys(state.authors)
+    .map(key => state.authors[key])
+    .sort((a,b) => b.books.length - a.books.length)
+  })
 )(Authors);
