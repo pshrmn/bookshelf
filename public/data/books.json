@@ -1,6 +1,31 @@
 {
   "books": [
     {
+      "title": "The Walking Dead: Compendium Three",
+      "author": "Robert Kirkman, Charlie Adlard, Stefano Gaudiano, Cliff Rathburn",
+      "genre": "fantasy"
+    },
+    {
+      "title": "The Walking Dead: Compendium Two",
+      "author": "Robert Kirkman, Charlie Adlard, Cliff Rathburn",
+      "genre": "fantasy"
+    },
+    {
+      "title": "The Walking Dead: Compendium One",
+      "author": "Robert Kirkman, Charlie Adlard, Tony Moore, Cliff Rathburn",
+      "genre": "fantasy"
+    },
+    {
+      "title": "Annihilation",
+      "author": "Jeff VanderMeer",
+      "genre": "sci-fi"
+    },
+    {
+      "title": "Astrophysics for People in a Hurry",
+      "author": "Neil deGrasse Tyson",
+      "genre": "non-fiction"
+    },
+    {
       "title": "Warbreaker",
       "author": "Brandon Sanderson",
       "genre": "fantasy"
