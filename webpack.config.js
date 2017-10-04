@@ -12,8 +12,6 @@ const config = {
     vendor: [
       'react',
       'react-dom',
-      'redux',
-      'react-redux',
       '@curi/core',
       '@curi/react',
       'd3-scale',
