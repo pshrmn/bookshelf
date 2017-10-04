@@ -1,14 +1,11 @@
 import React from 'react';
-import { connect } from 'react-redux';
 
 import Stats from 'components/Stats';
 import Showcase from 'components/Showcase';
 import Breadcrumbs from 'components/Breadcrumbs';
 
-import { genreMap } from 'constants/genres';
-
-function Genre(props) {
-  const { genre, books, description } = props;
+export default function Genre(props) {
+  const { genre, books, description } = props.data;
   return (
     <div className='genre-page'>
       <Breadcrumbs name='Genre'/>
@@ -21,14 +18,3 @@ function Genre(props) {
     </div>
   );
 }
-
-export default connect(
-  (state, ownProps) => {
-    const { genre } = ownProps.params;
-    return {
-      genre: genre,
-      description: genreMap[genre].description,
-      books: state.genres[genre]
-    };
-  }
-)(Genre);

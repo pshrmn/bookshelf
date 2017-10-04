@@ -1,11 +1,10 @@
 import React from 'react';
-import { connect } from 'react-redux';
 
 import Showcase from 'components/Showcase';
 import Breadcrumbs from 'components/Breadcrumbs';
 
-function Author(props) {
-  const { author, books } = props;
+export default function Author(props) {
+  const { author, books } = props.data;
 
   return (
     <div>
@@ -15,14 +14,3 @@ function Author(props) {
     </div>
   );
 }
-
-export default connect(
-  (state, ownProps) => {
-    // access the author param using ownProps
-    const { author } = ownProps.params;
-    return {
-      author: author,
-      books: state.authors[author].books
-    }
-  }
-)(Author);

@@ -1,4 +1,6 @@
+import DataStore from './store';
 import PageMissing from './components/pages/PageMissing';
+import { genreMap } from 'constants/genres';
 
 const RouteComponents = {};
 function getRoute(name) {
@@ -18,6 +20,11 @@ export default [
           console.err(err);
           return;
         });
+    },
+    load: (params, location, mods) => {
+      return DataStore().then(store => {
+        mods.setData({ books: store.books });
+      });
     },
     body: () => getRoute('Index')
   },
@@ -40,15 +47,25 @@ export default [
         name: 'Genre',
         path: ':genre',
         preload: () => {
-        return import('./components/pages/Genre')
-          .then(module => {
-            RouteComponents['Genre'] = module.default;
-          })
-          .catch(err => {
-            console.err(err);
-            return;
+          return import('./components/pages/Genre')
+            .then(module => {
+              RouteComponents['Genre'] = module.default;
+            })
+            .catch(err => {
+              console.err(err);
+              return;
+            });
+        },
+        load: (params, location, mods) => {
+          return DataStore().then(store => {
+            const { genre } = params;
+            mods.setData({
+              genre,
+              description: genreMap[genre].description,
+              books: store.genres[genre]
+            });
           });
-      },
+        },
         body: () => getRoute('Genre')
       },
     ]
@@ -66,6 +83,15 @@ export default [
           return;
         });
     },
+    load: (params, location, mods) => {
+      return DataStore().then(store => {
+        mods.setData({
+          authors: Object.keys(store.authors)
+            .map(key => store.authors[key])
+            .sort((a,b) => b.books.length - a.books.length)
+        });
+      });
+    },
     body: () => getRoute('Authors'),
     children: [
       {
@@ -81,6 +107,15 @@ export default [
               return;
             });
         },
+        load: (params, location, mods) => {
+          return DataStore().then(store => {
+            const { author } = params;
+            mods.setData({
+              author,
+              books: store.authors[author].books
+            });
+          });
+        },  
         body: () => getRoute('Author')
       }
     ]
