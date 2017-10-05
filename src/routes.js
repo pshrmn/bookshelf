@@ -12,7 +12,7 @@ export default [
     name: 'Home',
     path: '',
     preload: () => {
-      return import('./components/pages/Index')
+      return import(/* webpackChunkName: "Home" */ './components/pages/Index')
         .then(module => {
           RouteComponents['Index'] = module.default;
         })
@@ -32,7 +32,7 @@ export default [
     name: 'Genres',
     path: 'genres',
     preload: () => {
-      return import('./components/pages/Genres')
+      return import(/* webpackChunkName: "Genres" */ './components/pages/Genres')
         .then(module => {
           RouteComponents['Genres'] = module.default;
         })
@@ -47,7 +47,7 @@ export default [
         name: 'Genre',
         path: ':genre',
         preload: () => {
-          return import('./components/pages/Genre')
+          return import(/* webpackChunkName: "Genre" */ './components/pages/Genre')
             .then(module => {
               RouteComponents['Genre'] = module.default;
             })
@@ -74,7 +74,7 @@ export default [
     name: 'Authors',
     path: 'authors',
     preload: () => {
-      return import('./components/pages/Authors')
+      return import(/* webpackChunkName: "Authors" */ './components/pages/Authors')
         .then(module => {
           RouteComponents['Authors'] = module.default;
         })
@@ -98,7 +98,7 @@ export default [
         name: 'Author',
         path: ':author',
         preload: () => {
-          return import('./components/pages/Author')
+          return import(/* webpackChunkName: "Author" */ './components/pages/Author')
             .then(module => {
               RouteComponents['Author'] = module.default;
             })
