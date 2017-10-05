@@ -18,14 +18,14 @@
   },
   "homepage": "https://github.com/pshrmn/bookshelf#readme",
   "dependencies": {
-    "@curi/addon-ancestors": "^1.0.0-beta.3",
-    "@curi/core": "^1.0.0-beta.4",
-    "@curi/react": "^1.0.0-beta.5",
-    "@hickory/hash": "^1.0.0-beta.0",
+    "@curi/addon-ancestors": "^1.0.0-beta.4",
+    "@curi/core": "^1.0.0-beta.9",
+    "@curi/react": "^1.0.0-beta.8",
+    "@hickory/hash": "^1.0.0-beta.3",
     "d3-scale": "^1.0.6",
-    "prop-types": "^15.5.10",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1"
+    "prop-types": "^15.6.0",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.1",
