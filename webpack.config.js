@@ -12,10 +12,7 @@ const config = {
     vendor: [
       'react',
       'react-dom',
-      '@curi/core',
-      '@curi/react',
       'd3-scale',
-      '@hickory/hash'
     ]
   },
   resolve: {
