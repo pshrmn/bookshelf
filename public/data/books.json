@@ -2,17 +2,17 @@
   "books": [
     {
       "title": "The Walking Dead: Compendium Three",
-      "author": "Robert Kirkman, Charlie Adlard, Stefano Gaudiano, Cliff Rathburn",
+      "authors": ["Robert Kirkman", "Charlie Adlard", "Stefano Gaudiano", "Cliff Rathburn"],
       "genre": "fantasy"
     },
     {
       "title": "The Walking Dead: Compendium Two",
-      "author": "Robert Kirkman, Charlie Adlard, Cliff Rathburn",
+      "authors": ["Robert Kirkman", "Charlie Adlard", "Cliff Rathburn"],
       "genre": "fantasy"
     },
     {
       "title": "The Walking Dead: Compendium One",
-      "author": "Robert Kirkman, Charlie Adlard, Tony Moore, Cliff Rathburn",
+      "authors": ["Robert Kirkman", "Charlie Adlard", "Tony Moore", "Cliff Rathburn"],
       "genre": "fantasy"
     },
     {
@@ -162,7 +162,7 @@
     },
     {
       "title": "Freakonomics",
-      "author": "Steven D. Levitt & Stephen J. Dubner",
+      "authors": ["Steven D. Levitt", "Stephen J. Dubner"],
       "genre": "non-fiction"
     },
     {
@@ -382,22 +382,22 @@
     },
     {
       "title": "Preacher: Book One",
-      "author": "Garth Ennis & Steve Dillon",
+      "authors": ["Garth Ennis", "Steve Dillon"],
       "genre": "fantasy"
     },
     {
       "title": "The Positronic Man",
-      "author": "Isaac Asimov & Robert Silverberg",
+      "authors": ["Isaac Asimov", "Robert Silverberg"],
       "genre": "sci-fi"
     },
     {
       "title": "The Why Axis",
-      "author": "John A. List & Uri Gneezy",
+      "authors": ["John A. List", "Uri Gneezy"],
       "genre": "non-fiction"
     },
     {
       "title": "Saturn Run",
-      "author": "John Sandford & Ctein",
+      "authors": ["John Sandford", "Ctein"],
       "genre": "sci-fi"
     },
     {
@@ -447,7 +447,7 @@
     },
     {
       "title": "The Ugly Little Boy",
-      "author": "Isaac Asimov & Robert Silverberg",
+      "authors": ["Isaac Asimov", "Robert Silverberg"],
       "genre": "sci-fi"
     },
     {
@@ -457,7 +457,7 @@
     },
     {
       "title": "A Briefer History of Time",
-      "author": "Stephen Hawking & Leonard Mlodinow",
+      "authors": ["Stephen Hawking", "Leonard Mlodinow"],
       "genre": "non-fiction"
     },
     {
@@ -497,7 +497,7 @@
     },
     {
       "title": "When to Rob a Bank",
-      "author": "Steven D. Levitt & Stephen J. Dubner",
+      "authors": ["Steven D. Levitt", "Stephen J. Dubner"],
       "genre": "non-fiction"
     },
     {
@@ -607,7 +607,7 @@
     },
     {
       "title": "Nightfall",
-      "author": "Isaac Asimov & Robert Silverberg",
+      "authors": ["Isaac Asimov", "Robert Silverberg"],
       "genre": "sci-fi"
     },
     {

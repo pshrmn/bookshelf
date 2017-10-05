@@ -1,3 +1,14 @@
+function addAuthor(authors, book, author) {
+  if (!authors[author]) {
+    authors[author] = {
+      name: author,
+      books: [],
+      genre: 'UNKNOWN'
+    };
+  }
+  authors[author].books.push(book);
+}
+
 export default function(data) {
   const books = [];
   const authors = {};
@@ -5,15 +16,14 @@ export default function(data) {
 
   data.forEach(book => {
     books.push(book);
-    
-    if (!authors[book.author]) {
-      authors[book.author] = {
-        name: book.author,
-        books: [],
-        genre: 'UNKNOWN'
-      };
+
+    if (book.author) {
+      book.authors = [book.author];
     }
-    authors[book.author].books.push(book);
+
+    book.authors.forEach(author => {
+      addAuthor(authors, book, author);
+    });
 
     if (!genres[book.genre]) {
       genres[book.genre] = [];

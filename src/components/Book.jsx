@@ -7,13 +7,15 @@ import { genreMap } from 'constants/genres';
 import 'sass/book.scss';
 
 export default function Book(props) {
-  const { title, author, genre } = props;
+  const { title, authors, genre } = props;
   const g = genreMap[genre];
   return (
     <div className='book' title={title}>
       <Cover classes={[g.className]} title={title} />
       <div className='author'>
-        <Link to='Author' params={{ author }}>{author}</Link>
+        {
+          authors.map(author => <Link to='Author' params={{ author }}>{author}</Link>)
+        }
       </div>
     </div>
   );
