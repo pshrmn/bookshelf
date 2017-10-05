@@ -1,7 +1,6 @@
 import React from 'react';
 
 import Book from './Book';
-import Cover from './Cover';
 import GenreBar from './GenreBar';
 
 import 'sass/showcase.scss';
