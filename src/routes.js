@@ -17,7 +17,7 @@ export default [
           RouteComponents['Index'] = module.default;
         })
         .catch(err => {
-          console.err(err);
+          console.error(err);
           return;
         });
     },
@@ -37,7 +37,7 @@ export default [
           RouteComponents['Genres'] = module.default;
         })
         .catch(err => {
-          console.err(err);
+          console.error(err);
           return;
         });
     },
@@ -52,7 +52,7 @@ export default [
               RouteComponents['Genre'] = module.default;
             })
             .catch(err => {
-              console.err(err);
+              console.error(err);
               return;
             });
         },
@@ -79,7 +79,7 @@ export default [
           RouteComponents['Authors'] = module.default;
         })
         .catch(err => {
-          console.err(err);
+          console.error(err);
           return;
         });
     },
@@ -103,7 +103,7 @@ export default [
               RouteComponents['Author'] = module.default;
             })
             .catch(err => {
-              console.err(err);
+              console.error(err);
               return;
             });
         },
