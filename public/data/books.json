@@ -1,6 +1,26 @@
 {
   "books": [
     {
+      "title": "The Fifth Season",
+      "author": "N.K. Jemisin",
+      "genre": "fantasy"
+    },
+    {
+      "title": "The Girl Who Takes an Eye for an Eye",
+      "author": "David Lagercrantz",
+      "genre": "thriller"
+    },
+    {
+      "title": "Autonomous",
+      "author": "Annalee Newitz",
+      "genre": "sci-fi"
+    },
+    {
+      "title": "The Influential Mind",
+      "author": "Tali Sharot",
+      "genre": "non-fiction"
+    },
+    {
       "title": "The Walking Dead: Compendium Three",
       "authors": ["Robert Kirkman", "Charlie Adlard", "Stefano Gaudiano", "Cliff Rathburn"],
       "genre": "fantasy"
