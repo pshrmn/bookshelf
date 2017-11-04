@@ -1,6 +1,26 @@
 {
   "books": [
     {
+      "title": "Machine Learning",
+      "author": "Hugh Howey",
+      "genre": "sci-fi"
+    },
+    {
+      "title": "Edgedancer",
+      "author": "Brandon Sanderson",
+      "genre": "fantasy"
+    },
+    {
+      "title": "Words of Radiance",
+      "author": "Brandon Sanderson",
+      "genre": "fantasy"
+    },
+    {
+      "title": "Be Free or Die",
+      "author": "Cate Lineberry",
+      "genre": "non-fiction"
+    },
+    {
       "title": "The Stone Sky",
       "author": "N.K. Jemisin",
       "genre": "fantasy"
