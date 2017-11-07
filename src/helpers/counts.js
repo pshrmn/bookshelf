@@ -22,8 +22,24 @@ export function genresByCount(books) {
     });
 }
 
+function incrementKey(obj, key) {
+  if (obj[key] === undefined) {
+    obj[key] = 0;
+  }
+  obj[key]++;
+}
+
 export function mostPopularAuthors(books) {
-  const authorCounts = countByProperty(books, 'author');
+  const authorCounts = books.reduce((acc, curr) => {
+    if (curr.authors) {
+      curr.authors.forEach(a => {
+        incrementKey(acc, a);
+      });
+    } else {
+      incrementKey(acc, curr.author);
+    }
+    return acc;
+  }, {});
 
   return Object.keys(authorCounts)
     .map(author => {
