@@ -14,7 +14,7 @@ export default function Book(props) {
       <Cover classes={[g.className]} title={title} />
       <div className='author'>
         {
-          authors.map(author => <Link to='Author' params={{ author }}>{author}</Link>)
+          authors.map(author => <Link key={author} to='Author' params={{ author }}>{author}</Link>)
         }
       </div>
     </div>
