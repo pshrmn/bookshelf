@@ -21,7 +21,7 @@ export default [
           return;
         });
     },
-    load: (params, location, mods) => {
+    load: (data, mods) => {
       return DataStore().then(store => {
         mods.setData({ books: store.books });
       });
@@ -56,7 +56,7 @@ export default [
               return;
             });
         },
-        load: (params, location, mods) => {
+        load: ({ params }, mods) => {
           return DataStore().then(store => {
             const { genre } = params;
             mods.setData({
@@ -83,7 +83,7 @@ export default [
           return;
         });
     },
-    load: (params, location, mods) => {
+    load: (data, mods) => {
       return DataStore().then(store => {
         mods.setData({
           authors: Object.keys(store.authors)
@@ -107,7 +107,7 @@ export default [
               return;
             });
         },
-        load: (params, location, mods) => {
+        load: ({ params }, mods) => {
           return DataStore().then(store => {
             const { author } = params;
             mods.setData({

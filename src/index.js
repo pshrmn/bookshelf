@@ -12,7 +12,7 @@ import 'sass/index.scss';
 
 const history = Hash();
 const config = createConfig(history, routes, {
-  addons: [createAncestors]
+  addons: [createAncestors()]
 });
 
 config.ready().then(() => {
