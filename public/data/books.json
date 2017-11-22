@@ -1,6 +1,26 @@
 {
   "books": [
     {
+      "title": "Oathbringer",
+      "author": "Brandon Sanderson",
+      "genre": "fantasy"
+    },
+    {
+      "title": "Mental Health, Inc.",
+      "author": "Art Levine",
+      "genre": "non-fiction"
+    },
+    {
+      "title": "Slaughterhouse-Five",
+      "author": "Kurt Vonnegut",
+      "genre": "sci-fi"
+    },
+    {
+      "title": "Redshirts",
+      "author": "John Scalzi",
+      "genre": "sci-fi"
+    },
+    {
       "title": "Machine Learning",
       "author": "Hugh Howey",
       "genre": "sci-fi"
