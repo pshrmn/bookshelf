@@ -1,6 +1,11 @@
 {
   "books": [
     {
+      "title": "Artemis",
+      "author": "Andy Weir",
+      "genre": "sci-fi"
+    },
+    {
       "title": "Oathbringer",
       "author": "Brandon Sanderson",
       "genre": "fantasy"
@@ -749,6 +754,11 @@
       "title": "1984",
       "author": "George Orwell",
       "genre": "dystopian"
+    },
+    {
+      "title": "The Martian",
+      "author": "Andy Weir",
+      "genre": "sci-fi"
     },
     {
       "title": "Pebble in the Sky",
