@@ -14,9 +14,14 @@ const history = Hash();
 const config = createConfig(history, routes, {
   addons: [createAncestors()]
 });
-
-config.ready().then(() => {
+const root = document.querySelector('main');
+config.subscribe((response, action) => {
   ReactDOM.render((
-    <Navigator config={config} render={renderFunction} />
-  ), document.querySelector('main'));
+    <Navigator
+      response={response}
+      action={action}
+      config={config}
+      render={renderFunction}
+    />
+  ), root);
 });
