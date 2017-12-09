@@ -15,7 +15,7 @@ const config = createConfig(history, routes, {
   addons: [createAncestors()]
 });
 const root = document.querySelector('main');
-config.subscribe((response, action) => {
+config.respond((response, action) => {
   ReactDOM.render((
     <Navigator
       response={response}

@@ -2,121 +2,105 @@ import DataStore from './store';
 import PageMissing from './components/pages/PageMissing';
 import { genreMap } from 'constants/genres';
 
-const RouteComponents = {};
-function getRoute(name) {
-  return RouteComponents[name] || PageMissing;
-}
-
 export default [
   {
     name: 'Home',
     path: '',
-    preload: () => {
-      return import(/* webpackChunkName: "Home" */ './components/pages/Index')
-        .then(module => {
-          RouteComponents['Index'] = module.default;
-        })
+    match: {
+      initial: () => import(/* webpackChunkName: "Home" */ './components/pages/Index')
+        .then(module => module.default)
         .catch(err => {
           console.error(err);
-          return;
-        });
-    },
-    load: (data, mods) => {
-      return DataStore().then(store => {
-        mods.setData({ books: store.books });
-      });
-    },
-    body: () => getRoute('Index')
+          return PageMissing;
+        }),
+      every: () => DataStore(),
+      response: ({ resolved, set }) => {
+        set.body(resolved.initial);
+        set.data({ books: resolved.every.books });
+      }
+    }
   },
   {
     name: 'Genres',
     path: 'genres',
-    preload: () => {
-      return import(/* webpackChunkName: "Genres" */ './components/pages/Genres')
-        .then(module => {
-          RouteComponents['Genres'] = module.default;
-        })
+    match: {
+      initial: () => import(/* webpackChunkName: "Genres" */ './components/pages/Genres')
+        .then(module => module.default)
         .catch(err => {
           console.error(err);
-          return;
-        });
+          return PageMissing;
+        }),
+      response: ({ resolved, set }) => {
+        set.body(resolved.initial);
+      }
     },
-    body: () => getRoute('Genres'),
     children: [
       {
         name: 'Genre',
         path: ':genre',
-        preload: () => {
-          return import(/* webpackChunkName: "Genre" */ './components/pages/Genre')
-            .then(module => {
-              RouteComponents['Genre'] = module.default;
-            })
+        match: {
+          initial: () => import(/* webpackChunkName: "Genre" */ './components/pages/Genre')
+            .then(module => module.default)
             .catch(err => {
               console.error(err);
-              return;
-            });
-        },
-        load: ({ params }, mods) => {
-          return DataStore().then(store => {
-            const { genre } = params;
-            mods.setData({
+              return PageMissing;
+            }),
+          every: () => DataStore(),
+          response: ({ resolved, route, set }) => {
+            set.body(resolved.initial);
+            const { genre } = route.params;
+            set.data({
               genre,
               description: genreMap[genre].description,
-              books: store.genres[genre]
+              books: resolved.every.genres[genre]
             });
-          });
-        },
-        body: () => getRoute('Genre')
+          }
+        }
       },
     ]
   },
   {
     name: 'Authors',
     path: 'authors',
-    preload: () => {
-      return import(/* webpackChunkName: "Authors" */ './components/pages/Authors')
-        .then(module => {
-          RouteComponents['Authors'] = module.default;
-        })
+    match: {
+      initial: () => import(/* webpackChunkName: "Authors" */ './components/pages/Authors')
+        .then(module => module.default)
         .catch(err => {
           console.error(err);
-          return;
-        });
-    },
-    load: (data, mods) => {
-      return DataStore().then(store => {
-        mods.setData({
+          return PageMissing;
+        }),
+      every: () => DataStore(),
+      response: ({ resolved, set }) => {
+        set.body(resolved.initial);
+        const store = resolved.every;
+        set.data({
           authors: Object.keys(store.authors)
             .map(key => store.authors[key])
             .sort((a,b) => b.books.length - a.books.length)
         });
-      });
+      }
     },
-    body: () => getRoute('Authors'),
     children: [
       {
         name: 'Author',
         path: ':author',
-        preload: () => {
-          return import(/* webpackChunkName: "Author" */ './components/pages/Author')
-            .then(module => {
-              RouteComponents['Author'] = module.default;
-            })
+        match: {
+          initial: () => import(/* webpackChunkName: "Author" */ './components/pages/Author')
+            .then(module => module.default)
             .catch(err => {
               console.error(err);
-              return;
-            });
-        },
-        load: ({ params }, mods) => {
-          return DataStore().then(store => {
-            const { author } = params;
-            mods.setData({
+              return PageMissing;
+            }),
+          every: () => DataStore(),
+          response: ({ resolved, route, set }) => {
+            set.body(resolved.initial);
+            const { author } = route.params;
+            set.data({
               author,
-              books: store.authors[author].books
+              books: resolved.every.authors[author].books
             });
-          });
-        },  
-        body: () => getRoute('Author')
+          }
+        }
       }
     ]
   }
