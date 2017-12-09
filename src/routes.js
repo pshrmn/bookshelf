@@ -1,6 +1,5 @@
-import DataStore from './store';
+import API from './api';
 import PageMissing from './components/pages/PageMissing';
-import { genreMap } from 'constants/genres';
 
 export default [
   {
@@ -13,10 +12,14 @@ export default [
           console.error(err);
           return PageMissing;
         }),
-      every: () => DataStore(),
-      response: ({ resolved, set }) => {
+      every: () => API.books(),
+      response: ({ error, resolved, set }) => {
         set.body(resolved.initial);
-        set.data({ books: resolved.every.books });
+        if (error) {
+          set.error(error);
+        } else {
+          set.data(resolved.every);
+        }
       }
     }
   },
@@ -45,15 +48,14 @@ export default [
               console.error(err);
               return PageMissing;
             }),
-          every: () => DataStore(),
-          response: ({ resolved, route, set }) => {
+          every: ({ params }) => API.genre(params.genre),
+          response: ({ error, resolved, set }) => {
             set.body(resolved.initial);
-            const { genre } = route.params;
-            set.data({
-              genre,
-              description: genreMap[genre].description,
-              books: resolved.every.genres[genre]
-            });
+            if (error) {
+              set.error(error);
+            } else {
+              set.data(resolved.every);
+            }
           }
         }
       },
@@ -69,15 +71,14 @@ export default [
           console.error(err);
           return PageMissing;
         }),
-      every: () => DataStore(),
-      response: ({ resolved, set }) => {
+      every: () => API.authors(),
+      response: ({ error, resolved, set }) => {
         set.body(resolved.initial);
-        const store = resolved.every;
-        set.data({
-          authors: Object.keys(store.authors)
-            .map(key => store.authors[key])
-            .sort((a,b) => b.books.length - a.books.length)
-        });
+        if (error) {
+          set.error(error);
+        } else {
+          set.data(resolved.every);
+        }
       }
     },
     children: [
@@ -91,14 +92,14 @@ export default [
               console.error(err);
               return PageMissing;
             }),
-          every: () => DataStore(),
-          response: ({ resolved, route, set }) => {
+          every: ({ params }) => API.author(params.author),
+          response: ({ error, resolved, set }) => {
             set.body(resolved.initial);
-            const { author } = route.params;
-            set.data({
-              author,
-              books: resolved.every.authors[author].books
-            });
+            if (error) {
+              set.error(error);
+            } else {
+              set.data(resolved.every);
+            }
           }
         }
       }
