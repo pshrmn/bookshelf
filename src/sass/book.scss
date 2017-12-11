@@ -1,12 +1,22 @@
+@import 'variables';
+
 .book {
   width: 150px;
   margin: 5px;
 
   .author {
-    text-align: center;
     margin-top: 5px;
     a {
       display: block;
+    }
+  }
+
+  .genres {
+    margin-top: 3px;
+
+    a {
+      padding: 1px 3px;
+      background: $light-gray;
     }
   }
 }
