@@ -1,6 +1,11 @@
 {
   "books": [
     {
+      "title": "Persepolis Rising",
+      "author": "James S.A. Corey",
+      "genre": "sci-fi"
+    },
+    {
       "title": "Artemis",
       "author": "Andy Weir",
       "genre": "sci-fi"
