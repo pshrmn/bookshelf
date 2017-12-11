@@ -2,11 +2,9 @@ import React from 'react';
 
 import TopBar from './components/TopBar';
 import Footer from './components/Footer';
-import NotFound from './components/NotFound';
 
 function renderFunction(response) {
-  const { body, params, data } = response
-  const Body = body ? body : NotFound;
+  const { body:Body, params, data } = response
   return (
     <div>
       <TopBar />

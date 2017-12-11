@@ -104,5 +104,20 @@ export default [
         }
       }
     ]
+  },
+  {
+    name: 'Not Found',
+    path: '(.*)',
+    match: {
+      initial: () => import(/* webpackChunkName: "NotFound" */ './components/pages/NotFound')
+      .then(module => module.default)
+      .catch(err => {
+        console.error(err);
+        return PageMissing;
+      }),
+      response: ({ resolved, set }) => {
+        set.body(resolved.initial);
+      }
+    }
   }
 ];
