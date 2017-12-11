@@ -14,7 +14,7 @@ const history = Hash();
 const config = createConfig(history, routes, {
   addons: [createAncestors()]
 });
-const root = document.querySelector('main');
+const root = document.getElementById('root');
 config.respond((response, action) => {
   ReactDOM.render((
     <Navigator

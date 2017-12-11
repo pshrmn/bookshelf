@@ -8,9 +8,9 @@ function renderFunction(response) {
   return (
     <div>
       <TopBar />
-      <div className='main'>
+      <main>
         <Body params={params} data={data} />
-      </div>
+      </main>
       <Footer />
     </div>
   );
