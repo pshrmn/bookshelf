@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Stats from 'components/Stats';
+import Stats from 'components/stats/Stats';
 import Showcase from 'components/Showcase';
 import Breadcrumbs from 'components/Breadcrumbs';
 
