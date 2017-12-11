@@ -1,7 +1,7 @@
 import React from 'react';
 
-import TopBar from './components/TopBar';
-import Footer from './components/Footer';
+import TopBar from './components/layout/TopBar';
+import Footer from './components/layout/Footer';
 
 function renderFunction(response) {
   const { body:Body, params, data } = response
