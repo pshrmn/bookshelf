@@ -15,6 +15,7 @@ export default [
       every: () => API.books(),
       response: ({ error, resolved, set }) => {
         set.body(resolved.initial);
+        set.title('Home');
         if (error) {
           set.error(error);
         } else {
@@ -35,6 +36,7 @@ export default [
         }),
       response: ({ resolved, set }) => {
         set.body(resolved.initial);
+        set.title('Genres');
       }
     },
     children: [
@@ -49,8 +51,9 @@ export default [
               return PageMissing;
             }),
           every: ({ params }) => API.genre(params.genre),
-          response: ({ error, resolved, set }) => {
+          response: ({ route, error, resolved, set }) => {
             set.body(resolved.initial);
+            set.title(route.params.genre);
             if (error) {
               set.error(error);
             } else {
@@ -74,6 +77,7 @@ export default [
       every: () => API.authors(),
       response: ({ error, resolved, set }) => {
         set.body(resolved.initial);
+        set.title('Authors');
         if (error) {
           set.error(error);
         } else {
@@ -93,8 +97,9 @@ export default [
               return PageMissing;
             }),
           every: ({ params }) => API.author(params.author),
-          response: ({ error, resolved, set }) => {
+          response: ({ route, error, resolved, set }) => {
             set.body(resolved.initial);
+            set.title(route.params.author);
             if (error) {
               set.error(error);
             } else {
@@ -117,6 +122,7 @@ export default [
       }),
       response: ({ resolved, set }) => {
         set.body(resolved.initial);
+        set.title('Page Not Found');
       }
     }
   }
