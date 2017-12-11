@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from '@curi/react';
 
-import BarChart from './OrdinalBarChart';
+import BarChart from './chart/OrdinalBarChart';
 import { genresByCount, mostPopularAuthors } from 'helpers/counts';
 import { genreMap } from 'constants/genres';
 
@@ -30,7 +30,11 @@ function GenreBarChart(props) {
       <BarChart
         data={genreCounts}
         getX={d => d.genre}
-        getY={d => d.count} />
+        getY={d => d.count}
+        getTitle={d => d.genre}
+        getClassName={d => genreMap[d.genre].className}
+        barWidth={30}
+      />
     </div>
   );
 }
