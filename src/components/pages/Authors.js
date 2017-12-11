@@ -1,32 +1,42 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from '@curi/react';
 
-import Cover from 'components/Cover';
-import { genreMap } from 'constants/genres';
+import Search from 'components/Search';
+
+import FilteredAuthors from 'components/FilteredAuthors';
 
 import 'sass/authors.scss';
 
-export default function Authors(props) {
-  const authors = props.data.authors.map(author => {
-    const { name, genre } = author;
-    return (
-      <li key={name}>
-        <Link to='Author' params={{ author: name }}>
-          <Cover title={name} classes={[genreMap[genre].className]} />
-        </Link>
-      </li>
-    );
-  });
+export default class Authors extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      filter: ''
+    };
+  }
+  
+  updateFilter(filter) {
+    this.setState({ filter });
+  }
 
-  return (
-    <div>
-      <h1>Authors</h1>
-      <ul className='authors'>
-        {authors}
-      </ul>
-    </div>
-  );
+  render() {
+    return (
+      <div>
+        <h1>Authors</h1>
+        <Search
+          placeholder='Search authors...'
+          update={this.updateFilter.bind(this)}
+          filter={this.state.filter}
+        />
+        <ul className='authors'>
+          <FilteredAuthors
+            authors={this.props.data.authors}
+            filter={this.state.filter}
+          />
+        </ul>
+      </div>
+    );
+  }
 }
 
 Authors.propTypes = {
