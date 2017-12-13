@@ -1,6 +1,11 @@
 {
   "books": [
     {
+      "title": "The Lies of Locke Lamora",
+      "author": "Scott Lynch",
+      "genre": "fantasy"
+    },
+    {
       "title": "Persepolis Rising",
       "author": "James S.A. Corey",
       "genre": "sci-fi"
