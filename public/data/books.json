@@ -1,6 +1,16 @@
 {
   "books": [
     {
+      "title": "Soonish",
+      "authors": ["Kelly Weinersmith", "Zach Weinersmith"],
+      "genre": "non-fiction"
+    },
+    {
+      "title": "How We Eat with Our Eyes and Think with Our Stomach",
+      "authors": ["Melanie Mühl", "Diana von Kopp"],
+      "genre": "non-fiction"
+    },
+    {
       "title": "The Lies of Locke Lamora",
       "author": "Scott Lynch",
       "genre": "fantasy"
