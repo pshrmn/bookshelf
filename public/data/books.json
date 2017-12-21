@@ -1,6 +1,11 @@
 {
   "books": [
     {
+      "title": "IQ",
+      "author": "Joe Ide",
+      "genre": "mystery"
+    },
+    {
       "title": "Soonish",
       "authors": ["Kelly Weinersmith", "Zach Weinersmith"],
       "genre": "non-fiction"
