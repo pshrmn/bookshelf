@@ -1,6 +1,16 @@
 {
   "books": [
     {
+      "title": "Righteous",
+      "author": "Joe Ide",
+      "genre": "mystery"
+    },
+    {
+      "title": "Red Seas Under Red Skies",
+      "author": "Scott Lynch",
+      "genre": "fantasy"
+    },
+    {
       "title": "IQ",
       "author": "Joe Ide",
       "genre": "mystery"
