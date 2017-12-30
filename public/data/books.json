@@ -1,6 +1,11 @@
 {
   "books": [
     {
+      "title": "Her Body and Other Parties",
+      "author": "Carmen Maria Machado",
+      "genre": "fiction"
+    },
+    {
       "title": "Righteous",
       "author": "Joe Ide",
       "genre": "mystery"
