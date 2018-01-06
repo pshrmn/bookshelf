@@ -1,6 +1,11 @@
 {
   "books": [
     {
+      "title": "The Republic of Thieves",
+      "author": "Scott Lynch",
+      "genre": "fantasy"
+    },
+    {
       "title": "Her Body and Other Parties",
       "author": "Carmen Maria Machado",
       "genre": "fiction"
