@@ -1,6 +1,11 @@
 {
   "books": [
     {
+      "title": "Stories of Your Life and Others",
+      "author": "Ted Chiang",
+      "genre": "sci-fi"
+    },
+    {
       "title": "The Republic of Thieves",
       "author": "Scott Lynch",
       "genre": "fantasy"
