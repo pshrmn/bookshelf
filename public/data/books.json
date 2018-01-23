@@ -1,6 +1,11 @@
 {
   "books": [
     {
+      "title": "Quicksilver",
+      "author": "Neal Stephenson",
+      "genre": "historical"
+    },
+    {
       "title": "Stories of Your Life and Others",
       "author": "Ted Chiang",
       "genre": "sci-fi"
