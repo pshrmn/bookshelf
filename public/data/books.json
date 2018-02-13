@@ -1,6 +1,21 @@
 {
   "books": [
     {
+      "title": "The Final Empire",
+      "author": "Brandon Sanderson",
+      "genre": "fantasy"
+    },
+    {
+      "title": "The Emperor's Soul",
+      "author": "Brandon Sanderson",
+      "genre": "fantasy"
+    },
+    {
+      "title": "Children of Dune",
+      "author": "Frank Herbert",
+      "genre": "sci-fi"
+    },
+    {
       "title": "Quicksilver",
       "author": "Neal Stephenson",
       "genre": "historical"
