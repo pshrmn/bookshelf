@@ -1,6 +1,21 @@
 {
   "books": [
     {
+      "title": "The Hero of Ages",
+      "author": "Brandon Sanderson",
+      "genre": "fantasy"
+    },
+    {
+      "title": "The Well of Ascension",
+      "author": "Brandon Sanderson",
+      "genre": "fantasy"
+    },
+    {
+      "title": "An Unkindness of Ghosts",
+      "author": "Rivers Solomon",
+      "genre": "sci-fi"
+    },
+    {
       "title": "The Final Empire",
       "author": "Brandon Sanderson",
       "genre": "fantasy"
