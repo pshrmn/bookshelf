@@ -1,6 +1,21 @@
 {
   "books": [
     {
+      "title": "The Bands of Mourning",
+      "author": "Brandon Sanderson",
+      "genre": "fantasy"
+    },
+    {
+      "title": "Shadows of Self",
+      "author": "Brandon Sanderson",
+      "genre": "fantasy"
+    },
+    {
+      "title": "The Alloy of Law",
+      "author": "Brandon Sanderson",
+      "genre": "fantasy"
+    },
+    {
       "title": "The Hero of Ages",
       "author": "Brandon Sanderson",
       "genre": "fantasy"
