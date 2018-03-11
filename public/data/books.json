@@ -1,6 +1,26 @@
 {
   "books": [
     {
+      "title": "Arcanum Unbounded",
+      "author": "Brandon Sanderson",
+      "genre": "fantasy"
+    },
+    {
+      "title": "Elantris",
+      "author": "Brandon Sanderson",
+      "genre": "fantasy"
+    },
+    {
+      "title": "In Praise of Difficult Women",
+      "author": "Karen Karbo",
+      "genre": "non-fiction"
+    },
+    {
+      "title": "The Paper Menagerie",
+      "author": "Ken Liu",
+      "genre": "sci-fi"
+    },
+    {
       "title": "The Bands of Mourning",
       "author": "Brandon Sanderson",
       "genre": "fantasy"
