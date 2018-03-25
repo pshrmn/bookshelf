@@ -1,6 +1,21 @@
 {
   "books": [
     {
+      "title": "Our Native Bees",
+      "author": "Paige Embry",
+      "genre": "non-fiction"
+    },
+    {
+      "title": "The Theory of Everything",
+      "author": "Stephen Hawking",
+      "genre": "non-fiction"
+    },
+    {
+      "title": "The Handmaid's Tale",
+      "author": "Margaret Atwood",
+      "genre": "dystopian"
+    },
+    {
       "title": "Arcanum Unbounded",
       "author": "Brandon Sanderson",
       "genre": "fantasy"
