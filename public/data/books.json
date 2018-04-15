@@ -1,6 +1,11 @@
 {
   "books": [
     {
+      "title": "The Confusion",
+      "author": "Neal Stephenson",
+      "genre": "historical"
+    },
+    {
       "title": "Our Native Bees",
       "author": "Paige Embry",
       "genre": "non-fiction"
