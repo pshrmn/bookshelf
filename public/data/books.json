@@ -1,6 +1,11 @@
 {
   "books": [
     {
+      "title": "Lock In",
+      "author": "John Scalzi",
+      "genre": "sci-fi"
+    },
+    {
       "title": "The Confusion",
       "author": "Neal Stephenson",
       "genre": "historical"
