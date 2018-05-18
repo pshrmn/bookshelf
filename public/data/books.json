@@ -1,6 +1,36 @@
 {
   "books": [
     {
+      "title": "Artificial Condition",
+      "author": "Martha Wells",
+      "genre": "sci-fi"
+    },
+    {
+      "title": "All Systems Red",
+      "author": "Martha Wells",
+      "genre": "sci-fi"
+    },
+    {
+      "title": "Bannerless",
+      "author": "Carrie Vaughn",
+      "genre": "mystery"
+    },
+    {
+      "title": "The Common Good",
+      "author": "Robert B. Reich",
+      "genre": "non-fiction"
+    },
+    {
+      "title": "White Sand, Volume 2",
+      "authors": ["Neal Stephenson", "Rik Hoskin", "Julius M. Gopez"],
+      "genre": "fantasy"
+    },
+    {
+      "title": "Head On",
+      "author": "John Scalzi",
+      "genre": "sci-fi"
+    },
+    {
       "title": "White Sand, Volume 1",
       "authors": ["Neal Stephenson", "Rik Hoskin", "Julius M. Gopez"],
       "genre": "fantasy"
