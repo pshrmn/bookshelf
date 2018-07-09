@@ -1,6 +1,16 @@
 {
   "books": [
     {
+      "title": "Sapiens",
+      "author": "Yuval Noah Harari",
+      "genre": "non-fiction"
+    },
+    {
+      "title": "The Shadow District",
+      "author": "Arnaldur Indridason",
+      "genre": "mystery"
+    },
+    {
       "title": "How to American",
       "author": "Jimmy O. Yang",
       "genre": "non-fiction"
