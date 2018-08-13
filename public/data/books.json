@@ -1,6 +1,31 @@
 {
   "books": [
     {
+      "title": "The Point",
+      "author": "John Dixon",
+      "genre": "sci-fi"
+    },
+    {
+      "title": "Storm Front",
+      "author": "Jim Butcher",
+      "genre": "thriller"
+    },
+    {
+      "title": "Record of a Spaceborn Few",
+      "author": "Becky Chambers",
+      "genre": "sci-fi"
+    },
+    {
+      "title": "Drop by Drop",
+      "author": "Morgan Llywelyn",
+      "genre": "sci-fi"
+    },
+    {
+      "title": "War and Peace",
+      "author": "Leo Tolstoy",
+      "genre": "historical"
+    },
+    {
       "title": "Sapiens",
       "author": "Yuval Noah Harari",
       "genre": "non-fiction"
