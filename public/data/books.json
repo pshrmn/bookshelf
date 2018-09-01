@@ -1,6 +1,26 @@
 {
   "books": [
     {
+      "title": "Grave Peril",
+      "author": "Jim Butcher",
+      "genre": "thriller"
+    },
+    {
+      "title": "The Children of Men",
+      "author": "P.D. James",
+      "genre": "dystopian"
+    },
+    {
+      "title": "Fool Moon",
+      "author": "Jim Butcher",
+      "genre": "thriller"
+    },
+    {
+      "title": "Light of the Stars",
+      "author": "Adam Frank",
+      "genre": "non-fiction"
+    },
+    {
       "title": "The Point",
       "author": "John Dixon",
       "genre": "sci-fi"
