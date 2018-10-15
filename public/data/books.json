@@ -1,6 +1,51 @@
 {
   "books": [
     {
+      "title": "Salvation",
+      "author": "Peter F. Hamilton",
+      "genre": "sci-fi"
+    },
+    {
+      "title": "Aroused",
+      "author": "Randi Hutter Epstein",
+      "genre": "non-fiction"
+    },
+    {
+      "title": "Godless Citizens in a Godly Republic",
+      "authors": ["R. Laurence Moore", "Isaac Kramnick"],
+      "genre": "non-fiction"
+    },
+    {
+      "title": "Dreams Before the Start of Time",
+      "author": "Anne Charnock",
+      "genre": "sci-fi"
+    },
+    {
+      "title": "Worlds Seen in Passing",
+      "author": "Misc. (anthology)1",
+      "genre": "fantasy"
+    },
+    {
+      "title": "Severance",
+      "author": "Ling Ma",
+      "genre": "dystopian"
+    },
+    {
+      "title": "Where Did You Get This Number?",
+      "author": "Anthony Salvanto",
+      "genre": "non-fiction"
+    },
+    {
+      "title": "Relic",
+      "author": "Alan Dean Foster",
+      "genre": "sci-fi"
+    },
+    {
+      "title": "Playing Dead",
+      "author": "Elizabeth Greenwood",
+      "genre": "non-fiction"
+    },
+    {
       "title": "Grave Peril",
       "author": "Jim Butcher",
       "genre": "thriller"
